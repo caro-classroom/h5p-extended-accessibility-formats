@@ -15,6 +15,9 @@
       "description": "Eine Anleitung, die dem Nutzer sagt, wie die Aufgabe beantwortet werden kann."
     },
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Textblöcke",
       "entity": "textblock",
       "field": {
@@ -107,6 +110,12 @@
       "label": "Verhaltenseinstellungen.",
       "description": "Diese Optionen kontrollieren, wie sich die Aufgabe verhält.",
       "fields": [
+        {
+          "label": "TTS Buttons aktivieren"
+        },
+        {
+          "label": "Interaktions-Buttons deaktivieren"
+        },
         {
           "label": "\"Wiederholen\" zulassen"
         },

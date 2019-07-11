@@ -20,9 +20,10 @@
     var answers = solution.solutions;
     var answer = answers.join('/');
     var tip = solution.tip;
-    var ttsID = solution.ttsID;
     var checkedAnswer = null;
     var inputLabel = l10n.inputLabel;
+    var enableTTSButtons = behaviour.enableTTSButtons;
+
     if (behaviour.caseSensitive !== true) {
       // Convert possible solutions into lowercase
       for (var i = 0; i < answers.length; i++) {
@@ -200,8 +201,8 @@
      * @returns {string} Cloze html
      */
     this.toString = function () {
-      var extra = defaultUserAnswer ? ' value="' + defaultUserAnswer + '"' : '';
-      var ttsButton = ttsID ? '<button class="h5p-tts-button" data-id="' + ttsID + '">X</button>' : '';
+      var extra = defaultUserAnswer ? ' value="' + defaultUserAnswer + '"' : '';      
+      var ttsButton = enableTTSButtons === true ? '<button class="h5p-action-button" data-id="' + ttsID + '">X</button>' : '';
       var result = '<span class="h5p-input-wrapper">' + ttsButton + '<input type="text" class="h5p-text-input" autocomplete="off" autocapitalize="off"' + extra + '></span>';
       self.length = result.length;
       return result;

@@ -86,6 +86,14 @@ H5P.Blanks = (function ($, Question) {
       }
     }, params);
 
+    // override buttons
+    if(self.params.behaviour.disableButtons) {
+      self.params.behaviour.enableRetry = false;
+      self.params.behaviour.enableSolutionsButton = false;
+      self.params.behaviour.enableCheckButton = false;
+      self.params.behaviour.autoCheck = false;
+    }
+
     // Delete empty questions
     for (var i = this.params.questions.length - 1; i >= 0; i--) {
       if (!this.params.questions[i]) {
@@ -104,7 +112,7 @@ H5P.Blanks = (function ($, Question) {
 
     // Keep track tabbing forward or backwards
     this.shiftPressed = false;
-
+    
     H5P.$body.keydown(function (event) {
       if (event.keyCode === 16) {
         self.shiftPressed = true;
@@ -113,25 +121,6 @@ H5P.Blanks = (function ($, Question) {
       if (event.keyCode === 16) {
         self.shiftPressed = false;
       }
-    });
-
-    H5P.$body.keyup(function (event) {
-      if (event.keyCode === 192) {
-        //self.triggerXAPI("textToSpeech");
-        //self.showEvaluation();
-        //self.markResults();
-        self.triggerAnswered();
-      }
-    });
-
-    H5P.$body.find(".h5p-tts-button").on("click", function (event) {
-      console.log("hi there");
-    });
-
-    H5P.$body.bind('abc', function () {
-      self.showEvaluation();
-      self.markResults();
-      self.triggerAnswered();
     });
   }
 
@@ -188,7 +177,6 @@ H5P.Blanks = (function ($, Question) {
    */
   Blanks.prototype.registerButtons = function () {
     var self = this;
-
     var $content = $('[data-content-id="' + self.contentId + '"].h5p-content');
     var $containerParents = $content.parents('.h5p-container');
 
@@ -241,6 +229,12 @@ H5P.Blanks = (function ($, Question) {
         }
       });
     }
+
+    // Show tts task button
+    if(self.params.behaviour.enableTTSButtons) {
+      self.addButton(this.params.tts, "tts");
+    }
+
     self.toggleButtonVisibility(STATE_ONGOING);
   };
 
@@ -298,14 +292,13 @@ H5P.Blanks = (function ($, Question) {
         // Create new cloze
         clozeNumber += 1;
         var defaultUserAnswer = (self.params.userAnswers.length > self.clozes.length ? self.params.userAnswers[self.clozes.length] : null);
-        var ttsID = 42;
-        var cloze = new Blanks.Cloze(solution, self.params.behaviour, defaultUserAnswer, ttsID, {
+        var cloze = new Blanks.Cloze(solution, self.params.behaviour, defaultUserAnswer, solution.ttsID, {
           answeredCorrectly: self.params.answeredCorrectly,
           answeredIncorrectly: self.params.answeredIncorrectly,
           solutionLabel: self.params.solutionLabel,
           inputLabel: self.params.inputLabel,
           inputHasTipLabel: self.params.inputHasTipLabel,
-          tipLabel: self.params.tipLabel
+          tipLabel: self.params.tipLabel,
         });
 
         self.clozes.push(cloze);
@@ -317,6 +310,10 @@ H5P.Blanks = (function ($, Question) {
 
     self.hasClozes = clozeNumber > 0;
     this.$questions = $(html);
+    
+    this.$questions.find('.h5p-action-button').each(function (i) {
+      $(this).on("click", function(){self.handleTTSButtonClick(this)});
+    });
 
     // Set input fields.
     this.$questions.find('input').each(function (i) {

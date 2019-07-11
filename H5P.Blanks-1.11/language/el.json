@@ -15,6 +15,9 @@
       "description": "A guide telling the user how to answer this task."
     },
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Text blocks",
       "entity": "text block",
       "field": {
@@ -107,6 +110,12 @@
       "label": "Behavioural settings.",
       "description": "These options will let you control how the task behaves.",
       "fields": [
+        {
+          "label": "activare tts buttons"
+        },
+        {
+          "label": "deactivate interactive buttons"
+        },
         {
           "label": "Enable \"Retry\""
         },
