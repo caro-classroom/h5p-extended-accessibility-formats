@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('glob');
 var webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const RemovePlugin = require('remove-files-webpack-plugin');
 
 const scss = glob.sync('H5P.*/src/*.scss');
 const scssObject = scss.reduce((acc, file) => {
@@ -37,7 +38,7 @@ const config = [
       ]
     },
     plugins: [
-      new MiniCssExtractPlugin({ filename: '[name]' }),
+      new MiniCssExtractPlugin({ filename: '[name]' })
     ],
     devtool: 'eval-source-map'
   },
