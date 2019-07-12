@@ -17,15 +17,15 @@
   },
   "preloadedCss": [
     {
-      "path": "css/blanks.css"
+      "path": "dist/css/blanks.css"
     }
   ],
   "preloadedJs": [
     {
-      "path": "js/blanks.js"
+      "path": "dist/js/blanks.js"
     },
     {
-      "path": "js/cloze.js"
+      "path": "dist/js/cloze.js"
     }
   ],
   "preloadedDependencies": [
