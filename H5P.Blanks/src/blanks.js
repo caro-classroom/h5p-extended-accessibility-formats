@@ -703,10 +703,12 @@ H5P.Blanks = (function ($, Question) {
    */
   Blanks.prototype.parseSolution = function (solutionText) {
     var tip, solution, ttsID;
-    var tipStart = solutionText.indexOf(':');
+
+    var tipStart = solutionText.indexOf('\\:');
+    
     if (tipStart !== -1) {
       // Found tip, now extract
-      tip = solutionText.slice(tipStart + 1);
+      tip = solutionText.slice(tipStart + 2);
       solution = solutionText.slice(0, tipStart);
     }
     else {
@@ -719,9 +721,9 @@ H5P.Blanks = (function ($, Question) {
       ttsID = solution.slice(ttsStart + 1);
       solution = solution.slice(0, ttsStart);
     }
-
+    
     // Split up alternatives
-    var solutions = solution.split('/');
+    var solutions = solution.split('\\/');
 
     // Trim solutions
     for (var i = 0; i < solutions.length; i++) {
