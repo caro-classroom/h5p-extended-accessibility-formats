@@ -1287,7 +1287,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         var $e = buttons[id].$element = $('<button/>', {
           'class': 'h5p-action-button',
           'data-id': id,
-          html: text,
+          html: '<i class="fa fa-volume-up"></i>',
           title: "",
           on: {
             click: function (event) {

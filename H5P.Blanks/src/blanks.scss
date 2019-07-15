@@ -1,4 +1,5 @@
-@import '../../settings.scss';
+@import '../../scss/settings.scss';
+@import '../../scss/custom.scss';
 
 .h5p-blanks {
   position: relative;
@@ -12,7 +13,7 @@
     font-family: H5PDroidSans, sans-serif;
     font-size: 1em;
     border-radius: 0.25em;
-    border: 1px solid #a0a0a0;
+    border: 1px solid $input-border;
     padding: 0.1875em 1em 0.1875em 0.5em;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -26,7 +27,7 @@
     }
 
     &.h5p-not-filled-out {
-      background: #fff0f0;
+      background: $not-filled-out;
     }
   }
 
@@ -45,9 +46,9 @@
   /* Correctly answered input */
   .h5p-correct {
     .h5p-text-input {
-      background: #9dd8bb;
-      border: 1px solid #9dd8bb;
-      color: #255c41;
+      background: $correct-secondary;
+      border: 1px solid $correct-secondary;
+      color: $correct-primary;
     }
 
     &:after {
@@ -57,21 +58,21 @@
       text-decoration: none;
       content: "\f00c";
       font-family: 'H5PFontAwesome4';
-      color: #255c41;
+      color: $correct-primary;
     }
   }
   
   .h5p-correct-answer {
-    color: #255c41;
+    color: $correct-primary;
     font-weight: bold;
   }
 
   /* Wrongly answered input */
   .h5p-wrong {
     .h5p-text-input {
-      background-color: #f7d0d0;
-      border: 1px solid #f7d0d0;
-      color: $wrong;
+      background-color: $wrong-secondary;
+      border: 1px solid $wrong-secondary;
+      color: $wrong-primary;
       text-decoration: line-through;
     }
 
@@ -82,7 +83,7 @@
       font-family: 'H5PFontAwesome4';
       text-decoration: none;
       content: "\f00d";
-      color: $wrong;
+      color: $wrong-primary;
     }
   }
 
