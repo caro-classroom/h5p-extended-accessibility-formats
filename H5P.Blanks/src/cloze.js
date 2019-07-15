@@ -79,6 +79,7 @@
      * Check the cloze and mark it as wrong or correct.
      */
     this.checkAnswer = function () {
+      debugger
       checkedAnswer = this.getUserAnswer();
       var isCorrect = correct(checkedAnswer);
       if (isCorrect) {
@@ -171,6 +172,7 @@
       }
 
       $input.attr('aria-label', inputLabel);
+      $input.attr('input-index', clozeIndex + 1);
 
       if (afterCheck !== undefined) {
         $input.blur(function () {
