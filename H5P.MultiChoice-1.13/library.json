@@ -17,12 +17,12 @@
   },
   "preloadedJs": [
     {
-      "path": "js/multichoice.js"
+      "path": "dist/js/multichoice.js"
     }
   ],
   "preloadedCss": [
     {
-      "path": "css/multichoice.css"
+      "path": "dist/css/multichoice.css"
     }
   ],
   "preloadedDependencies": [

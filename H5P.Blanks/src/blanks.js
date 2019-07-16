@@ -1,4 +1,5 @@
 /*global H5P*/
+debugger
 H5P.Blanks = (function ($, Question) {
   /**
    * @constant

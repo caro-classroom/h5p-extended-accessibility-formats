@@ -16,7 +16,11 @@ $correct-primary: #255c41;
 $correct-secondary: #9dd8bb;
 $wrong-primary: #b71c1c;
 $wrong-secondary: #f7d0d0;
-
+$multiple-choice-bg: #ccc;
+$multiple-choice-border: #ccc;
+$feedback-failed: $wrong-primary;
+$feedback-almost: #666;
+$feedback-passed: $correct-primary;
 
 // 2. Buttons
 // ----------
