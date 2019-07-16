@@ -703,12 +703,14 @@ H5P.Blanks = (function ($, Question) {
    */
   Blanks.prototype.parseSolution = function (solutionText) {
     var tip, solution, ttsID;
-
-    var tipStart = solutionText.indexOf('\\:');
+    
+    // substitute : and \ with unicode
+    solutionText = solutionText.replace(/\\:/, 'U+003A').replace(/\\\//, 'U+005C');
+    var tipStart = solutionText.indexOf(':');
     
     if (tipStart !== -1) {
       // Found tip, now extract
-      tip = solutionText.slice(tipStart + 2);
+      tip = solutionText.slice(tipStart + 1).replace('U+003A', ':').replace('U+005C', '/');
       solution = solutionText.slice(0, tipStart);
     }
     else {
@@ -723,11 +725,11 @@ H5P.Blanks = (function ($, Question) {
     }
     
     // Split up alternatives
-    var solutions = solution.split('\\/');
+    var solutions = solution.split('/');
 
     // Trim solutions
     for (var i = 0; i < solutions.length; i++) {
-      solutions[i] = H5P.trim(solutions[i]);
+      solutions[i] = H5P.trim(solutions[i]).replace('U+003A', ':').replace('U+005C', '/');
 
       //decodes html entities
       var elem = document.createElement('textarea');

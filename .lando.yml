@@ -1,0 +1,25 @@
+#install h5p module and put h5p libraries in sites/default/files/h5p/development
+name: h5p-drupal
+recipe: drupal7
+config:
+  webroot: .
+services:
+  node:
+    type: node:10.14.2
+tooling:
+  yarn:
+    service: node
+  install:
+    service: appserver
+  watch:
+    service: node
+    description: "watches for css/js changes"
+    cmd: echo Watching Changes
+events:
+  post-install:
+    - appserver: |
+      cd $LANDO_MOUNT;
+      composer install;
+    - node: cd $LANDO_MOUNT/sites/default/files/h5p/development && yarn install;
+  post-watch:
+    - node: cd $LANDO_MOUNT/sites/default/files/h5p/development && yarn develop;
