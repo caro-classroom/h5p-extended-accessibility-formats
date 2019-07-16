@@ -1,3 +1,6 @@
+@import "../../scss/settings.scss";
+@import "../../scss/custom.scss";
+
 .h5p-question-explanation {
   /* Needed this to make it display in IE 11 */
   position: relative;
@@ -56,11 +59,11 @@
 }
 
 .h5p-question-explanation-correct {
-  color: #265c42;
+  color: $correct-primary;
 }
 
 .h5p-question-explanation-wrong {
-  color: #b61c1e;
+  color: $wrong-primary;
   text-decoration: line-through;
 }
 
