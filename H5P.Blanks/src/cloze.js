@@ -79,7 +79,6 @@
      * Check the cloze and mark it as wrong or correct.
      */
     this.checkAnswer = function () {
-      debugger
       checkedAnswer = this.getUserAnswer();
       var isCorrect = correct(checkedAnswer);
       if (isCorrect) {
