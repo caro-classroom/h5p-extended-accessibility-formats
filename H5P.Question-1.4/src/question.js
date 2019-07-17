@@ -1283,7 +1283,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           text: text,
           isVisible: false
         };
-
+        
         var $e = buttons[id].$element = $('<button/>', {
           'class': 'h5p-action-button',
           'data-id': id,
