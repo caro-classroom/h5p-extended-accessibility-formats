@@ -75,6 +75,8 @@ H5P.Blanks = (function ($, Question) {
       tipLabel: "Tip",
       scoreBarLabel: 'You got :num out of :total points',
       behaviour: {
+        enableTTSButtons: true,
+        disableButtons: true,
         enableRetry: true,
         enableSolutionsButton: true,
         enableCheckButton: false,
@@ -231,8 +233,8 @@ H5P.Blanks = (function ($, Question) {
     }
 
     // Show tts task button
-    if(self.params.behaviour.enableTTSButtons) {
-      self.addButton(this.params.tts, "tts");
+    if(self.params.behaviour.enableTTSButtons && this.params.introductionTTS !== undefined) {
+      self.addButton(this.params.introductionTTS, "tts");
     }
 
     self.toggleButtonVisibility(STATE_ONGOING);

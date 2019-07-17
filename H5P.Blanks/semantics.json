@@ -40,7 +40,7 @@
     ]
   },
   {
-    "name": "tts",
+    "name": "introductionTTS",
     "type": "text",
     "importance": "low",
     "optional": true,
@@ -262,7 +262,7 @@
         "importance": "low",
         "name": "disableButtons",
         "type": "boolean",
-        "default": false,
+        "default": true,
         "optional": true
       },
       {
