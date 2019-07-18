@@ -1,4 +1,4 @@
-var H5P = H5P || {};
+//var H5P = H5P || {};
 
 H5P.Essay = function ($, Question) {
   'use strict';

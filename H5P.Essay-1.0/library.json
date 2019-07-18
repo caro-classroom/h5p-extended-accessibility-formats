@@ -15,14 +15,14 @@
   },
   "preloadedJs": [
     {
-      "path": "scripts/essay.js"
+      "path": "dist/js/essay.js"
     },
     {
-      "path": "scripts/inputfield.js"
+      "path": "dist/js/inputfield.js"
     }
   ],
   "preloadedCss": [
-    {"path": "styles/essay.css" }
+    {"path": "dist/css/essay.css" }
   ],
   "preloadedDependencies": [
     {
