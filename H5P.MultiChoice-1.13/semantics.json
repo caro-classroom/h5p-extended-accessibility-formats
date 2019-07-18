@@ -37,6 +37,14 @@
     ]
   },
   {
+    "name": "introductionTTS",
+    "type": "text",
+    "importance": "low",
+    "optional": true,
+    "widget": "text",
+    "label": "TTS ID"
+  },
+  {
     "name": "answers",
     "type": "list",
     "importance": "high",
@@ -322,6 +330,22 @@
     "description": "These options will let you control how the task behaves.",
     "optional": true,
     "fields": [
+      {
+        "label": "Enable TTS Buttons",
+        "importance": "low",
+        "name": "enableTTSButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "deactivate interactive buttons",
+        "importance": "low",
+        "name": "disableButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
       {
         "name": "enableRetry",
         "type": "boolean",

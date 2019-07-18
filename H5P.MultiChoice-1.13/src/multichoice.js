@@ -61,19 +61,6 @@ H5P.MultiChoice = function (options, contentId, contentData) {
   H5P.Question.call(self, 'multichoice');
   var $ = H5P.jQuery;
 
-  // checkbox or radiobutton
-  var texttemplate =
-    '<ul class="h5p-answers" role="<%= role %>" aria-labelledby="<%= label %>">' +
-    '  <% for (var i=0; i < answers.length; i++) { %>' +
-    '    <li class="h5p-answer" role="<%= answers[i].role %>" tabindex="<%= answers[i].tabindex %>" aria-checked="<%= answers[i].checked %>" data-id="<%= i %>">' +
-    '      <div class="h5p-alternative-container">' +
-    '        <span class="h5p-alternative-inner"><%= answers[i].tts %><%= answers[i].text %></span><span class="h5p-hidden-read">.</span>' +
-    '      </div>' +
-    '      <div class="h5p-clearfix"></div>' +
-    '    </li>' +
-    '  <% } %>' +
-    '</ul>';
-
   var defaults = {
     image: null,
     question: "No question text provided",
@@ -104,6 +91,8 @@ H5P.MultiChoice = function (options, contentId, contentData) {
       noInput: 'Input is required before viewing the solution'
     },
     behaviour: {
+      enableTTSButtons: true,
+      disableButtons: true,
       enableRetry: true,
       enableSolutionsButton: true,
       enableCheckButton: true,
@@ -117,8 +106,35 @@ H5P.MultiChoice = function (options, contentId, contentData) {
       showScorePoints: true
     }
   };
-  var template = new EJS({text: texttemplate});
+  
   var params = $.extend(true, defaults, options);
+
+  // override buttons
+  if(params.behaviour.disableButtons) {
+    params.behaviour.enableRetry = false;
+    params.behaviour.enableSolutionsButton = false;
+    params.behaviour.enableCheckButton = false;
+    params.behaviour.autoCheck = false;
+  }
+
+  // checkbox or radiobutton
+  var texttemplate =
+    '<ul class="h5p-answers" role="<%= role %>" aria-labelledby="<%= label %>">' +
+    '  <% for (var i=0; i < answers.length; i++) { %>' +
+    '    <li class="h5p-answer" role="<%= answers[i].role %>" tabindex="<%= answers[i].tabindex %>" aria-checked="<%= answers[i].checked %>" data-id="<%= i %>">' +
+    '      <%if(answers[i].tts && ' + params.behaviour.enableTTSButtons + ') {%>' +
+    '        <button class="h5p-action-button" data-id="<%= answers[i].tts %>"><i class="fa fa-volume-up"></i></button>' +
+    '      <%}%>' +
+    '      <div class="h5p-alternative-container">' +
+    '        <span class="h5p-alternative-inner"><%= answers[i].text %></span><span class="h5p-hidden-read">.</span>' +
+    '      </div>' +
+    '      <div class="h5p-clearfix"></div>' +
+    '    </li>' +
+    '  <% } %>' +
+    '</ul>';
+  
+  var template = new EJS({text: texttemplate});
+
   // Keep track of number of correct choices
   var numCorrect = 0;
 
@@ -234,6 +250,10 @@ H5P.MultiChoice = function (options, contentId, contentData) {
     $myDom = $(template.render(params));
     self.setContent($myDom, {
       'class': params.behaviour.singleAnswer ? 'h5p-radio' : 'h5p-check'
+    });
+
+    var $ttsButtons = $('.h5p-action-button', $myDom).each(function (i) {
+      $(this).on("click", function(){self.handleTTSButtonClick(this)});
     });
 
     // Create tips:
@@ -385,8 +405,9 @@ H5P.MultiChoice = function (options, contentId, contentData) {
       }
     };
 
-    $answers.click(function () {
-      toggleCheck($(this));
+    $answers.find(".h5p-alternative-container").click(function () {
+      
+      toggleCheck($(this).parent());
     }).keydown(function (e) {
       if (e.keyCode === 32) { // Space bar
         // Select current item
@@ -408,7 +429,7 @@ H5P.MultiChoice = function (options, contentId, contentData) {
           case 40:   // Down
           case 39: { // Right
             // Try to select next item
-            var $next = $(this).next();
+            var $next = $(this).parent().next();
             if ($next.length) {
               toggleCheck($next.focus());
             }
@@ -661,6 +682,11 @@ H5P.MultiChoice = function (options, contentId, contentData) {
           }
         }
       );
+    }
+
+    // Show tts task button
+    if(params.behaviour.enableTTSButtons && params.introductionTTS !== undefined) {
+      self.addButton(params.introductionTTS, "tts");
     }
 
     // Try Again button

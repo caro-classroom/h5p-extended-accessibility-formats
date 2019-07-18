@@ -13,6 +13,9 @@
       "label": "Question"
     },
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Available options",
       "entity": "option",
       "field": {
@@ -138,6 +141,12 @@
       "label": "Behavioural settings",
       "description": "These options will let you control how the task behaves.",
       "fields": [
+        {
+          "label": "activate tts buttons"
+        },
+        {
+          "label": "deactivate interactive buttons"
+        },
         {
           "label": "Enable \"Retry\" button"
         },

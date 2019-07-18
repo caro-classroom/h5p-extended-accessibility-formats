@@ -111,7 +111,7 @@
       "description": "These options will let you control how the task behaves.",
       "fields": [
         {
-          "label": "activare tts buttons"
+          "label": "activate tts buttons"
         },
         {
           "label": "deactivate interactive buttons"

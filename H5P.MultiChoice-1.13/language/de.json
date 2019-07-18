@@ -13,6 +13,9 @@
       "label": "Frage"
     },
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Verfügbare Optionen",
       "entity": "Option",
       "field": {
@@ -138,6 +141,12 @@
       "label": "Einstellungen",
       "description": "Hier kannst Du einstellen, wie sich die Aufgabe verhält",
       "fields": [
+        {
+          "label": "TTS Buttons aktivieren"
+        },
+        {
+          "label": "Interaktions-Buttons deaktivieren"
+        },
         {
           "label": "Aktiviere \"Wiederholen\"-Knopf"
         },
