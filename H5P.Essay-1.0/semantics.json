@@ -21,6 +21,14 @@
     ]
   },
   {
+    "name": "introductionTTS",
+    "type": "text",
+    "importance": "low",
+    "optional": true,
+    "widget": "text",
+    "label": "TTS ID"
+  },
+  {
     "name": "placeholderText",
     "label": "Help text",
     "type": "text",
@@ -233,6 +241,30 @@
     "description": "These options will let you control how the task behaves.",
     "fields": [
       {
+        "label": "Enable TTS Buttons",
+        "importance": "low",
+        "name": "enableTTSButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "deactivate interactive buttons",
+        "importance": "low",
+        "name": "disableButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "Input Field width (e.g. \"80%\" other valid units are em,px,%,vh,vw,rem,em,pt)",
+        "importance": "low",
+        "name": "inputFieldWidth",
+        "type": "text",
+        "default": "",
+        "optional": true
+      },
+      {
         "name": "minimumLength",
         "label": "Minimum number of characters",
         "type": "number",
@@ -253,23 +285,9 @@
       {
         "name": "inputFieldSize",
         "label": "Input field size",
-        "type": "select",
+        "type": "number",
         "importance": "low",
         "description": "The size of the input field in amount of lines it will cover",
-        "options": [
-          {
-            "value": "1",
-            "label": "1 line"
-          },
-          {
-            "value": "3",
-            "label": "3 lines"
-          },
-          {
-            "value": "10",
-            "label": "10 lines"
-          }
-        ],
         "default": "10"
       },
       {

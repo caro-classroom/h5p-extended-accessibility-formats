@@ -6,6 +6,9 @@
       "placeholder": "Fasse das Buch in maximal 500 Zeichen zusammen ..."
     },
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Hilfetext",
       "description": "Dieser Text soll die Lernenden am Anfang unterstützen.",
       "placeholder": "Dieses Buch handelt von ..."
@@ -112,6 +115,15 @@
       "description": "Diese Optionen legen fest, wie sich die Aufgabe auf Eingaben verhält.",
       "fields": [
         {
+          "label": "TTS Buttons aktivieren"
+        },
+        {
+          "label": "Interaktions-Buttons deaktivieren"
+        },
+        {
+          "label": "Input Feld Breite (e.g. \"80%\" andere gültige Einheiten sind: em,px,%,vh,vw,rem,em,pt)"
+        },
+        {
           "label": "Minimale Zeichenzahl",
           "description": "Gib die minimale Zeichenzahl an, die die Lernenden eingeben müssen."
         },
@@ -122,17 +134,6 @@
         {
           "label": "Größe des Eingabefelds",
           "description": "Die Größe des Eingabefelds als Zahl der Zeilen",
-          "options": [
-            {
-              "label": "1 Zeile"
-            },
-            {
-              "label": "3 Zeilen"
-            },
-            {
-              "label": "10 Zeilen"
-            }
-          ],
           "default": "10"
         },
         {

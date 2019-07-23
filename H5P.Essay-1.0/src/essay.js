@@ -31,7 +31,12 @@ H5P.Essay = function ($, Question) {
     // Inheritance
     Question.call(this, 'essay');
 
-    this.config = config;
+    this.config = $.extend(true, {}, {
+      behaviour: {
+        enableTTSButtons: true,
+        disableButtons: true,
+      }
+    }, config);
     this.contentId = contentId;
     this.contentData = contentData || {};
 
@@ -81,14 +86,14 @@ H5P.Essay = function ($, Question) {
     if (!!this.contentData && !!this.contentData.previousState) {
       this.previousState = this.contentData.previousState;
     }
-
     // Create InputField
     this.inputField = new H5P.Essay.InputField({
       'taskDescription': this.config.taskDescription,
       'placeholderText': this.config.placeholderText,
       'maximumLength': this.config.behaviour.maximumLength,
       'remainingChars': this.config.remainingChars,
-      'inputFieldSize': this.config.behaviour.inputFieldSize
+      'inputFieldSize': this.config.behaviour.inputFieldSize,
+      'inputFieldWidth': this.config.behaviour.inputFieldWidth
     }, this.previousState);
 
     // Register task introduction text
@@ -113,45 +118,51 @@ H5P.Essay = function ($, Question) {
    * Add all the buttons that shall be passed to H5P.Question
    */
   Essay.prototype.addButtons = function () {
-    var that = this;
+    var that = this; 
+    if(!this.config.behaviour.disableButtons) {
+      // Show solution button
+      that.addButton('show-solution', that.config.showSolution, function () {
+        that.showSolution();
+        that.hideButton('show-solution');
+      }, false, {}, {});
 
-    // Show solution button
-    that.addButton('show-solution', that.config.showSolution, function () {
-      that.showSolution();
-      that.hideButton('show-solution');
-    }, false, {}, {});
+      // Check answer button
+      that.addButton('check-answer', that.config.checkAnswer, function () {
+        // Show message if the minimum number of characters has not been met
+        if (that.inputField.getText().length < that.config.behaviour.minimumLength) {
+          that.inputField.setMessageChars(that.config.notEnoughChars.replace(/@chars/g, that.config.behaviour.minimumLength), true);
+          return;
+        }
 
-    // Check answer button
-    that.addButton('check-answer', that.config.checkAnswer, function () {
-      // Show message if the minimum number of characters has not been met
-      if (that.inputField.getText().length < that.config.behaviour.minimumLength) {
-        that.inputField.setMessageChars(that.config.notEnoughChars.replace(/@chars/g, that.config.behaviour.minimumLength), true);
-        return;
-      }
+        that.inputField.disable();
 
-      that.inputField.disable();
+        that.handleEvaluation();
 
-      that.handleEvaluation();
+        if (that.config.solution.sample !== undefined && that.config.solution.sample !== '') {
+          that.showButton('show-solution');
+        }
+        that.hideButton('check-answer');
+      }, true, {}, {});
 
-      if (that.config.solution.sample !== undefined && that.config.solution.sample !== '') {
-        that.showButton('show-solution');
-      }
-      that.hideButton('check-answer');
-    }, true, {}, {});
+      // Retry button
+      that.addButton('try-again', that.config.tryAgain, function () {
+        that.setExplanation();
+        that.removeFeedback();
+        that.hideSolution();
 
-    // Retry button
-    that.addButton('try-again', that.config.tryAgain, function () {
-      that.setExplanation();
-      that.removeFeedback();
-      that.hideSolution();
+        that.hideButton('show-solution');
+        that.hideButton('try-again');
+        that.showButton('check-answer');
 
-      that.hideButton('show-solution');
-      that.hideButton('try-again');
-      that.showButton('check-answer');
+        that.inputField.enable();
+        that.inputField.focus();
+      }, false, {}, {});
+    }
 
-      that.inputField.enable();
-      that.inputField.focus();
-    }, false, {}, {});
+    // Show tts task button
+    if(that.config.behaviour.enableTTSButtons && that.config.introductionTTS !== undefined) {
+      that.addButton(that.config.introductionTTS, "tts");
+    }
   };
 
   /**

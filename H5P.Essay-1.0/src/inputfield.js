@@ -37,6 +37,10 @@
     this.inputField.setAttribute('maxlength', this.params.maximumLength);
     this.inputField.setAttribute('placeholder', this.params.placeholderText);
     this.inputField.setAttribute('tabindex', 0);
+    var regex = /(\d)+(em|px|%|vh|vw|rem|em|pt)/;
+    if(typeof this.params.inputFieldWidth !== "undefined" && this.params.inputFieldWidth.match(regex)) {
+      this.inputField.setAttribute('style', "width:" + this.params.inputFieldWidth)
+    }
     this.setText(previousState);
 
     this.content = document.createElement('div');
