@@ -1346,10 +1346,51 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       return self;
     };
 
+    self.addTTSButton = function(id, target, where) {
+      var $e = $('<button/>', {
+        'class': 'h5p-action-button',
+        'data-id': id,
+        html: '<i class="fa fa-volume-up"></i>',
+        title: "",
+        on: {
+          click: function (event) {
+            self.handleTTSButtonClick(this);
+            event.preventDefault();
+          },
+          keydown: function (event) {
+            switch (event.which) {
+              case 13: // Enter
+              case 32: // Space
+              self.handleTTSButtonClick(this);
+              event.preventDefault();
+            }
+          }
+        }
+      });
+      
+      switch(where) {
+        case "prependTo":
+          $e.prependTo(target);
+          break;
+        case "appendTo":
+          $e.appendTo(target);
+          break;
+        case "insertBefore":
+          $e.insertBefore(target);
+          break;
+        case "insertAfter":
+          $e.insertBefore(target);
+          break;
+      }
+      return self;
+    }
+
     /**
      * Handle tts button clicks through both mouse and keyboard
      */
     self.handleTTSButtonClick = function (button) {
+      event.preventDefault();
+      event.stopPropagation();
       console.log("You clicked tts button with id: " + $(button).data("id"));
     };
 

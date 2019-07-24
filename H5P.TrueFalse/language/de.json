@@ -13,6 +13,9 @@
       "label": "Frage"
     },
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Richtige Antwort",
       "options": [
         {
@@ -20,6 +23,20 @@
         },
         {
           "label": "Falsch"
+        }
+      ]
+    },
+    {
+      "label": "TTS IDs",
+      "options": [
+        {
+          "label": "TTS-ID von wahr"
+        },
+        {
+          "label": "TTS-ID von falsch"
+        },
+        {
+          "label": "TTS-ID von ich weiß nicht"
         }
       ]
     },
@@ -33,6 +50,10 @@
         {
           "label": "Beschriftung für den \"Falsch\"-Button",
           "default": "Falsch"
+        },
+        {
+          "label": "Beschriftung für den \"Ich weiß nicht\"-Button",
+          "default": "Ich weiß nicht"
         },
         {
           "label": "Rückmeldungstext",
@@ -58,6 +79,10 @@
         {
           "label": "Richtige Antwort",
           "default": "Richtige Antwort"
+        },
+        {
+          "label": "Du wusstest es nicht",
+          "default": "Du wusstest es nicht"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

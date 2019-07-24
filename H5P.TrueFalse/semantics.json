@@ -36,6 +36,14 @@
     ]
   },
   {
+    "name": "introductionTTS",
+    "type": "text",
+    "importance": "low",
+    "optional": true,
+    "widget": "text",
+    "label": "TTS ID"
+  },
+  {
     "name": "correct",
     "type": "select",
     "widget": "radioGroup",
@@ -53,6 +61,39 @@
       }
     ],
     "default": "true"
+  },
+  {
+    "name": "ttsIDs",
+    "type": "group",
+    "label": "TTS IDs",
+    "importance": "low",
+    "description": "change tts ids of answers",
+    "fields": [
+      {
+        "label": "TTS-ID of true",
+        "importance": "low",
+        "name": "ttsTrue",
+        "type": "text",
+        "default": "true",
+        "optional": true
+      },
+      {
+        "label": "TTS-ID of false",
+        "importance": "low",
+        "name": "ttsFalse",
+        "type": "text",
+        "default": "false",
+        "optional": true
+      },
+      {
+        "label": "TTS-ID of don't know",
+        "importance": "low",
+        "name": "ttsDontKnow",
+        "type": "text",
+        "default": "dont_know",
+        "optional": true
+      }
+    ]
   },
   {
     "name": "l10n",
@@ -74,6 +115,13 @@
         "label": "Label for false button",
         "importance": "low",
         "default": "False"
+      },
+      {
+        "name": "dontKnowText",
+        "type": "text",
+        "label": "Label for false button",
+        "importance": "low",
+        "default": "I don't know"
       },
       {
         "label": "Feedback text",
@@ -119,6 +167,13 @@
         "default": "Correct answer"
       },
       {
+        "name": "dontKnowMessage",
+        "type": "text",
+        "label": "you didn't know",
+        "importance": "low",
+        "default": "you didn't know"
+      },
+      {
         "name": "scoreBarLabel",
         "type": "text",
         "label": "Textual representation of the score bar for those using a readspeaker",
@@ -134,6 +189,22 @@
     "importance": "low",
     "description": "These options will let you control how the task behaves.",
     "fields": [
+      {
+        "label": "Enable TTS Buttons",
+        "importance": "low",
+        "name": "enableTTSButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "deactivate interactive buttons",
+        "importance": "low",
+        "name": "disableButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
       {
         "name": "enableRetry",
         "type": "boolean",

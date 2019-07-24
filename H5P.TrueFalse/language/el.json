@@ -13,6 +13,9 @@
       "label": "Question"
     },
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Correct answer",
       "options": [
         {
@@ -20,6 +23,20 @@
         },
         {
           "label": "False"
+        }
+      ]
+    },
+    {
+      "label": "TTS IDs",
+      "options": [
+        {
+          "label": "TTS-ID of true"
+        },
+        {
+          "label": "TTS-ID of false"
+        },
+        {
+          "label": "TTS-ID of don't know"
         }
       ]
     },
@@ -33,6 +50,10 @@
         {
           "label": "Label for false button",
           "default": "False"
+        },
+        {
+          "label": "Label for I don't know button",
+          "default": "I don't know"
         },
         {
           "label": "Feedback text",
@@ -58,6 +79,10 @@
         {
           "label": "Correct Answer",
           "default": "Correct answer"
+        },
+        {
+          "label": "you didn't know",
+          "default": "you didn't know"
         },
         {
           "label": "Textual representation of the score bar for those using a readspeaker",

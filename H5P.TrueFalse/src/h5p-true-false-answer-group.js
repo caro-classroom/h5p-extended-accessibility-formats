@@ -24,6 +24,7 @@ H5P.TrueFalse.AnswerGroup = (function ($, EventDispatcher) {
     var answer;
     var trueAnswer = new H5P.TrueFalse.Answer(l10n.trueText, l10n.correctAnswerMessage, l10n.wrongAnswerMessage);
     var falseAnswer = new H5P.TrueFalse.Answer(l10n.falseText, l10n.correctAnswerMessage, l10n.wrongAnswerMessage);
+    var dontKnow = new H5P.TrueFalse.Answer(l10n.dontKnowText, l10n.dontKnowMessage, l10n.dontKnowMessage);
     var correctAnswer = (correctOption === 'true' ? trueAnswer : falseAnswer);
     var wrongAnswer = (correctOption === 'false' ? trueAnswer : falseAnswer);
 
@@ -31,42 +32,36 @@ H5P.TrueFalse.AnswerGroup = (function ($, EventDispatcher) {
     var handleChecked = function (newAnswer, other) {
       return function () {
         answer = newAnswer;
-        other.uncheck();
+        other.forEach(box => box.uncheck());
         self.trigger('selected');
       };
     };
-    trueAnswer.on('checked', handleChecked(true, falseAnswer));
-    falseAnswer.on('checked', handleChecked(false, trueAnswer));
+    trueAnswer.on('checked', handleChecked(true, [falseAnswer, dontKnow]));
+    falseAnswer.on('checked', handleChecked(false, [trueAnswer, dontKnow]));
+    dontKnow.on('checked', handleChecked(false, [trueAnswer, falseAnswer]));
 
     // Handle switches (using arrow keys)
     var handleInvert = function (newAnswer, other) {
       return function () {
-        answer = newAnswer;
-        other.check();
+        switch(event.keyCode) {
+          case 37:
+            other[0].check();
+            break;
+          case 39: 
+            other[1].check();
+            break;
+        }
+
         self.trigger('selected');
       };
     };
-    trueAnswer.on('invert', handleInvert(false, falseAnswer));
-    falseAnswer.on('invert', handleInvert(true, trueAnswer));
-
-    // Handle tabbing
-    var handleTabable = function(other, tabable) {
-      return function () {
-        // If one of them are checked, that one should get tabfocus
-        if (!tabable || !self.hasAnswered() || other.isChecked()) {
-          other.tabable(tabable);
-        }
-      };
-    };
-    // Need to remove tabIndex on the other alternative on focus
-    trueAnswer.on('focus', handleTabable(falseAnswer, false));
-    falseAnswer.on('focus', handleTabable(trueAnswer, false));
-    // Need to make both alternatives tabable on blur:
-    trueAnswer.on('blur', handleTabable(falseAnswer, true));
-    falseAnswer.on('blur', handleTabable(trueAnswer, true));
+    trueAnswer.on('invert', handleInvert(false, [dontKnow, falseAnswer]));
+    falseAnswer.on('invert', handleInvert(true, [trueAnswer, dontKnow]));
+    dontKnow.on('invert', handleInvert(false, [falseAnswer, trueAnswer]));
 
     $answers.append(trueAnswer.getDomElement());
     $answers.append(falseAnswer.getDomElement());
+    $answers.append(dontKnow.getDomElement());
 
     /**
      * Get hold of the DOM element representing this thingy

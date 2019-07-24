@@ -47,15 +47,24 @@ H5P.TrueFalse = (function ($, Question) {
       l10n: {
         trueText: 'True',
         falseText: 'False',
+        dontKnowText: 'I don\'t know',
         score: 'You got @score of @total points',
         checkAnswer: 'Check',
         showSolutionButton: 'Show solution',
         tryAgain: 'Retry',
         wrongAnswerMessage: 'Wrong answer',
         correctAnswerMessage: 'Correct answer',
+        dontKnowMessage: 'I don\'t know',
         scoreBarLabel: 'You got :num out of :total points'
       },
+      ttsIDs: {
+        ttsTrue: "true",
+        ttsFalse: "false",
+        ttsDontKnow: "dont_know"
+      },
       behaviour: {
+        enableTTSButtons: true,
+        disableButtons: true,
         enableRetry: true,
         enableSolutionsButton: true,
         enableCheckButton: true,
@@ -66,6 +75,14 @@ H5P.TrueFalse = (function ($, Question) {
       }
     }, options);
 
+    // override buttons
+    if(params.behaviour.disableButtons) {
+      params.behaviour.enableRetry = false;
+      params.behaviour.enableSolutionsButton = false;
+      params.behaviour.enableCheckButton = false;
+      params.behaviour.autoCheck = false;
+    }
+    
     // Counter used to create unique id for this question
     TrueFalse.counter = (TrueFalse.counter === undefined ? 0 : TrueFalse.counter + 1);
 
@@ -159,6 +176,11 @@ H5P.TrueFalse = (function ($, Question) {
             $parentElement: $container
           }
         });
+      }
+
+      // Show tts task button
+      if(params.behaviour.enableTTSButtons && params.introductionTTS !== undefined) {
+        self.addButton(params.introductionTTS, "tts");
       }
 
       toggleButtonState(State.ONGOING);
@@ -324,8 +346,16 @@ H5P.TrueFalse = (function ($, Question) {
       // Add task question text
       self.setIntroduction('<div id="' + domId + '">' + params.question + '</div>');
 
-      // Register task content area
+      // add tts buttons to answers
       self.$content = createAnswers();
+      if(params.behaviour.enableTTSButtons) {
+        var ttsIDs = Object.values(params.ttsIDs);
+        self.$content.find(".h5p-true-false-answer").each(function(index) {
+          self.addTTSButton(ttsIDs[index], $(this), "insertBefore");
+        });
+      }
+      
+      // Register task content area
       self.setContent(self.$content);
 
       // ... and buttons
