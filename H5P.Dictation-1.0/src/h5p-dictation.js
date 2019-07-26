@@ -1,1 +1,492 @@
-!function(a){var n={};function i(t){if(n[t])return n[t].exports;var e=n[t]={i:t,l:!1,exports:{}};return a[t].call(e.exports,e,e.exports,i),e.l=!0,e.exports}i.m=a,i.c=n,i.d=function(t,e,a){i.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:a})},i.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},i.t=function(e,t){if(1&t&&(e=i(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var a=Object.create(null);if(i.r(a),Object.defineProperty(a,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var n in e)i.d(a,n,function(t){return e[t]}.bind(null,n));return a},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="",i(i.s=1)}([function(t,e,a){},function(t,e,a){"use strict";a.r(e);a(0);function n(t,e){for(var a=0;a<e.length;a++){var n=e[a];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,n.key,n)}}var i=function(){function r(t,e){!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,r),this.params=e,this.params.audioNotSupported=this.params.audioNotSupported||"Your browser does not support this audio.",this.params.a11y=e.a11y||[],this.params.a11y.play=this.params.a11y.play||"Play",this.params.a11y.playSlowly=this.params.a11y.playSlowly||"Play slowly",this.params.a11y.triesLeft=this.params.a11y.triesLeft||"number of tries left: @number",this.params.a11y.infinite=this.params.a11y.infinite||"infinite",this.params.a11y.sentence=this.params.a11y.sentence||"Sentence",this.params.a11y.solution=this.params.a11y.solution||"Solution",this.params.a11y.enterText=this.params.a11y.enterText||"Enter what you have heard",this.params.type=this.params.type||r.BUTTON_TYPE_NORMAL,this.triesLeft=this.params.maxTries,this.dom=this.createAudioDOM(t,this.params),null===this.dom.firstChild&&this.dom.appendChild(this.getDummyButtonDOM()),this.status=r.STATUS_ENDED}var t,e,a;return t=r,(e=[{key:"createAudioDOM",value:function(t,e){var a=this,n=H5P.jQuery("<div>",{class:r.AUDIO_WRAPPER});if(void 0!==e.sample){var i={files:e.sample,audioNotSupported:e.audioNotSupported},s=new H5P.Audio(i,t);s.attach(n),this.button=s.$audioButton.get(0),this.button.addEventListener("keypress",function(t){a.isEnabled()||t.preventDefault()}),this.audio=s,e.type===r.BUTTON_TYPE_SLOW?(s.$audioButton.removeClass(r.BUTTON_PLAY).addClass(r.BUTTON_SLOW),this.setLabel(e.a11y.playSlowly)):this.setLabel(e.a11y.play),s.audio.addEventListener("play",function(){e.type===r.BUTTON_TYPE_SLOW&&s.$audioButton.removeClass(r.BUTTON_SLOW).addClass(r.BUTTON_PAUSE),a.status=r.STATUS_PLAYING}),s.audio.addEventListener("pause",function(){e.type===r.BUTTON_TYPE_SLOW&&s.$audioButton.removeClass(r.BUTTON_PAUSE).addClass(r.BUTTON_SLOW),a.status=r.STATUS_PAUSE}),s.audio.addEventListener("ended",function(){a.handlePlayed(),e.type===r.BUTTON_TYPE_SLOW?(s.$audioButton.removeClass(r.BUTTON_PAUSE).addClass(r.BUTTON_SLOW),a.setLabel(a.params.a11y.playSlowly)):a.setLabel(a.params.a11y.play),a.status=r.STATUS_ENDED}),s.audio&&s.audio.preload&&(s.audio.preload="none")}return n.get(0)}},{key:"getDOM",value:function(){return this.dom}},{key:"getDummyButtonDOM",value:function(){var t=document.createElement("div");t.classList.add(r.BUTTON),t.classList.add(r.BUTTON_NONE);var e=document.createElement("div");return e.classList.add(r.INNER_CONTAINER),e.appendChild(t),e}},{key:"play",value:function(){this.status!==r.STATUS_PLAYING&&this.button.click()}},{key:"handlePlayed",value:function(){this.triesLeft--,0===this.triesLeft&&this.disable()}},{key:"setLabel",value:function(t){var e=isFinite(this.triesLeft)?this.triesLeft:this.params.a11y.infinite,a=this.params.a11y.triesLeft.replace(/@number/g,e);this.button&&(this.button.setAttribute("aria-label","".concat(t,". ").concat(a)),this.button.setAttribute("title",a))}},{key:"reset",value:function(){this.triesLeft=this.params.maxTries,this.enable(),this.params.type===r.BUTTON_TYPE_SLOW?this.setLabel(this.params.a11y.playSlowly):this.setLabel(this.params.a11y.play)}},{key:"enable",value:function(){this.button&&this.button.classList.remove(r.DISABLED)}},{key:"setUntabbable",value:function(){this.button&&this.button.setAttribute("tabindex","-1")}},{key:"setTabbable",value:function(){this.button&&this.button.setAttribute("tabindex","0")}},{key:"disable",value:function(){this.button&&this.button.classList.add(r.DISABLED)}},{key:"isEnabled",value:function(){return this.button&&!this.button.classList.contains(r.DISABLED)}},{key:"resetAudio",value:function(){this.audio&&this.audio.audio&&this.audio.audio.load&&this.audio.audio.load(),this.button&&(this.button.classList.remove(r.BUTTON_PAUSE),this.params.type===r.BUTTON_TYPE_SLOW?this.button.classList.add(r.BUTTON_SLOW):this.button.classList.add(r.BUTTON_PLAY))}},{key:"focus",value:function(){this.button&&this.button.focus()}}])&&n(t.prototype,e),a&&n(t,a),r}();i.BUTTON_TYPE_NORMAL=0,i.BUTTON_TYPE_SLOW=1,i.STATUS_PAUSE=0,i.STATUS_PLAYING=1,i.STATUS_ENDED=2,i.AUDIO_WRAPPER="h5p-dictation-audio-wrapper",i.BUTTON="h5p-audio-minimal-button",i.BUTTON_PLAY="h5p-audio-minimal-play",i.BUTTON_PAUSE="h5p-audio-minimal-pause",i.BUTTON_SLOW="h5p-audio-minimal-slow",i.BUTTON_NONE="h5p-audio-minimal-none",i.INNER_CONTAINER="h5p-audio-inner",i.DISABLED="disabled";var s=i;function r(t,e){for(var a=0;a<e.length;a++){var n=e[a];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,n.key,n)}}var o=function(){function u(t,e,a){var n=this;!function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,u),this.index=t,this.params=e,this.contentId=a,this.maxTries=e.tries,this.maxTriesAlternative=e.triesAlternative,this.triesLeft=this.maxTries,this.triesLeftAlternative=this.maxTriesAlternative,this.solution=this.htmlDecode(e.sentence.text),this.solution=e.ignorePunctuation?this.stripPunctuation(this.solution):this.solution,this.mistakesMax=this.addDelaturs(this.solution).split(" ").length,this.content=document.createElement("div"),this.content.setAttribute("role","group"),this.content.setAttribute("aria-label","".concat(e.a11y.sentence," ").concat(this.index)),this.content.classList.add(u.CONTENT_WRAPPER),this.buttonPlayNormal=new s(a,{sample:e.sentence.sample,audioNotSupported:e.audioNotSupported,type:s.BUTTON_TYPE_NORMAL,maxTries:e.tries,a11y:e.a11y}),this.content.appendChild(this.buttonPlayNormal.getDOM()),!0===this.params.hasAlternatives&&(this.buttonPlaySlow=new s(a,{sample:e.sentence.sampleAlternative,audioNotSupported:e.audioNotSupported,type:s.BUTTON_TYPE_SLOW,maxTries:e.triesAlternative,a11y:e.a11y}),this.content.appendChild(this.buttonPlaySlow.getDOM())),this.inputField=document.createElement("input"),this.inputField.setAttribute("aria-label",this.params.a11y.enterText),this.inputField.classList.add(u.INPUT_FIELD),this.solutionText=document.createElement("div"),this.solutionText.classList.add(u.SOLUTION_TEXT),this.solutionText.setAttribute("role","list"),this.solutionText.setAttribute("aria-label",this.params.a11y.solution),this.solutionText.setAttribute("aria-expanded","false"),this.solutionText.setAttribute("tabindex","0"),this.solutionText.addEventListener("keydown",function(t){var e=n.solutionText.getAttribute("aria-expanded"),a=n.wordMarked||n.solutionText.firstChild;switch(t.keyCode){case 13:case 32:if(t.target!==t.currentTarget)break;"false"===e?(n.solutionText.setAttribute("aria-expanded","true"),a&&a.focus()):(n.solutionText.setAttribute("aria-expanded","false"),a.setAttribute("tabindex","-1"))}}),this.solutionInner=document.createElement("div"),this.solutionInner.classList.add(u.SOLUTION_INNER),this.solutionInner.appendChild(this.solutionText),this.solutionContainer=document.createElement("div"),this.solutionContainer.classList.add(u.SOLUTION_CONTAINER),this.solutionContainer.classList.add(u.HIDE),this.solutionContainer.appendChild(this.solutionInner),this.inputWrapper=document.createElement("div"),this.inputWrapper.classList.add(u.INPUT_WRAPPER),this.inputWrapper.appendChild(this.inputField),this.inputWrapper.appendChild(this.solutionContainer),this.content.appendChild(this.inputWrapper)}var t,e,a;return t=u,(e=[{key:"getDOM",value:function(){return this.content}},{key:"getUserInput",value:function(){return this.inputField.value}},{key:"createSolution",value:function(a){var n=this,i=[];return a.words.forEach(function(t,e){i.push(n.createSolutionWordDOM(e,t,a))}),i}},{key:"createSolutionWordDOM",value:function(t,e,a){var n=document.createElement("span");n.classList.add("h5p-wrapper-".concat(e.type)),a.spaces[t]&&n.classList.add("h5p-spacer"),n.setAttribute("tabindex","-1"),n.setAttribute("role","listitem"),this.addSolutionWordListeners(n);var i="".concat(this.params.a11y.item," ").concat(t+1,"."),s=this.createAriaExplanation(e),r=this.createAriaScore(e.type);return n.setAttribute("aria-label","".concat(i," ").concat(s," ").concat(r)),this.appendExplanationTo(n,e),n}},{key:"addSolutionWordListeners",value:function(t){var e=this;t.addEventListener("focus",function(t){e.wordMarked=t.target,t.target.setAttribute("tabindex","0")}),t.addEventListener("keydown",function(t){switch(t.keyCode){case 37:case 38:t.preventDefault(),t.target.previousSibling&&(t.target.setAttribute("tabindex","-1"),t.target.previousSibling.focus());break;case 39:case 40:t.preventDefault(),t.target.nextSibling&&(t.target.setAttribute("tabindex","-1"),t.target.nextSibling.focus());break;case 36:t.preventDefault(),t.target!==t.target.parentNode.firstChild&&(t.target.setAttribute("tabindex","-1"),t.target.parentNode.firstChild.focus());break;case 35:t.preventDefault(),t.target!==t.target.parentNode.lastChild&&(t.target.setAttribute("tabindex","-1"),t.target.parentNode.lastChild.focus())}})}},{key:"appendExplanationTo",value:function(t,e){var a=new H5P.Question.ScorePoints;if("wrong"===e.type||"added"===e.type||"typo"===e.type){var n=document.createElement("span");n.classList.add("h5p-answer-".concat(e.type)),n.innerHTML=e.answer,t.appendChild(n)}if("added"!==e.type){var i=document.createElement("span");i.classList.add("h5p-solution-".concat(e.type)),i.innerHTML=e.solution,t.appendChild(i)}if("match"!==e.type){var s=a.getElement(!1);"typo"===e.type&&.5===this.params.typoFactor&&(s.classList.remove("h5p-question-minus-one"),s.classList.add("h5p-question-minus-one-half")),("typo"!==e.type||0<this.params.typoFactor)&&t.appendChild(s)}}},{key:"createAriaExplanation",value:function(t){var e={match:this.params.a11y.correct,wrong:this.params.a11y.wrong,typo:this.params.a11y.typo,missing:this.params.a11y.missing,added:this.params.a11y.added},a=this.makeReadable(t.answer),n=this.makeReadable(t.solution),i="".concat(a).concat(""===a?"":". ").concat(e[t.type],".");return"wrong"!==t.type&&"typo"!==t.type&&"missing"!==t.type||(i+=" ".concat(this.params.a11y.shouldHaveBeen,". ").concat(n,".")),i}},{key:"createAriaScore",value:function(t){var e=-1;if("match"===t?e=0:"typo"===t&&(e*=this.params.typoFactor),0===e)e="";else{var a=-1===e?this.params.a11y.point:this.params.a11y.points;e="".concat(e," ").concat(a,".")}return e}},{key:"makeReadable",value:function(t){return void 0===t?"":t.replace(/\./g,this.params.a11y.period).replace(/!/g,this.params.a11y.exclamationPoint).replace(/\?/g,this.params.a11y.questionMark).replace(/,/g,this.params.a11y.comma).replace(/'/g,this.params.a11y.singleQuote).replace(/["|\u201C|\u201E]/g,this.params.a11y.doubleQuote).replace(/:/g,this.params.a11y.colon).replace(/;/g,this.params.a11y.semicolon).replace(/\+/g,this.params.a11y.plus).replace(/-/g,this.params.a11y.minus).replace(/\*/g,this.params.a11y.asterisk).replace(/\//g,this.params.a11y.forwardSlash)}},{key:"showSolution",value:function(t){var e=this,a=this.createSolution(t);0<a.length&&"match"===t.words[a.length-1].type?this.solutionText.classList.add("h5p-solution-last-correct"):this.solutionText.classList.remove("h5p-solution-last-correct"),this.solutionText.firstChild||a.forEach(function(t){e.solutionText.appendChild(t),e.solutionContainer.classList.remove(u.HIDE)}),this.buttonPlayNormal&&this.buttonPlayNormal.setUntabbable(),this.buttonPlaySlow&&this.buttonPlaySlow.setUntabbable()}},{key:"hideSolution",value:function(){for(;this.solutionText.firstChild;)this.solutionText.removeChild(this.solutionText.firstChild);this.solutionContainer.classList.add(u.HIDE),this.buttonPlayNormal&&this.buttonPlayNormal.setTabbable(),this.buttonPlaySlow&&this.buttonPlaySlow.setTabbable()}},{key:"getCorrectText",value:function(){return this.solution}},{key:"getMaxMistakes",value:function(){return this.mistakesMax}},{key:"reset",value:function(){this.inputField.value="",this.wordMarked=void 0,this.solutionText.setAttribute("aria-expanded","false"),this.buttonPlayNormal&&this.buttonPlayNormal.reset(),this.buttonPlaySlow&&this.buttonPlaySlow.reset()}},{key:"disable",value:function(){this.inputField.disabled=!0,this.buttonPlayNormal&&(this.buttonPlayNormal.disable(),this.buttonPlayNormal.resetAudio()),this.buttonPlaySlow&&(this.buttonPlaySlow.disable(),this.buttonPlaySlow.resetAudio())}},{key:"enable",value:function(){this.inputField.disabled=!1,this.buttonPlayNormal&&this.buttonPlayNormal.enable(),this.buttonPlaySlow&&this.buttonPlaySlow.enable()}},{key:"focus",value:function(){this.buttonPlayNormal&&this.buttonPlayNormal.focus()}},{key:"addDelaturs",value:function(t){return t=(t=t.replace(new RegExp("(".concat(u.WORD,"|^)(").concat(u.PUNCTUATION,")"),"g"),"$1 ".concat(u.DELATUR,"$2"))).replace(new RegExp("(".concat(u.PUNCTUATION,")(").concat(u.WORD,")"),"g"),"$1".concat(u.DELATUR," $2"))}},{key:"removeDelaturs",value:function(t){if(void 0!==t){var e=!1;return"string"==typeof t&&(t=[t],e=!0),t=t.map(function(t){return void 0===t?void 0:t.replace(new RegExp(u.DELATUR,"g"),"")}),e?t[0]:t}}},{key:"getSpaces",value:function(t){if(t.length<2)return[!1];var e=[];t=t.map(function(t){return t||""});for(var a=0;a<t.length-1;a++)e.push(!(t[a].substr(-1)===u.DELATUR||t[a+1].substring(0,1)===u.DELATUR));return e.push(!1),e}},{key:"stripPunctuation",value:function(t){var e=!1;"string"==typeof t&&(e=!0,t=[t]);var a=new RegExp(u.PUNCTUATION,"g");return t=t.map(function(t){return t.replace(a,"")}),e?t.toString():t}},{key:"computeResults",value:function(){var t=this.addDelaturs(this.getCorrectText()).split(" "),e=this.getUserInput();this.params.ignorePunctuation&&(e=this.stripPunctuation(e));var a=this.addDelaturs(e).split(" "),n=this.alignWords(t,a),i=this.getSpaces(n.words1),s=this.computeScore(n),r=s.scoreTotal,o=s.words;return{score:{added:r[u.TYPE_ADDED],missing:r[u.TYPE_MISSING],typo:r[u.TYPE_TYPO],wrong:r[u.TYPE_WRONG],match:r[u.TYPE_MATCH],total:Math.min(r[u.TYPE_ADDED]+r[u.TYPE_MISSING]+r[u.TYPE_TYPO]+r[u.TYPE_WRONG],this.getMaxMistakes())},words:o,spaces:i}}},{key:"computeScore",value:function(t){var e=[],a=[];a[u.TYPE_ADDED]=0,a[u.TYPE_MISSING]=0,a[u.TYPE_TYPO]=0,a[u.TYPE_WRONG]=0;for(var n=a[u.TYPE_MATCH]=0;n<t.words1.length;n++){var i=t.words1[n],s=t.words2[n],r="";a[r=void 0===i?u.TYPE_ADDED:void 0===s?u.TYPE_MISSING:s===i?u.TYPE_MATCH:H5P.TextUtilities.areSimilar(i,s)?u.TYPE_TYPO:u.TYPE_WRONG]++,e.push({solution:this.removeDelaturs(i),answer:this.removeDelaturs(s),type:r})}return{scoreTotal:a,words:e}}},{key:"alignWords",value:function(t,e){var a=function(t,e){e=e.map(function(t){return""===t?void 0:t});var a=t.map(function(t){return Array.apply(null,Array(e.length)).concat(t)}).reduce(function(t,e){return t.concat(e)},[]);a=a.concat(Array.apply(null,Array(e.length)));for(var n=Array.apply(null,Array(a.length)),i=0,s=0;s<e.length;s++)for(var r=e[s],o=a.length-1;i<=o;o--){var u=void 0!==r&&r===a[o],l=-1===e.slice(s+1).indexOf(r);if(u&&l||o===i){n[o]=r,i=o+1;break}}for(var c=n.length-1;0<=c;c--){var d=n[c];if(void 0!==d&&d!==a[c]){for(var p=0,h=0;c+p+1<n.length&&void 0===n[c+p+1];)a[c+p+1]===d&&(h=c+p+1),p++;n[h||c+p]=d,n[c]=void 0}}for(var m=0;m<n.length;m++){var f=n[m];if(void 0!==f&&f!==a[m]){for(var y=0,v=0;0<=m+y-1&&void 0===n[m+y-1];)H5P.TextUtilities.areSimilar(a[m+y-1],f)&&(v=m+y-1),y--;n[v||m+y]=f,n[m]=void 0}}for(var b=a.length-1;0<=b;b--)void 0===a[b]&&void 0===n[b]&&(a.splice(b,1),n.splice(b,1));for(var T=0;T<a.length-1;T++)void 0===a[T]&&void 0===n[T+1]&&(a[T]=a[T+1],a.splice(T+1,1),n.splice(T+1,1));for(var g=0;g<a.length-1;g++)if(n[g]===a[g]&&void 0===a[g+1]){for(var P=0;g+P+1<a.length&&void 0===a[g+P+1];)P++;g+P+1<a.length&&-1!==n.slice(g+1,g+P+1).lastIndexOf(n[g])&&(a[g+P+1]=[a[g]],a[g]=void 0)}a.reverse(),n.reverse();for(var E=0;E<a.length-1;E++)if(n[E]===a[E]&&void 0===a[E+1]){for(var S=0;E+S+1<a.length&&void 0===a[E+S+1];)S++;E+S+1<a.length&&-1!==n.slice(E+1,E+S+1).lastIndexOf(n[E])&&(a[E+S+1]=[a[E]],a[E]=void 0)}return a.reverse(),n.reverse(),{words1:a,words2:n}},n=function(a){var n=0;return a.words1.forEach(function(t,e){(t===a.words2[e]||H5P.TextUtilities.areSimilar(t,a.words2[e]))&&n++}),n},i=a(t,e),s=a(t.reverse(),e.reverse());for(n(s)>n(i)&&(i={words1:s.words1.reverse(),words2:s.words2.reverse()});void 0===i.words1[0]&&void 0===i.words2[i.words2.length-1];)i.words1=i.words1.slice(1),i.words2=i.words2.slice(0,i.words2.length-1);return i}},{key:"htmlDecode",value:function(t){return(new DOMParser).parseFromString(t,"text/html").documentElement.textContent}},{key:"focusSolution",value:function(){this.solutionText.focus()}}])&&r(t.prototype,e),a&&r(t,a),u}();o.CONTENT_WRAPPER="h5p-sentence",o.INPUT_WRAPPER="h5p-input-wrapper",o.INPUT_FIELD="h5p-text-input",o.SOLUTION_CONTAINER="h5p-solution-container",o.SOLUTION_INNER="h5p-solution-inner",o.SOLUTION_TEXT="h5p-solution-text",o.HIDE="hide",o.TYPE_ADDED="added",o.TYPE_MISSING="missing",o.TYPE_WRONG="wrong",o.TYPE_MATCH="match",o.TYPE_TYPO="typo",o.PUNCTUATION="[.?!,'\";\\:\\-\\(\\)/\\+\\-\\*“„]",o.WORD="\\w",o.DELATUR="‌";var u=o;function l(t){return(l="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t})(t)}function c(t,e){return!e||"object"!==l(e)&&"function"!=typeof e?h(t):e}function d(t){return(d=Object.setPrototypeOf?Object.getPrototypeOf:function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}function p(t,e){return(p=Object.setPrototypeOf||function(t,e){return t.__proto__=e,t})(t,e)}function h(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}var m=function(t){function i(t,e,a){var s;if(function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}(this,i),s=c(this,d(i).call(this,"dictation")),!t)return c(s);s.params=t,s.contentId=e,s.contentData=a||{},s.params.behaviour.enableSolutionsButton=void 0===s.params.behaviour.enableSolution||s.params.behaviour.enableSolution,s.params.behaviour.enableRetry=void 0===s.params.behaviour.enableRetry||s.params.behaviour.enableRetry,s.params.behaviour.tries=s.params.behaviour.tries||1/0,s.params.behaviour.triesAlternative=s.params.behaviour.triesAlternative||1/0,s.sentences=[];var n=s.params.sentences.some(function(t){return void 0!==t.sampleAlternative});return s.params.behaviour.typoFactor=parseInt(s.params.behaviour.typoFactor)/100,s.params.sentences=s.params.sentences.filter(function(t){return void 0!==t.text&&void 0!==t.sample}).forEach(function(t,e){s.sentences.push(new u(e+1,{sentence:t,audioNotSupported:s.params.l10n.audioNotSupported,tries:s.params.behaviour.tries,triesAlternative:s.params.behaviour.triesAlternative,ignorePunctuation:s.params.behaviour.ignorePunctuation,hasAlternatives:n,a11y:s.params.a11y,typoFactor:s.params.behaviour.typoFactor},s.contentId))}),s.maxMistakes=s.sentences.map(function(t){return t.getMaxMistakes()}).reduce(function(t,e){return t+e},0),s.mistakesCapped=0,s.isAnswered=!1,s.registerDomElements=function(){var t=s.params.media.type;if(t&&t.library){var e=t.library.split(" ")[0];"H5P.Image"===e?t.params.file&&s.setImage(t.params.file.path,{disableImageZooming:s.params.media.disableImageZooming,alt:t.params.alt,title:t.params.title}):"H5P.Video"===e&&t.params.sources&&s.setVideo(t)}s.params.taskDescription&&(s.introduction=document.createElement("div"),s.introduction.innerHTML=s.params.taskDescription,s.setIntroduction(s.introduction));var a=document.createElement("div");if(s.sentences.forEach(function(t){a.appendChild(t.getDOM())}),0===s.sentences.length){var n=document.createElement("div");n.classList.add("h5p-dictation-no-content"),n.innerHTML="I really need at least one sound sample and text for it :-)",a.appendChild(n)}s.setContent(a),0!==s.sentences.length&&s.addButtons()},s.addButtons=function(){s.addButton("show-solution",s.params.l10n.showSolution,function(){s.showSolutions()},!1,{},{}),s.addButton("check-answer",s.params.l10n.checkAnswer,function(){s.showEvaluation(),s.triggerXAPI(),s.params.behaviour.enableRetry&&!s.isPassed()&&s.showButton("try-again"),s.isAnswered=!0},!0,{},{}),s.addButton("try-again",s.params.l10n.tryAgain,function(){s.resetTask(),s.sentences[0].focus()},!1,{},{})},s.showEvaluation=function(){s.results=[],s.sentences.forEach(function(t){s.results.push(t.computeResults()),t.disable()});var t=s.results.map(function(t){return t.score}).reduce(function(t,e){return{added:t.added+e.added,missing:t.missing+e.missing,typo:t.typo+e.typo,wrong:t.wrong+e.wrong,match:t.match+e.match}},{added:0,missing:0,typo:0,wrong:0,match:0}),e=t.added+t.missing+t.wrong+t.typo*s.params.behaviour.typoFactor;s.mistakesCapped=Math.min(e,s.maxMistakes);var a=(s.params.l10n.generalFeedback||"").replace("@added",t.added).replace("@missing",t.missing).replace("@wrong",t.wrong).replace("@typo",t.typo).replace("@matches",t.match).replace("@total",e).replace("@capped",s.mistakesCapped),n=H5P.Question.determineOverallFeedback(s.params.overallFeedback,s.getScore()/s.getMaxScore()),i=s.params.a11y.yourResult.replace("@score",s.getScore()).replace("@total",s.getMaxScore());s.setFeedback("".concat(a," ").concat(n).trim(),s.getScore(),s.getMaxScore(),i),s.hideButton("check-answer"),s.params.behaviour.enableSolutionsButton&&s.showButton("show-solution"),s.trigger("resize")},s.isPassed=function(){return 0===s.mistakesTrimmed},s.getAnswerGiven=function(){return s.isAnswered||s.sentences.some(function(t){return 0<t.getUserInput().length})},s.getScore=function(){return s.maxMistakes-s.mistakesCapped},s.getMaxScore=function(){return s.maxMistakes},s.showSolutions=function(){s.sentences.forEach(function(t,e){t.showSolution(s.results[e])}),s.sentences[0].focusSolution(),s.trigger("resize")},s.resetTask=function(){s.sentences.forEach(function(t){t.reset(),t.enable(),t.hideSolution()}),s.removeFeedback(),s.hideButton("try-again"),s.hideButton("show-solution"),s.showButton("check-answer"),s.introduction?s.introduction.focus():s.sentences[0].focus(),s.mistakesCapped=0,s.isAnswered=!1},s.getXAPIData=function(){return{statement:s.getXAPIAnswerEvent().data.statement}},s.triggerXAPI=function(){s.trigger(s.getXAPIAnswerEvent())},s.getXAPIAnswerEvent=function(){var t=s.createDictationXAPIEvent("answered");return t.setScoredResult(s.getScore(),s.getMaxScore(),h(h(s)),!0,s.isPassed()),t.data.statement.result.response=s.sentences.map(function(t){return t.getUserInput()}).join("[,]"),t},s.createDictationXAPIEvent=function(t){var e=s.createXAPIEventTemplate(t);return s.extend(e.getVerifiedStatementValue(["object","definition"]),s.getxAPIDefinition()),e},s.getxAPIDefinition=function(){var t={};return t.name={"en-US":s.getTitle()},t.description={"en-US":s.getDescription()},t.type="http://adlnet.gov/expapi/activities/cmi.interaction",t.interactionType="long-fill-in",t.correctResponsesPattern=s.sentences.map(function(t){return t.getCorrectText()}).join("[,]"),t},s.extend=function(){for(var t=1;t<arguments.length;t++)for(var e in arguments[t])arguments[t].hasOwnProperty(e)&&("object"===l(arguments[0][e])&&"object"===l(arguments[t][e])?this.extend(arguments[0][e],arguments[t][e]):arguments[0][e]=arguments[t][e]);return arguments[0]},s.getTitle=function(){var t;return s.contentData&&s.contentData.metadata&&(t=s.contentData.metadata.title),t=t||i.DEFAULT_DESCRIPTION,H5P.createTitle(t)},s.getDescription=function(){return s.params.taskDescription||i.DEFAULT_DESCRIPTION},s}return function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),e&&p(t,e)}(i,H5P.Question),i}();m.DEFAULT_DESCRIPTION="Dictation";var f=m;H5P=H5P||{},H5P.Dictation=f}]);
+import Sentence from './h5p-dictation-sentence';
+import Util from './h5p-dictation-util';
+
+/** Class for dictation interaction */
+H5P.Dictation = class Dictation extends H5P.Question {
+  /**
+   * @constructor
+   * @param {object} params Params from semantics.json.
+   * @param {string} contentId ContentId.
+   * @param {object} contentData contentData.
+   */
+  constructor(params, contentId, contentData) {
+    super('dictation');
+
+    // Add defaults
+    this.params = Util.extend({
+      media: {},
+      taskDescription: 'Please listen carefully and write what you hear.',
+      sentences: [],
+      behaviour: {
+        alternateSolution: 'first',
+        autosplit: true,
+        enableSolutionsButton: true, // @see {@link https://h5p.org/documentation/developers/contracts#guides-header-8}
+        enableRetry: true, // @see {@link https://h5p.org/documentation/developers/contracts#guides-header-9}
+        ignorePunctuation: true,
+        overrideRTL: 'auto',
+        tries: Infinity,
+        triesAlternative: Infinity,
+        customTypoDisplay: true,
+        typoFactor: '50'
+      },
+      l10n: {
+        generalFeedback: 'You have made @total mistake(s).',
+        checkAnswer: 'Check',
+        tryAgain: 'Retry',
+        showSolution: 'Show solution',
+        audioNotSupported: 'Your browser does not support this audio.'
+      },
+      a11y: {
+        play: 'Play',
+        playSlowly: 'Play slowly',
+        triesLeft: 'Number of tries left: @number',
+        infinite: 'infinite',
+        enterText: 'Enter what you have heard.',
+        yourResult: 'You got @score out of @total points',
+        solution: 'Solution',
+        sentence: 'Sentence',
+        item: 'Item',
+        correct: 'correct',
+        wrong: 'wrong',
+        typo: 'small mistake',
+        missing: 'missing',
+        added: 'added',
+        shouldHaveBeen: 'Should have been',
+        or: 'or',
+        point: 'point',
+        points: 'points',
+        period: 'period',
+        exclamationPoint: 'exclamation point',
+        questionMark: 'question mark',
+        comma: 'comma',
+        singleQuote: 'single quote',
+        doubleQuote: 'double quote',
+        colon: 'colon',
+        semicolon: 'semicolon',
+        plus: 'plus',
+        minus: 'minus',
+        asterisk: 'asterisk',
+        forwardSlash: 'forward slash'
+      }
+    }, params);
+
+    // TODO: When other functionality needs a minor version bump, rename semantics variable in upgrade script
+    params.behaviour.enableSolutionsButton = params.behaviour.enableSolution === undefined ?
+      true : params.behaviour.enableSolution;
+
+    // Initialize
+    if (!params) {
+      return;
+    }
+
+    this.contentId = contentId;
+    this.contentData = contentData || {};
+
+    this.sentences = [];
+
+    /*
+     * IE11 doesn't support wavs. Remove samples. Generic checking when audios
+     * are created would make code way more complicated given how it's written.
+     */
+    if (!!window.MSInputMethodContext && !!document.documentMode) {
+      this.params.sentences.forEach((sentence, index) => {
+        if (sentence.sample && sentence.sample[0].mime === 'audio/x-wav') {
+          console.warn(`${this.params.a11y.sentence} ${index + 1}: ${this.params.l10n.audioNotSupported}`);
+          delete sentence.sample;
+        }
+        if (sentence.sampleAlternative && sentence.sampleAlternative[0].mime === 'audio/x-wav') {
+          console.warn(`${this.params.a11y.sentence} ${index + 1}: ${this.params.l10n.audioNotSupported}`);
+          delete sentence.sampleAlternative;
+        }
+      });
+    }
+
+    // Relevant for building the DOM later (play slowly button)
+    const hasAlternatives = this.params.sentences.some(sentence => sentence.sampleAlternative !== undefined);
+
+    // Proper format for percentage
+    this.params.behaviour.typoFactor = parseInt(this.params.behaviour.typoFactor) / 100;
+
+    // Create sentence instances
+    this.params.sentences = this.params.sentences
+      // Strip incomplete sentences
+      .filter(sentence => sentence.text !== undefined && sentence.sample !== undefined)
+      .forEach((sentence, index) => {
+        // Get previous state
+        const previousState = (this.contentData.previousState && this.contentData.previousState.length >= index + 1) ?
+          this.contentData.previousState[index] :
+          undefined;
+
+        this.sentences.push(new Sentence(
+          index + 1,
+          {
+            sentence: sentence,
+            audioNotSupported: this.params.l10n.audioNotSupported,
+            tries: this.params.behaviour.tries,
+            triesAlternative: this.params.behaviour.triesAlternative,
+            ignorePunctuation: this.params.behaviour.ignorePunctuation,
+            hasAlternatives: hasAlternatives,
+            a11y: this.params.a11y,
+            customTypoDisplay: this.params.behaviour.customTypoDisplay,
+            typoFactor: this.params.behaviour.typoFactor,
+            alternateSolution: this.params.behaviour.alternateSolution,
+            overrideRTL: this.params.behaviour.overrideRTL,
+            autosplit: this.params.behaviour.autosplit,
+          },
+          this.contentId,
+          previousState)
+        );
+      });
+
+    // Maximum number of possible mistakes for all sentences
+    this.maxMistakes = this.sentences
+      .map(sentence => sentence.getMaxMistakes())
+      .reduce((a, b) => a + b, 0);
+
+    this.mistakesCapped = 0;
+    this.isAnswered = false;
+
+    /**
+     * Register the DOM elements with H5P.Question.
+     */
+    this.registerDomElements = () => {
+      // Set optional media
+      const media = this.params.media.type;
+      if (media && media.library) {
+        const type = media.library.split(' ')[0];
+        // Image
+        if (type === 'H5P.Image') {
+          if (media.params.file) {
+            this.setImage(media.params.file.path, {
+              disableImageZooming: this.params.media.disableImageZooming,
+              alt: media.params.alt,
+              title: media.params.title
+            });
+          }
+        }
+        // Video
+        else if (type === 'H5P.Video') {
+          if (media.params.sources) {
+            this.setVideo(media);
+          }
+        }
+      }
+
+      // Register task introduction text
+      if (this.params.taskDescription) {
+        this.introduction = document.createElement('div');
+        this.introduction.innerHTML = this.params.taskDescription;
+        this.setIntroduction(this.introduction);
+      }
+
+      // Build content
+      const content = document.createElement('div');
+      this.sentences.forEach(sentence => {
+        content.appendChild(sentence.getDOM());
+      });
+
+      // No content was given
+      if (this.sentences.length === 0) {
+        const message = document.createElement('div');
+        message.classList.add('h5p-dictation-no-content');
+        message.innerHTML = 'I really need at least one sound sample and text for it :-)';
+        content.appendChild(message);
+      }
+
+      // Register content
+      this.setContent(content);
+
+      if (this.sentences.length !== 0) {
+        // Register Buttons
+        this.addButtons();
+      }
+    };
+
+    /**
+     * Add all the buttons that shall be passed to H5P.Question
+     */
+    this.addButtons = () => {
+      // Show solution button
+      this.addButton('show-solution', this.params.l10n.showSolution, () => {
+        this.showSolutions();
+        this.hideButton('show-solution');
+      }, false, {}, {});
+
+      // Check answer button
+      this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
+        this.showEvaluation();
+        this.isAnswered = true;
+        this.triggerXAPI();
+        if (this.params.behaviour.enableRetry && !this.isPassed()) {
+          this.showButton('try-again');
+        }
+      }, true, {}, {});
+
+      // Retry button
+      this.addButton('try-again', this.params.l10n.tryAgain, () => {
+        this.resetTask();
+        this.sentences[0].focus();
+      }, false, {}, {});
+    };
+
+    /**
+     * Show the evaluation for the input in the text input fields.
+     */
+    this.showEvaluation = () => {
+      // Get results of all sentences
+      this.results = [];
+      this.sentences.forEach(sentence => {
+        this.results.push(sentence.computeResults());
+        sentence.disable();
+      });
+
+      // Sum up the scores of all sentences
+      const scoreTotal = this.results
+        .map(result => result.score)
+        .reduce((a, b) => {
+          return {
+            added: a.added + b.added,
+            missing: a.missing + b.missing,
+            typo: a.typo + b.typo,
+            wrong: a.wrong + b.wrong,
+            match: a.match + b.match
+          };
+        }, {added: 0, missing: 0, typo: 0, wrong: 0, match: 0});
+
+      // Prepare output
+      const mistakesTotal = scoreTotal.added +
+        scoreTotal.missing +
+        scoreTotal.wrong +
+        scoreTotal.typo * this.params.behaviour.typoFactor;
+
+      // Number of mistakes shall not be higher than number of words.
+      this.mistakesCapped = Math.min(mistakesTotal, this.maxMistakes);
+
+      const generalFeedback = (this.params.l10n.generalFeedback || '')
+        .replace('@added', scoreTotal.added)
+        .replace('@missing', scoreTotal.missing)
+        .replace('@wrong', scoreTotal.wrong)
+        .replace('@typo', scoreTotal.typo)
+        .replace('@matches', scoreTotal.match)
+        .replace('@total', mistakesTotal)
+        .replace('@capped', this.mistakesCapped);
+
+      const textScore = H5P.Question.determineOverallFeedback(
+        this.params.overallFeedback, this.getScore() / this.getMaxScore());
+
+      // Output via H5P.Question
+      const ariaMessage = this.params.a11y.yourResult
+        .replace('@score', this.getScore())
+        .replace('@total', this.getMaxScore());
+
+      this.setFeedback(
+        (`${generalFeedback} ${textScore}`).trim(),
+        this.getScore(),
+        this.getMaxScore(),
+        ariaMessage
+      );
+
+      // Update buttons
+      this.hideButton('check-answer');
+      if (this.params.behaviour.enableSolutionsButton) {
+        this.showButton('show-solution');
+      }
+
+      this.trigger('resize');
+    };
+
+    /**
+     * Determine whether the task has been passed by the user.
+     * @return {boolean} True if user passed or task is not scored.
+     */
+    this.isPassed = () => this.mistakesTrimmed === 0;
+
+    /**
+     * Check if Dictation has been submitted or input has been given.
+     * @return {boolean} True, if answer was given.
+     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-1}
+     */
+    this.getAnswerGiven = () => {
+      return this.isAnswered ||
+        this.sentences.some(sentence => sentence.getUserInput().length > 0);
+    };
+
+    /**
+     * Get latest score.
+     * @return {number} latest score.
+     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-2}
+     */
+    this.getScore = () => this.maxMistakes - this.mistakesCapped;
+
+    /**
+     * Get maximum possible score.
+     * @return {number} Score necessary for mastering.
+     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-3}
+     */
+    this.getMaxScore = () => this.maxMistakes;
+
+    /**
+     * Show solutions for all sentences.
+     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-4}
+     */
+    this.showSolutions = () => {
+      this.sentences.forEach((sentence, index) => {
+        sentence.showSolution(this.results[index]);
+      });
+
+      // Focus first solution
+      this.sentences[0].focusSolution();
+
+      this.trigger('resize');
+    };
+
+    /**
+     * Reset task.
+     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
+     */
+    this.resetTask = () => {
+      this.sentences.forEach(sentence => {
+        sentence.reset();
+        sentence.enable();
+        sentence.hideSolution();
+      });
+      this.removeFeedback();
+      this.hideButton('try-again');
+      this.hideButton('show-solution');
+      this.showButton('check-answer');
+
+      if (this.introduction) {
+        this.introduction.focus();
+      }
+      else {
+        this.sentences[0].focus();
+      }
+
+      this.mistakesCapped = 0;
+      this.isAnswered = false;
+    };
+
+    /**
+     * Get xAPI data.
+     * @return {object} XAPI statement.
+     * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
+     */
+    this.getXAPIData = () => ({statement: this.getXAPIAnswerEvent().data.statement});
+
+    /**
+     * Trigger all necessary xAPI events after evaluation. Might become more.
+     */
+    this.triggerXAPI = () => {
+      this.trigger(this.getXAPIAnswerEvent());
+    };
+
+    /**
+     * Build xAPI answer event.
+     * @return {H5P.XAPIEvent} XAPI answer event.
+     */
+    this.getXAPIAnswerEvent = () => {
+      const xAPIEvent = this.createDictationXAPIEvent('answered');
+
+      xAPIEvent.setScoredResult(this.getScore(), this.getMaxScore(), this,
+        true, this.isPassed());
+
+      // Concatenate input from sentences
+      xAPIEvent.data.statement.result.response = this.sentences
+        .map(sentence => sentence.getUserInput())
+        .join('[,]');
+
+      return xAPIEvent;
+    };
+
+    /**
+     * Create an xAPI event for Dictation.
+     * @param {string} verb Short id of the verb we want to trigger.
+     * @return {H5P.XAPIEvent} Event template.
+     */
+    this.createDictationXAPIEvent = (verb) => {
+      const xAPIEvent = this.createXAPIEventTemplate(verb);
+      Util.extend(
+        xAPIEvent.getVerifiedStatementValue(['object', 'definition']),
+        this.getxAPIDefinition());
+      return xAPIEvent;
+    };
+
+    /**
+     * Get the xAPI definition for the xAPI object.
+     * @return {object} XAPI definition.
+     */
+    this.getxAPIDefinition = () => {
+      const placeholders = this.sentences.map(sentence => sentence.getXAPIDescription()).join('');
+
+      const definition = {};
+      definition.name = {'en-US': this.getTitle()};
+      definition.description = {'en-US': `${this.getDescription()}${placeholders}`};
+      definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
+      definition.interactionType = 'long-fill-in';
+      definition.correctResponsesPattern = this.buildxAPICRP();
+
+      return definition;
+    };
+
+    /**
+     * Build correct responses pattern from sentences.
+     *
+     * This may not be completely true, because we can't sensibly compile all
+     * possible answers for a sentence if we accept small mistakes.
+     *
+     * @return {object[]} Correct responses pattern.
+     */
+    this.buildxAPICRP = () => {
+      let sentences = this.sentences.map(sentence => sentence.getCorrectText(true));
+
+      sentences = sentences.map(sentence => {
+        let variations = [''];
+        sentence.forEach(word => {
+          word = word.split('|');
+          variations = Util.buildCombinations(word, variations, ' ');
+        });
+        return variations;
+      });
+
+      let crp = [''];
+      sentences.forEach(sentence => {
+        crp = Util.buildCombinations(sentence, crp, '[,]');
+      });
+
+      crp = crp.map(response => `{case_matters=true}${response}`);
+
+      return crp;
+    };
+
+    /**
+     * Get current state.
+     * @return {Object} Current state.
+     */
+    this.getCurrentState = () => {
+      return this.sentences.map(sentence => sentence.getCurrentState());
+    };
+
+    /**
+     * Get tasks title.
+     * @return {string} Title.
+     */
+    this.getTitle = () => {
+      let raw;
+      if (this.contentData && this.contentData.metadata) {
+        raw = this.contentData.metadata.title;
+      }
+      raw = raw || Dictation.DEFAULT_DESCRIPTION;
+
+      return H5P.createTitle(raw);
+    };
+
+    /**
+     * Get tasks description.
+     * @return {string} Description.
+     */
+    this.getDescription = () => this.params.taskDescription || Dictation.DEFAULT_DESCRIPTION;
+  }
+}
+
+/** @constant {string} */
+H5P.Dictation.DEFAULT_DESCRIPTION = 'Dictation';

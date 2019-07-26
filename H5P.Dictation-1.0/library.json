@@ -15,12 +15,12 @@
   },
   "preloadedJs": [
     {
-      "path": "dist/h5p-dictation.js"
+      "path": "dist/js/h5p-dictation.js"
     }
   ],
   "preloadedCss": [
     {
-      "path": "dist/h5p-dictation.css"
+      "path": "dist/css/h5p-dictation.css"
     }
   ],
   "preloadedDependencies": [
