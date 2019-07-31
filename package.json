@@ -22,5 +22,8 @@
   "scripts": {
     "develop": "webpack --mode development --watch",
     "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "h5p-lib-controls": "^0.0.12"
   }
 }
