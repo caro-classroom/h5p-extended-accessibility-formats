@@ -18,6 +18,8 @@ H5P.Dictation = class Dictation extends H5P.Question {
       taskDescription: 'Please listen carefully and write what you hear.',
       sentences: [],
       behaviour: {
+        enableTTSButtons: true,
+        disableButtons: true,
         alternateSolution: 'first',
         autosplit: true,
         enableSolutionsButton: true, // @see {@link https://h5p.org/documentation/developers/contracts#guides-header-8}
@@ -69,6 +71,12 @@ H5P.Dictation = class Dictation extends H5P.Question {
         forwardSlash: 'forward slash'
       }
     }, params);
+
+    // override buttons
+    if(this.params.behaviour.disableButtons) {
+      this.params.behaviour.enableRetry = false;
+      this.params.behaviour.enableSolutionsButton = false;
+    }
 
     // TODO: When other functionality needs a minor version bump, rename semantics variable in upgrade script
     params.behaviour.enableSolutionsButton = params.behaviour.enableSolution === undefined ?
@@ -206,27 +214,34 @@ H5P.Dictation = class Dictation extends H5P.Question {
      * Add all the buttons that shall be passed to H5P.Question
      */
     this.addButtons = () => {
-      // Show solution button
-      this.addButton('show-solution', this.params.l10n.showSolution, () => {
-        this.showSolutions();
-        this.hideButton('show-solution');
-      }, false, {}, {});
+      if(!this.params.behaviour.disableButtons) {
+        // Show solution button
+        this.addButton('show-solution', this.params.l10n.showSolution, () => {
+          this.showSolutions();
+          this.hideButton('show-solution');
+        }, false, {}, {});
 
-      // Check answer button
-      this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
-        this.showEvaluation();
-        this.isAnswered = true;
-        this.triggerXAPI();
-        if (this.params.behaviour.enableRetry && !this.isPassed()) {
-          this.showButton('try-again');
-        }
-      }, true, {}, {});
+        // Check answer button
+        this.addButton('check-answer', this.params.l10n.checkAnswer, () => {
+          this.showEvaluation();
+          this.isAnswered = true;
+          this.triggerXAPI();
+          if (this.params.behaviour.enableRetry && !this.isPassed()) {
+            this.showButton('try-again');
+          }
+        }, true, {}, {});
 
-      // Retry button
-      this.addButton('try-again', this.params.l10n.tryAgain, () => {
-        this.resetTask();
-        this.sentences[0].focus();
-      }, false, {}, {});
+        // Retry button
+        this.addButton('try-again', this.params.l10n.tryAgain, () => {
+          this.resetTask();
+          this.sentences[0].focus();
+        }, false, {}, {});
+      }
+
+      // Show tts task button
+      if(this.params.behaviour.enableTTSButtons && this.params.introductionTTS !== undefined) {
+        this.addButton(this.params.introductionTTS, "tts");
+      }
     };
 
     /**
