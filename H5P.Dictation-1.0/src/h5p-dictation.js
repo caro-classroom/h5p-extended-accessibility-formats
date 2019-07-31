@@ -1,5 +1,5 @@
-import Sentence from './h5p-dictation-sentence';
-import Util from './h5p-dictation-util';
+import Sentence from './libs/h5p-dictation-sentence';
+import Util from './libs/h5p-dictation-util';
 
 /** Class for dictation interaction */
 H5P.Dictation = class Dictation extends H5P.Question {
