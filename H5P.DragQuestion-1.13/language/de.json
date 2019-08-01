@@ -1,6 +1,9 @@
 {
   "semantics": [
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Beschriftung für den \"Überprüfen\"-Button",
       "default": "Überprüfen"
     },
@@ -45,6 +48,9 @@
                   {},
                   {},
                   {
+                    "label": "TTS ID"
+                  },
+                  {
                     "label": "Wähle die Ablagezonen, in die das Element gezogen werden kann (inkl. Distraktoren)"
                   },
                   {
@@ -75,6 +81,9 @@
                   {},
                   {
                     "label": "Wähle die in dieser Ablagezone korrekten Elemente"
+                  },
+                  {
+                    "label": "TTS ID"
                   },
                   {
                     "label": "Hintergrunddeckkraft"

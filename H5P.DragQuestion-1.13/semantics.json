@@ -136,6 +136,14 @@
                   "multiple": true
                 },
                 {
+                  "name": "tts",
+                  "type": "text",
+                  "importance": "low",
+                  "optional": true,
+                  "widget": "text",
+                  "label": "TTS ID"
+                },
+                {
                   "name": "backgroundOpacity",
                   "type": "number",
                   "label": "Background Opacity",
@@ -214,6 +222,14 @@
                   "label": "Select correct elements",
                   "importance": "low",
                   "multiple": true
+                },
+                {
+                  "name": "tts",
+                  "type": "text",
+                  "importance": "low",
+                  "optional": true,
+                  "widget": "text",
+                  "label": "TTS ID"
                 },
                 {
                   "name": "backgroundOpacity",

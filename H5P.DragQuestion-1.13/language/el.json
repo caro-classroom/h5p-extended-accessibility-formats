@@ -1,6 +1,9 @@
 {
   "semantics": [
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Check answer button",
       "default": "Check"
     },
@@ -48,6 +51,9 @@
                     "label": "Select drop zones"
                   },
                   {
+                    "label": "TTS ID"
+                  },
+                  {
                     "label": "Background Opacity"
                   },
                   {
@@ -75,6 +81,9 @@
                   {},
                   {
                     "label": "Select correct elements"
+                  },
+                  {
+                    "label": "TTS ID"
                   },
                   {
                     "label": "Background Opacity"

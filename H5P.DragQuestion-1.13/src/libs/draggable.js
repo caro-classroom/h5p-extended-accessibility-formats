@@ -13,7 +13,7 @@ export default class Draggable extends H5P.EventDispatcher {
    * @param {Array} [answers] from last session
    * @param {Object.<string, string>} l10n
    */
-  constructor(element, id, answers, l10n) {
+  constructor(element, id, answers, l10n, ttsOn) {
     super();
     var self = this;
 
@@ -29,6 +29,8 @@ export default class Draggable extends H5P.EventDispatcher {
     self.type = element.type;
     self.multiple = element.multiple;
     self.l10n = l10n;
+    self.tts = element.tts;
+    self.ttsOn = typeof ttsOn === "undefined" ? false : ttsOn;
 
     if (answers) {
       if (self.multiple) {
@@ -197,7 +199,12 @@ export default class Draggable extends H5P.EventDispatcher {
 
     // Add prefix for good a11y
     $('<span class="h5p-hidden-read">' + (self.l10n.prefix.replace('{num}', self.id + 1)) + '</span>').prependTo(element.$);
-
+    
+    // add tts button to dragable
+    if(self.ttsOn) {
+      H5P.Question.prototype.addTTSButton(self.tts, element.$, "prependTo");
+    }
+    
     // Add suffix for good a11y
     $('<span class="h5p-hidden-read"></span>').appendTo(element.$);
 

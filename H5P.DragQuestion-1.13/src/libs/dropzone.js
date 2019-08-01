@@ -13,7 +13,7 @@ export default class DropZone {
    * @param {string[]} l10n
    * @returns {_L8.DropZone}
    */
-  constructor (dropZone, id, l10n) {
+  constructor (dropZone, id, l10n, ttsOn) {
     var self = this;
     H5P.EventDispatcher.call(self);
 
@@ -30,6 +30,8 @@ export default class DropZone {
     self.autoAlignable = dropZone.autoAlign;
     self.alignables = [];
     self.l10n = l10n;
+    self.tts = dropZone.tts;
+    self.ttsOn = typeof ttsOn === "undefined" ? false : ttsOn;
   }
 
   /**
@@ -126,6 +128,10 @@ export default class DropZone {
           $tip.attr('tabindex', '-1');
         }
       });
+
+      if (self.showLabel && self.ttsOn) {
+        H5P.Question.prototype.addTTSButton(self.tts, self.$dropZone.find(".h5p-label"), "prependTo");
+      }
 
     // Add tip after setOpacity(), so this does not get background opacity:
     var $tip = H5P.JoubelUI.createTip(self.tip, {

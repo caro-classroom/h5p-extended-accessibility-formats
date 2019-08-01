@@ -56,6 +56,8 @@ function C(options, contentId, contentData) {
     },
     overallFeedback: [],
     behaviour: {
+      enableTTSButtons: true,
+      disableButtons: true,
       enableRetry: true,
       enableCheckButton: true,
       preventResize: false,
@@ -69,6 +71,13 @@ function C(options, contentId, contentData) {
       showTitle: false
     }
   }, options);
+
+  // override buttons
+  if(this.options.behaviour.disableButtons) {
+    this.options.behaviour.enableRetry = false;
+    this.options.behaviour.enableSolutionsButton = false;
+    this.options.behaviour.enableCheckButton = false;
+  }
 
   // If single point is enabled, it makes no sense displaying
   // the score explanation. Note: In the editor, the score explanation is hidden
@@ -147,7 +156,7 @@ function C(options, contentId, contentData) {
     }
 
     // Create new draggable instance
-    var draggable = new Draggable(element, i, answers, grabbablel10n);
+    var draggable = new Draggable(element, i, answers, grabbablel10n, options.behaviour.enableTTSButtons);
     var highlightDropZones = (self.options.behaviour.dropZoneHighlighting === 'dragging');
     draggable.on('elementadd', function (event) {
       controls.drag.addElement(event.data);
@@ -217,7 +226,7 @@ function C(options, contentId, contentData) {
       size: self.options.question.settings.size
     };
 
-    this.dropZones[i] = new DropZone(dropZone, i, dropzonel10n);
+    this.dropZones[i] = new DropZone(dropZone, i, dropzonel10n, options.behaviour.enableTTSButtons);
 
     // Update element internal position when aligned
     this.dropZones[i].on('elementaligned', function (event) {
@@ -281,6 +290,10 @@ C.prototype.registerDomElements = function () {
     self.setIntroduction(self.$introduction);
   }
 
+  // Show tts task button
+  if(self.options.behaviour.enableTTSButtons && self.options.introductionTTS !== undefined) {
+    this.addButton(self.options.introductionTTS, "tts");
+  }
 
   // Set class if no background
   var classes = '';

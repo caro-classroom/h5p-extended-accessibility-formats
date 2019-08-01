@@ -1346,7 +1346,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       return self;
     };
 
-    self.addTTSButton = function(id, target, where) {
+    Question.prototype.addTTSButton = function(id, target, where) {
       var $e = $('<button/>', {
         'class': 'h5p-action-button',
         'data-id': id,
