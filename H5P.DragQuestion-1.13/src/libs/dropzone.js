@@ -30,7 +30,7 @@ export default class DropZone {
     self.autoAlignable = dropZone.autoAlign;
     self.alignables = [];
     self.l10n = l10n;
-    self.tts = dropZone.tts;
+    self.tts = typeof dropZone.tts === "undefined" ? false : dropZone.tts;
     self.ttsOn = typeof ttsOn === "undefined" ? false : ttsOn;
   }
 
@@ -129,7 +129,7 @@ export default class DropZone {
         }
       });
 
-      if (self.showLabel && self.ttsOn) {
+      if (self.showLabel && self.ttsOn && self.tts) {
         H5P.Question.prototype.addTTSButton(self.tts, self.$dropZone.find(".h5p-label"), "prependTo");
       }
 

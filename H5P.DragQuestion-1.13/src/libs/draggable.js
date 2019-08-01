@@ -29,7 +29,7 @@ export default class Draggable extends H5P.EventDispatcher {
     self.type = element.type;
     self.multiple = element.multiple;
     self.l10n = l10n;
-    self.tts = element.tts;
+    self.tts = typeof element.tts === "undefined" ? false : element.tts;
     self.ttsOn = typeof ttsOn === "undefined" ? false : ttsOn;
 
     if (answers) {
@@ -201,7 +201,7 @@ export default class Draggable extends H5P.EventDispatcher {
     $('<span class="h5p-hidden-read">' + (self.l10n.prefix.replace('{num}', self.id + 1)) + '</span>').prependTo(element.$);
     
     // add tts button to dragable
-    if(self.ttsOn) {
+    if(self.ttsOn && self.tts) {
       H5P.Question.prototype.addTTSButton(self.tts, element.$, "prependTo");
     }
     
