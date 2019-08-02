@@ -1,4 +1,4 @@
-/* The main containers for the module, specific to this module. */
+@import '../../scss/custom.scss';
 
 .h5p-drag-text {
   position: relative;
@@ -44,14 +44,14 @@
     right: 0.5em;
     font-family: 'H5PFontAwesome4';
     content: "\f00c";
-    color: #255c41;
+    color: $correct-primary;
   }
   .h5p-drag-wrong-feedback:before {
     position: absolute;
     right: 0.5em;
     font-family: 'H5PFontAwesome4';
     content: "\f00d";
-    color: #b71c1c;
+    color: $wrong-primary;
   }
   .h5p-drag-dropzone-container {
     position: relative;
@@ -63,17 +63,17 @@
     top: -0.1em;
     width: 10em;
     height: 1.25em;
-    background-color: #cee0f4;
+    background-color: $dropzone-bg;
     border-radius: 0.25em;
     display: inline-block;
     vertical-align: middle;
     text-align: center;
     padding: 0.1em 1.65em 0.1em 0;
     &.h5p-drag-correct-feedback {
-      background: #9dd8bb;
+      background: $correct-secondary;
     }
     &.h5p-drag-wrong-feedback {
-      background: #f7d0d0;
+      background: $wrong-secondary;
     }
     &:before {
       line-height: 1.25;
@@ -96,9 +96,9 @@
     vertical-align: top;
     text-align: center;
     display: inline-block;
-    border: 0.1em solid #c6c6c6;
+    border: 0.1em solid $dragable-border;
     overflow: hidden;
-    background: #ddd;
+    background: $dragable-bg;
     box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.2);
     z-index: 3;
     -webkit-user-select: none;
@@ -106,24 +106,24 @@
     -ms-user-select: none;
   }
   [aria-grabbed='true'] {
-    border: 0.1em solid rgb(212, 190, 216);
-    color: #663366;
-    background: #edd6e9;
+    border: $dragable-hover-border;
+    color: $dragable-hover-text;
+    background: $dragable-hover-bg;
   }
   [aria-grabbed] {
     &.h5p-drag-dropped:not(.ui-state-disabled):hover, &:not(.ui-state-disabled):hover {
-      border: 0.1em solid rgb(212, 190, 216);
-      color: #663366;
-      background: #edd6e9;
+      border: $dragable-hover-border;
+      color: $dragable-hover-text;
+      background: $dragable-hover-bg;
     }
     &.h5p-drag-dropped {
       width: 100%;
       margin: -0.1em 0 0 0;
       padding: 0.1em 0.825em;
       white-space: nowrap;
-      color: #1a4473;
-      border: 0.1em solid #a9c3d0;
-      background: #cee0f4;
+      color: $dragable-dropped-text;
+      border: $dragable-dropped-border;
+      background: $dragable-dropped-bg;
     }
   }
   [aria-grabbed='true'] {
@@ -136,7 +136,7 @@
   .h5p-drag-dropped {
     &.h5p-drag-draggable-correct {
       padding: 0;
-      color: #255c41;
+      color: $correct-primary;
       border: none;
       box-shadow: none;
       line-height: 1.5;
@@ -145,7 +145,7 @@
     &.h5p-drag-draggable-wrong {
       padding: 0;
       border: none;
-      color: #b71c1c;
+      color: $wrong-primary;
       box-shadow: none;
       line-height: 1.5;
       background: none;
@@ -155,10 +155,10 @@
     position: relative;
     display: inline;
     &.incorrect {
-      color: #255c41;
+      color: $correct-primary;
       font-weight: bold;
-      border: 1px #255c41 dashed;
-      background-color: #d4f6e6;
+      border: 1px $correct-primary dashed;
+      background-color: $correct-secondary;
       padding: 0.15em;
       border-radius: 0.25em;
       margin-left: 0.5em;

@@ -22,6 +22,17 @@ $feedback-failed: $wrong-primary;
 $feedback-almost: #666;
 $feedback-passed: $correct-primary;
 $question-feedback: #1a73d9;
+$dragable-bg: #ddd;
+$dragable-border: #c6c6c6;
+$dragable-hover-bg: #edd6e9;
+$dragable-hover-border: 0.1em solid rgb(212, 190, 216);
+$dragable-hover-text: #663366;
+$dragable-dropped-bg: #cee0f4;
+$dragable-dropped-border: 0.1em solid #a9c3d0;
+$dragable-dropped-text: #1a4473;
+$dropzone-bg: #cee0f4;
+
+
 
 // 2. Buttons
 // ----------

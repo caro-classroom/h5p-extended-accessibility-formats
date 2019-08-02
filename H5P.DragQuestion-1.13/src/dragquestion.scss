@@ -56,7 +56,7 @@ html.h5p-iframe .h5p-container.h5p-dragquestion {
   }
   .h5p-draggable {
     border-radius: 0.25em;
-    border: 0.1em solid #c6c6c6;
+    border: $dragable-border;
     cursor: pointer;
     position: absolute;
     text-align: center;
@@ -65,7 +65,7 @@ html.h5p-iframe .h5p-container.h5p-dragquestion {
     -webkit-box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.2);
     box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.2);
-    background: rgb(221, 221, 221);
+    background: $dragable-bg;
     z-index: 3;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -74,13 +74,13 @@ html.h5p-iframe .h5p-container.h5p-dragquestion {
     flex-direction: column;
     justify-content: center;
     &:not(.ui-state-disabled).h5p-draggable-hover {
-      border: 0.1em solid rgb(212, 190, 216);
-      background: #edd6e9;
+      border: $dragable-hover-border;
+      background: $dragable-hover-bg;
     }
     &.h5p-dropped {
-      color: #1a4473;
-      border: 0.1em solid #a9c3d0;
-      background: #cee0f4;
+      color: $dragable-dropped-text;
+      border: $dragable-dropped-border;
+      background: $dragable-dropped-bg;
     }
     > {
       img {
@@ -170,7 +170,7 @@ html.h5p-iframe .h5p-container.h5p-dragquestion {
       position: relative;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
-      background: rgb(245, 245, 245);
+      background: $dropzone-bg;
     }
     &.h5p-has-label > .h5p-inner {
       border-radius: 0 0em 0.25em 0.25em;
