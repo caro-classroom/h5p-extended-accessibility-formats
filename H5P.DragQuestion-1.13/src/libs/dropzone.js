@@ -130,7 +130,7 @@ export default class DropZone {
       });
 
       if (self.showLabel && self.ttsOn && self.tts) {
-        H5P.Question.prototype.addTTSButton(self.tts, self.$dropZone.find(".h5p-label"), "prependTo");
+        H5P.Question.prototype.addTTSButton(self.tts, "prependTo", self.$dropZone.find(".h5p-label"));
       }
 
     // Add tip after setOpacity(), so this does not get background opacity:

@@ -234,7 +234,7 @@ H5P.Blanks = (function ($, Question) {
 
     // Show tts task button
     if(self.params.behaviour.enableTTSButtons && this.params.introductionTTS !== undefined) {
-      self.addButton(this.params.introductionTTS, "tts");
+      H5P.Question.prototype.addTTSButton(this.params.introductionTTS, "introduction");
     }
 
     self.toggleButtonVisibility(STATE_ONGOING);

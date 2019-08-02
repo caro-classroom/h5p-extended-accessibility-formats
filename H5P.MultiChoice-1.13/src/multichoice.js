@@ -686,7 +686,7 @@ H5P.MultiChoice = function (options, contentId, contentData) {
 
     // Show tts task button
     if(params.behaviour.enableTTSButtons && params.introductionTTS !== undefined) {
-      self.addButton(params.introductionTTS, "tts");
+      H5P.Question.prototype.addTTSButton(params.introductionTTS, "introduction");
     }
 
     // Try Again button

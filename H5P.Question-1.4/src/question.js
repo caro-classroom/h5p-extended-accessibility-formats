@@ -1274,79 +1274,47 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           clicked();
         }
       };
+      
+      buttons[id] = {
+        isTruncated: false,
+        text: text,
+        isVisible: false
+      };
 
-      // add tts button
-      if(text === "tts") {
-        
-        buttons[id] = {
-          isTruncated: false,
-          text: text,
-          isVisible: false
-        };
-        
-        var $e = buttons[id].$element = $('<button/>', {
-          'class': 'h5p-action-button',
-          'data-id': id,
-          html: '<i class="fa fa-volume-up"></i>',
-          title: "",
-          on: {
-            click: function (event) {
-              self.handleTTSButtonClick(this);
+      var $e = buttons[id].$element = JoubelUI.createButton($.extend({
+        'class': 'h5p-question-' + id,
+        html: text,
+        title: text,
+        on: {
+          click: function (event) {
+            handleButtonClick();
+            if (options.href !== undefined) {
               event.preventDefault();
-            },
-            keydown: function (event) {
-              switch (event.which) {
-                case 13: // Enter
-                case 32: // Space
-                self.handleTTSButtonClick(this);
+            }
+          },
+          keydown: function (event) {
+            switch (event.which) {
+              case 13: // Enter
+              case 32: // Space
+                handleButtonClick();
                 event.preventDefault();
-              }
             }
           }
-        });
-        $e.prependTo(sections.introduction.$element);
-      } else {
-        buttons[id] = {
-          isTruncated: false,
-          text: text,
-          isVisible: false
-        };
-
-        var $e = buttons[id].$element = JoubelUI.createButton($.extend({
-          'class': 'h5p-question-' + id,
-          html: text,
-          title: text,
-          on: {
-            click: function (event) {
-              handleButtonClick();
-              if (options.href !== undefined) {
-                event.preventDefault();
-              }
-            },
-            keydown: function (event) {
-              switch (event.which) {
-                case 13: // Enter
-                case 32: // Space
-                  handleButtonClick();
-                  event.preventDefault();
-              }
-            }
-          }
-        }, options));
-        buttonOrder.push(id);
-        
-        if (visible === undefined || visible) {
-          // Button should be visible
-          $e.appendTo(sections.buttons.$element);
-          buttons[id].isVisible = true;
-          showSection(sections.buttons);
         }
+      }, options));
+      buttonOrder.push(id);
+      
+      if (visible === undefined || visible) {
+        // Button should be visible
+        $e.appendTo(sections.buttons.$element);
+        buttons[id].isVisible = true;
+        showSection(sections.buttons);
       }
 
       return self;
     };
 
-    Question.prototype.addTTSButton = function(id, target, where) {
+    Question.prototype.addTTSButton = function(id, where, target) {
       var $e = $('<button/>', {
         'class': 'h5p-action-button',
         'data-id': id,
@@ -1380,6 +1348,9 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           break;
         case "insertAfter":
           $e.insertBefore(target);
+          break;
+        case "introduction":
+          $e.prependTo(sections.introduction.$element);
           break;
       }
       return self;

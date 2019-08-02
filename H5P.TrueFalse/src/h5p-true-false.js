@@ -180,7 +180,7 @@ H5P.TrueFalse = (function ($, Question) {
 
       // Show tts task button
       if(params.behaviour.enableTTSButtons && params.introductionTTS !== undefined) {
-        self.addButton(params.introductionTTS, "tts");
+        H5P.Question.prototype.addTTSButton(params.introductionTTS, "introduction");
       }
 
       toggleButtonState(State.ONGOING);
@@ -351,7 +351,7 @@ H5P.TrueFalse = (function ($, Question) {
       if(params.behaviour.enableTTSButtons) {
         var ttsIDs = Object.values(params.ttsIDs);
         self.$content.find(".h5p-true-false-answer").each(function(index) {
-          self.addTTSButton(ttsIDs[index], $(this), "insertBefore");
+          H5P.Question.prototype.addTTSButton(ttsIDs[index], "insertBefore", $(this));
         });
       }
       

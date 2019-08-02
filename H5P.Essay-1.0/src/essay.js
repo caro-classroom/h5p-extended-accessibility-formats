@@ -161,7 +161,7 @@ H5P.Essay = function ($, Question) {
 
     // Show tts task button
     if(that.config.behaviour.enableTTSButtons && that.config.introductionTTS !== undefined) {
-      that.addButton(that.config.introductionTTS, "tts");
+      H5P.Question.prototype.addTTSButton(that.config.introductionTTS, "introduction");
     }
   };
 

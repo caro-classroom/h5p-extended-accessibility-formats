@@ -292,7 +292,7 @@ C.prototype.registerDomElements = function () {
 
   // Show tts task button
   if(self.options.behaviour.enableTTSButtons && self.options.introductionTTS !== undefined) {
-    this.addButton(self.options.introductionTTS, "tts");
+    H5P.Question.prototype.addTTSButton(self.options.introductionTTS, "introduction");
   }
 
   // Set class if no background

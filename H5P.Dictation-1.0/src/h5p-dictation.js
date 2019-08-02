@@ -240,7 +240,7 @@ H5P.Dictation = class Dictation extends H5P.Question {
 
       // Show tts task button
       if(this.params.behaviour.enableTTSButtons && this.params.introductionTTS !== undefined) {
-        this.addButton(this.params.introductionTTS, "tts");
+        H5P.Question.prototype.addTTSButton(this.params.introductionTTS, "introduction");
       }
     };
 

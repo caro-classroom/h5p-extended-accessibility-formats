@@ -202,7 +202,7 @@ export default class Draggable extends H5P.EventDispatcher {
     
     // add tts button to dragable
     if(self.ttsOn && self.tts) {
-      H5P.Question.prototype.addTTSButton(self.tts, element.$, "prependTo");
+      H5P.Question.prototype.addTTSButton(self.tts, "prependTo", element.$);
     }
     
     // Add suffix for good a11y

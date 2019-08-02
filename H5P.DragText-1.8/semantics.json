@@ -21,6 +21,14 @@
     ]
   },
   {
+    "name": "introductionTTS",
+    "type": "text",
+    "importance": "low",
+    "optional": true,
+    "widget": "text",
+    "label": "TTS ID"
+  },
+  {
     "label": "Text",
     "importance": "high",
     "name": "textField",

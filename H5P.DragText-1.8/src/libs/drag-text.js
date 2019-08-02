@@ -81,6 +81,8 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
       checkAnswer: "Check",
       tryAgain: "Retry",
       behaviour: {
+        enableTTSButtons: true,
+        disableButtons: true,
         enableRetry: true,
         enableSolutionsButton: true,
         enableCheckButton: true,
@@ -101,6 +103,13 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
       correctAnswer: "Correct answer:",
       scoreBarLabel: 'You got :num out of :total points'
     }, params);
+
+    // override buttons
+    if(this.params.behaviour.disableButtons) {
+      this.params.behaviour.enableRetry = false;
+      this.params.behaviour.enableSolutionsButton = false;
+      this.params.behaviour.enableCheckButton = false;
+    }
 
     this.contentData = contentData;
     if (this.contentData !== undefined && this.contentData.previousState !== undefined && this.contentData.previousState.length !== undefined) {
@@ -456,6 +465,11 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
       self.stopWatch.reset();
       self.read(self.params.taskDescription);
     }, self.initShowTryAgainButton || false);
+
+    // Show tts task button
+    if(self.params.behaviour.enableTTSButtons && typeof self.params.introductionTTS !== "undefined") {
+      H5P.Question.prototype.addTTSButton(this.params.introductionTTS, "introduction");
+    }
   };
 
   /**
