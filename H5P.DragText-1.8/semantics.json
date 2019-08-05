@@ -249,6 +249,22 @@
         "optional": true
       },
       {
+        "label": "Enable TTS Buttons on Dropzone",
+        "importance": "low",
+        "name": "ttsButtonOnDropzone",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "Enable TTS Buttons on Dragable",
+        "importance": "low",
+        "name": "ttsButtonOnDragable",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
         "label": "deactivate interactive buttons",
         "importance": "low",
         "name": "disableButtons",

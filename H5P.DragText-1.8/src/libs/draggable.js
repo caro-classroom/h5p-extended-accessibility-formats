@@ -188,8 +188,11 @@ H5P.TextDraggable = (function ($) {
    * Sets short format of draggable when inside a dropbox.
    */
   Draggable.prototype.setShortFormat = function () {
+    let ttsOn = this.$draggable.find(".h5p-action-button").length
     this.$draggable.html(this.shortFormat);
-    H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
+    if(ttsOn) {
+      H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
+    }
   };
 
   /**
@@ -205,8 +208,11 @@ H5P.TextDraggable = (function ($) {
    * Removes the short format of draggable when it is outside a dropbox.
    */
   Draggable.prototype.removeShortFormat = function () {
+    let ttsOn = this.$draggable.find(".h5p-action-button").length
     this.$draggable.html(this.text);
-    H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
+    if(ttsOn) {
+      H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
+    }
   };
 
   /**

@@ -121,6 +121,12 @@
           "label": "activate tts buttons"
         },
         {
+          "label": "activate tts buttons on dropzone"
+        },
+        {
+          "label": "activate tts buttons on dragable"
+        },
+        {
           "label": "deactivate interactive buttons"
         },
         {

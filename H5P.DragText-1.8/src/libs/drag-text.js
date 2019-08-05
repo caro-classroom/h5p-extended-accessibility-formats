@@ -82,6 +82,8 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
       tryAgain: "Retry",
       behaviour: {
         enableTTSButtons: true,
+        ttsButtonOnDropzone: true,
+        ttsButtonOnDragable: true,
         disableButtons: true,
         enableRetry: true,
         enableSolutionsButton: true,
@@ -871,7 +873,9 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
       },
       containment: self.$taskContainer
     });
-    H5P.Question.prototype.addTTSButton(ttsID, "prependTo", $draggable);
+    if(self.params.behaviour.ttsButtonOnDragable === true) {
+      H5P.Question.prototype.addTTSButton(ttsID, "prependTo", $draggable);
+    }
     var draggable = new Draggable(answer, $draggable, self.draggables.length, ttsID);
     draggable.on('addedToZone', function () {
       self.triggerXAPI('interacted');
@@ -925,7 +929,9 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
 
     var droppable = new Droppable(answer, tip, correctFeedback, incorrectFeedback, $dropzone, $dropzoneContainer, draggableIndex, self.params);
     droppable.appendDroppableTo(self.$wordContainer);
-    H5P.Question.prototype.addTTSButton(ttsID, "prependTo", $dropzoneContainer);
+    if(self.params.behaviour.ttsButtonOnDropzone === true) {
+      H5P.Question.prototype.addTTSButton(ttsID, "prependTo", $dropzoneContainer);
+    }
     self.droppables.push(droppable);
 
     return droppable;
