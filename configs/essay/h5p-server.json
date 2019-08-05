@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 1339,
+  "libraryDir": ".",
+  "mainLibraryDir": "H5P.Essay-1.0",
+  "contentDir": "h5p-content/essay"
+}

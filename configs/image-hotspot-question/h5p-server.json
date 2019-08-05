@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 1339,
+  "libraryDir": ".",
+  "mainLibraryDir": "h5p-image-hotspot-question",
+  "contentDir": "h5p-content/image-hotspot-question"
+}
