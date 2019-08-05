@@ -6,6 +6,9 @@
       "placeholder": "Click on all the verbs in the text that follows."
     },
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Textfield",
       "placeholder": "This is an answer: *answer*.",
       "description": "",
@@ -57,6 +60,12 @@
       "label": "Behavioural settings.",
       "description": "These options will let you control how the task behaves.",
       "fields": [
+        {
+          "label": "activate tts buttons"
+        },
+        {
+          "label": "deactivate interactive buttons"
+        },
         {
           "label": "Enable \"Retry\""
         },

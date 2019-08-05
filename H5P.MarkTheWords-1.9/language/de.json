@@ -6,6 +6,9 @@
       "placeholder": "Klicke auf alle Verben im folgenden Text."
     },
     {
+      "label": "TTS ID"
+    },
+    {
       "label": "Textfeld",
       "placeholder": "Das ist eine Antwort: *Antwort*.",
       "description": "",
@@ -57,6 +60,12 @@
       "label": "Verhaltenseinstellungen",
       "description": "Diese Optionen legen fest, wie die Aufgabe im Detail funktioniert.",
       "fields": [
+        {
+          "label": "TTS Buttons aktivieren"
+        },
+        {
+          "label": "Interaktions-Buttons deaktivieren"
+        },
         {
           "label": "\"Wiederholen\" zulassen"
         },

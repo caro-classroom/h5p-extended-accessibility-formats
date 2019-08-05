@@ -470,7 +470,7 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
 
     // Show tts task button
     if(self.params.behaviour.enableTTSButtons && typeof self.params.introductionTTS !== "undefined") {
-      H5P.Question.prototype.addTTSButton(this.params.introductionTTS, "introduction");
+      H5P.Question.prototype.addTTSButton(self.params.introductionTTS, "introduction");
     }
   };
 

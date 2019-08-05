@@ -30,6 +30,8 @@ H5P.MarkTheWords = (function ($, Question, Word, KeyboardNav, XapiGenerator) {
       textField: "This is a *nice*, *flexible* content type.",
       overallFeedback: [],
       behaviour: {
+        enableTTSButtons: true,
+        disableButtons: true,
         enableRetry: true,
         enableSolutionsButton: true,
         enableCheckButton: true,
@@ -44,6 +46,13 @@ H5P.MarkTheWords = (function ($, Question, Word, KeyboardNav, XapiGenerator) {
       displaySolutionDescription:  "Task is updated to contain the solution.",
       scoreBarLabel: 'You got :num out of :total points'
     }, params);
+
+    // override buttons
+    if(this.params.behaviour.disableButtons) {
+      this.params.behaviour.enableRetry = false;
+      this.params.behaviour.enableSolutionsButton = false;
+      this.params.behaviour.enableCheckButton = false;
+    }
 
     this.contentData = contentData;
     if (this.contentData !== undefined && this.contentData.previousState !== undefined) {
@@ -272,6 +281,11 @@ H5P.MarkTheWords = (function ($, Question, Word, KeyboardNav, XapiGenerator) {
 
       self.read(self.params.displaySolutionDescription);
     }, false);
+
+    // Show tts task button
+    if(this.params.behaviour.enableTTSButtons && typeof this.params.introductionTTS !== "undefined") {
+      H5P.Question.prototype.addTTSButton(this.params.introductionTTS, "introduction");
+    }
   };
 
   /**
