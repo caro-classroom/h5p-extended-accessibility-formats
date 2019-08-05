@@ -751,8 +751,8 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
         if(self.isAnswerPart(part)) {
           // is draggable/droppable
           const solution = lex(part);
-          const draggable = self.createDraggable(solution.text);
-          const droppable = self.createDroppable(solution.text, solution.tip, solution.correctFeedback, solution.incorrectFeedback);
+          const draggable = self.createDraggable(solution.text, solution.ttsID);
+          const droppable = self.createDroppable(solution.text, solution.tip, solution.correctFeedback, solution.incorrectFeedback, solution.ttsID);
 
           // trigger instant feedback
           if (self.params.behaviour.instantFeedback) {
@@ -845,7 +845,7 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {H5P.TextDraggable}
    */
-  DragText.prototype.createDraggable = function (answer) {
+  DragText.prototype.createDraggable = function (answer, ttsID) {
     var self = this;
 
     //Make the draggable
@@ -871,8 +871,8 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
       },
       containment: self.$taskContainer
     });
-
-    var draggable = new Draggable(answer, $draggable, self.draggables.length);
+    H5P.Question.prototype.addTTSButton(ttsID, "prependTo", $draggable);
+    var draggable = new Draggable(answer, $draggable, self.draggables.length, ttsID);
     draggable.on('addedToZone', function () {
       self.triggerXAPI('interacted');
     });
@@ -890,7 +890,7 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
    *
    * @returns {H5P.TextDroppable}
    */
-  DragText.prototype.createDroppable = function (answer, tip, correctFeedback, incorrectFeedback) {
+  DragText.prototype.createDroppable = function (answer, tip, correctFeedback, incorrectFeedback, ttsID) {
     var self = this;
 
     var draggableIndex = this.draggables.length;
@@ -925,7 +925,7 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
 
     var droppable = new Droppable(answer, tip, correctFeedback, incorrectFeedback, $dropzone, $dropzoneContainer, draggableIndex, self.params);
     droppable.appendDroppableTo(self.$wordContainer);
-
+    H5P.Question.prototype.addTTSButton(ttsID, "prependTo", $dropzoneContainer);
     self.droppables.push(droppable);
 
     return droppable;

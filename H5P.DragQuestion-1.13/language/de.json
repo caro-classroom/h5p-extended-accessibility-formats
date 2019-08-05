@@ -151,6 +151,12 @@
       "description": "Diese Optionen legen fest, wie die Aufgabe im Detail funktioniert.",
       "fields": [
         {
+          "label": "TTS Buttons aktivieren"
+        },
+        {
+          "label": "Interaktions-Buttons deaktivieren"
+        },
+        {
           "label": "\"Wiederholen\" zulassen"
         },
         {

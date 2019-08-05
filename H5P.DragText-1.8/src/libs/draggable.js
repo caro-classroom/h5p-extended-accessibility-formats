@@ -9,7 +9,7 @@ H5P.TextDraggable = (function ($) {
    * @param {jQuery} draggable Draggable object.
    * @param {number} index
    */
-  function Draggable(text, draggable, index) {
+  function Draggable(text, draggable, index, ttsID) {
     H5P.EventDispatcher.call(this);
     var self = this;
     self.text = text;
@@ -17,6 +17,7 @@ H5P.TextDraggable = (function ($) {
     self.$draggable = $(draggable);
     self.index = index;
     self.initialIndex = index;
+    self.ttsID = ttsID;
 
     self.shortFormat = self.text;
     //Shortens the draggable string if inside a dropbox.
@@ -148,7 +149,6 @@ H5P.TextDraggable = (function ($) {
    */
   Draggable.prototype.removeFromZone = function () {
     var dropZone = this.insideDropzone;
-
     if (this.insideDropzone !== null) {
       this.insideDropzone.removeFeedback();
       this.insideDropzone.removeDraggable();
@@ -189,6 +189,7 @@ H5P.TextDraggable = (function ($) {
    */
   Draggable.prototype.setShortFormat = function () {
     this.$draggable.html(this.shortFormat);
+    H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
   };
 
   /**
@@ -205,6 +206,7 @@ H5P.TextDraggable = (function ($) {
    */
   Draggable.prototype.removeShortFormat = function () {
     this.$draggable.html(this.text);
+    H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
   };
 
   /**

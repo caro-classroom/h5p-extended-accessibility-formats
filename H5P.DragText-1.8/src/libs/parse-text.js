@@ -17,6 +17,7 @@ const parseText = text => text.split(/(\*.*?\*)/).filter(str => str.length > 0);
  * @param {string} correct
  * @param {string} incorrect
  * @param {string} text
+ * @param {string} ttsID
  */
 /**
  * Parse the solution text (text between the asterisks)
@@ -26,7 +27,8 @@ const parseText = text => text.split(/(\*.*?\*)/).filter(str => str.length > 0);
  */
 const lex = solutionText => {
 
-  let tip = solutionText.match(/(:([^\\*]+))/g);
+  let tip = solutionText.match(/(:([^\\*$]+))/g);
+  let ttsID = solutionText.match(/(\$([^\\*]+))/g);
   let correctFeedback = solutionText.match(/(\\\+([^\\*:]+))/g);
   let incorrectFeedback = solutionText.match(/(\\\-([^\\*:]+))/g);
 
@@ -48,10 +50,15 @@ const lex = solutionText => {
     incorrectFeedback = incorrectFeedback[0].replace('\\-','');
     incorrectFeedback = incorrectFeedback.replace(/\s+$/, '');
   }
+  if (ttsID) {
+    text = text.replace(ttsID, '');
+    ttsID = ttsID[0].replace('$','');
+    ttsID = ttsID.replace(/\s+$/, '');
+  }
 
   text = text.replace(/\s+$/, ''); // remove trailing spaces and tabs
 
-  return { tip, correctFeedback, incorrectFeedback, text };
+  return { tip, correctFeedback, incorrectFeedback, text, ttsID };
 };
 
 export { parseText, lex };

@@ -151,6 +151,12 @@
       "description": "These options will let you control how the task behaves.",
       "fields": [
         {
+          "label": "activate tts buttons"
+        },
+        {
+          "label": "deactivate interactive buttons"
+        },
+        {
           "label": "Enable \"Retry\""
         },
         {

@@ -241,6 +241,22 @@
     "optional": true,
     "fields": [
       {
+        "label": "Enable TTS Buttons",
+        "importance": "low",
+        "name": "enableTTSButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "deactivate interactive buttons",
+        "importance": "low",
+        "name": "disableButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
         "label": "Enable \"Retry\"",
         "importance": "low",
         "name": "enableRetry",
