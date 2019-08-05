@@ -1,1 +1,22 @@
-// TODO FILL OUT
+{
+  "sentences": [
+    {
+      "sample": [
+        {
+          "path": ".\/sample-5d3861095f721.wav",
+          "mime": "audio\/x-wav",
+          "copyright": {
+            "license": "U"
+          }
+        }
+      ],
+      "text": "blub"
+    }
+  ],
+  "behaviour": {
+    "enableTTSButtons": true,
+    "disableButtons": true
+  },
+  "taskDescription": "<p>blub und bla<\/p>\n",
+  "introductionTTS": "1"
+}

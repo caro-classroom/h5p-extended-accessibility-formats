@@ -1,1 +1,14 @@
-// TODO FILL OUT
+{
+  "correct": "true",
+  "behaviour": {
+    "enableTTSButtons": true,
+    "disableButtons": true
+  },
+  "question": "<p>Oslo is the capital of Norway.<\/p>\n",
+  "introductionTTS": "1",
+  "ttsIDs": {
+    "ttsTrue": "true",
+    "ttsFalse": "false",
+    "ttsDontKnow": "dont_know"
+  }
+}
