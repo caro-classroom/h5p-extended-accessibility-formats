@@ -17,21 +17,21 @@
   "machineName": "H5P.MarkTheWords",
   "preloadedCss": [
     {
-      "path": "styles/mark-the-words.css"
+      "path": "dist/css/mark-the-words.css"
     }
   ],
   "preloadedJs": [
     {
-      "path": "scripts/keyboard-nav.js"
+      "path": "dist/js/keyboard-nav.js"
     },
     {
-      "path": "scripts/xAPI-generator.js"
+      "path": "dist/js/xAPI-generator.js"
     },
     {
-      "path": "scripts/word.js"
+      "path": "dist/js/word.js"
     },
     {
-      "path": "scripts/mark-the-words.js"
+      "path": "dist/js/mark-the-words.js"
     }
   ],
   "preloadedDependencies": [

@@ -1,0 +1,99 @@
+@import "../../scss/custom.scss";
+
+/* The main containers for the module, specific to this module. */
+.h5p-mark-the-words {
+  position: relative;
+  background: rgba(255, 255, 255, 0.9);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#e6FFFFFF,endColorstr=#e6FFFFFF);
+  overflow: hidden;
+}
+
+.h5p-mark-the-words-descriptions {
+  display: none;
+}
+
+/* Actual text paragraphs */
+.h5p-mark-the-words {
+  .h5p-word-inner p {
+    font-size: 1em;
+    font-weight: normal;
+    padding: 0;
+    margin: 0 0 1em;
+    line-height: inherit;
+  }
+  button.h5p-button:before {
+    font-family: 'H5PFontAwesome4';
+    content: "\f06e";
+    padding-right: 0.5em;
+  }
+  .h5p-word-selectable-words {
+    line-height: 1.75em;
+    outline: none;
+  }
+  [role="option"] {
+    white-space: nowrap;
+    padding: 0.15em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    position: relative;
+  }
+  .h5p-word-selectable-words:not(.h5p-disable-hover) [role="option"]:hover {
+    box-shadow: inset 0px 0px 0px 2px $mtw-selected-bg;
+  }
+  [aria-selected="true"] {
+    background: $mtw-selected-bg;
+  }
+  [aria-describedby="h5p-description-missed"] {
+    color: $correct-primary;
+    font-weight: bold;
+    border: 1px $correct-primary dashed;
+    background-color: $correct-secondary;
+  }
+  [aria-describedby="h5p-description-correct"] {
+    background: $correct-secondary;
+    color: $correct-primary;
+    display: inline-block;
+    line-height: 1;
+  }
+  [aria-describedby="h5p-description-incorrect"] {
+    background-color: $wrong-secondary;
+    color: $wrong-primary;
+    text-decoration: line-through;
+    display: inline-block;
+    line-height: 1;
+  }
+  [aria-describedby="h5p-description-correct"]:after {
+    position: relative;
+    right: 0.1em;
+    text-decoration: none;
+    content: "\f00c";
+    font-family: 'H5PFontAwesome4';
+    color: $correct-primary;
+    padding-left: 0.75em;
+  }
+  [aria-describedby="h5p-description-incorrect"]:after {
+    position: relative;
+    right: 0.1em;
+    display: inline-block;
+    font-family: 'H5PFontAwesome4';
+    text-decoration: none;
+    content: "\f00d";
+    color: $wrong-primary;
+    padding-left: 0.75em;
+  }
+  button.h5p-button {
+    &.h5p-check-button:before {
+      content: "\f058";
+    }
+    &.h5p-retry-button:before {
+      content: "\f021";
+    }
+    &.h5p-check-button {
+      display: inline-block;
+    }
+  }
+}
+
+button.h5p-retry-button.h5p-retry-button {
+  display: none;
+}
