@@ -79,6 +79,8 @@ class Card {
     this.createCardFooter()
       .appendTo($cardTextWrapper);
 
+    //H5P.Question.prototype.addTTSButton(this.card.questionTTS, "prependTo", this.$cardTextArea);
+    
     return $cardContent;
   }
 

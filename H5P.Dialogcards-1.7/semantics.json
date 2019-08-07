@@ -14,6 +14,14 @@
     ]
   },
   {
+    "name": "titleTTS",
+    "type": "text",
+    "importance": "low",
+    "optional": true,
+    "widget": "text",
+    "label": "TTS ID"
+  },
+  {
     "name": "mode",
     "type": "select",
     "label": "Mode",
@@ -45,6 +53,14 @@
       "strong",
       "em"
     ]
+  },
+  {
+    "name": "introductionTTS",
+    "type": "text",
+    "importance": "low",
+    "optional": true,
+    "widget": "text",
+    "label": "TTS ID"
   },
   {
     "name": "dialogs",
@@ -81,6 +97,14 @@
           "description": "Hint for the first part of the dialogue"
         },
         {
+          "name": "questionTTS",
+          "type": "text",
+          "importance": "low",
+          "optional": true,
+          "widget": "text",
+          "label": "TTS ID"
+        },
+        {
           "name": "answer",
           "type": "text",
           "widget": "html",
@@ -93,6 +117,14 @@
           "label": "Answer",
           "importance": "high",
           "description": "Hint for the second part of the dialogue"
+        },
+        {
+          "name": "answerTTS",
+          "type": "text",
+          "importance": "low",
+          "optional": true,
+          "widget": "text",
+          "label": "TTS ID"
         },
         {
           "name": "image",
@@ -152,11 +184,19 @@
     "optional": true,
     "fields": [
       {
+        "label": "Enable TTS Buttons",
+        "importance": "low",
+        "name": "enableTTSButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
         "name": "enableRetry",
         "type": "boolean",
         "label": "Enable \"Retry\" button",
         "importance": "low",
-        "default": true,
+        "default": false,
         "optional": true
       },
       {

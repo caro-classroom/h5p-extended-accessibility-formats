@@ -71,7 +71,8 @@ class Dialogcards extends H5P.EventDispatcher {
         }
       ],
       behaviour: {
-        enableRetry: true,
+        enableTTSButtons: true,
+        enableRetry: false,
         disableBackwardsNavigation: false,
         scaleTextNotCard: false,
         randomCards: false,
@@ -181,6 +182,21 @@ class Dialogcards extends H5P.EventDispatcher {
 
         this.$footer = this.createFooter();
 
+        // Show tts task button
+        H5P.Question.call(this, 'Dialogcards');
+        if(this.params.behaviour.enableTTSButtons) {
+          if(this.params.introductionTTS !== undefined) {
+            H5P.Question.prototype.addTTSButton(this.params.titleTTS, "prependTo", this.$header.find(".h5p-dialogcards-title-inner"));
+          }
+          // get description element
+          var $description = $.grep(this.$header, function(element) {
+            return element.className === "h5p-dialogcards-description";
+          });
+          if(this.params.titleTTS !== undefined) {
+            H5P.Question.prototype.addTTSButton(this.params.introductionTTS, "prependTo", $description);
+          }
+        }
+
         this.$mainContent = $('<div>')
           .append(this.$header)
           .append(this.$cardwrapperSet)
@@ -253,6 +269,8 @@ class Dialogcards extends H5P.EventDispatcher {
 
       return $footer;
     };
+
+    
 
     /**
      * Called when all cards has been loaded.
