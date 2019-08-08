@@ -22,6 +22,7 @@
     that.uniqueId = uniqueId;
     that.seqNo = seqNumber;
     that.isSelected = false;
+    that.ttsID = cardParams.tts;
 
     // Initialize event inheritance
     EventDispatcher.call(that);
@@ -192,6 +193,10 @@
         'data-title': that.imageDesc,
         html: '<span class="text">' + that.imageDesc + '</span>'
       });
+      
+      if(extraParams.enableTTSButtons) {
+        H5P.Question.prototype.addTTSButton(that.ttsID, "prependTo", $description);
+      }
 
       // grouping audio and image in a group
       that.$sequencingElement = $('<span role="group" />')

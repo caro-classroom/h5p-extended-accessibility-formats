@@ -8,6 +8,14 @@
     "importance": "high"
   },
   {
+    "name": "introductionTTS",
+    "type": "text",
+    "importance": "low",
+    "optional": true,
+    "widget": "text",
+    "label": "TTS ID"
+  },
+  {
     "label": "Alternate Task Description",
     "name": "altTaskDescription",
     "type": "text",
@@ -48,6 +56,14 @@
           "description": "An image description for users who cannot recognize the image"
         },
         {
+          "name": "tts",
+          "type": "text",
+          "importance": "low",
+          "optional": true,
+          "widget": "text",
+          "label": "TTS ID"
+        },
+        {
           "name": "audio",
           "description": "An optional audio for the card to play",
           "type": "audio",
@@ -66,6 +82,30 @@
     "description": "These options will let you control how the game behaves.",
     "optional": true,
     "fields": [
+      {
+        "label": "Enable TTS Buttons",
+        "importance": "low",
+        "name": "enableTTSButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "deactivate interactive buttons",
+        "importance": "low",
+        "name": "disableButtons",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "deactivate timer",
+        "importance": "low",
+        "name": "disableTimer",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
       {
         "name": "enableSolution",
         "type": "boolean",

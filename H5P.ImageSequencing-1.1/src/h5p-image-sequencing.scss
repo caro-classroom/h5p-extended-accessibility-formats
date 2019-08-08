@@ -264,55 +264,25 @@
     z-index: 1;
   }
   
-  /*resizing code
-  =============
-  */
-  
   @media only screen and (min-width: 576px) {
-    /* small devices */
-    /* 3 images per row */
-    /* (2*(margin+border)+3(border+margin_right+padding+ image_width))
-    /* (2*(10+2))+4((2+2)+(12)+(6+6)+(156))== 552 */
-    .h5p-image-sequencing {
-      /*max-width: 552px;*/
-    }
     .sequencing-item, .draggabled .image-container, .sequencing-dropzone {
       width: 156px;
     }
   }
   
   @media only screen and (min-width: 768px) {
-    /* Medium devices */
-    /* 4 images per row */
-    /* (2*(margin+border)+4(border+margin_right+padding+ image_width))
-    /* (2*(10+2))+4((2+2)+(12)+(6+6)+(158))== 768 */
-    .h5p-image-sequencing {
-      /*max-width: 744px;*/
-    }
     .sequencing-item, .draggabled .image-container, .sequencing-dropzone {
       width: 158px;
     }
   }
   
   @media only screen and (min-width: 992px) {
-    /* large devices */
-    /* 5 images per row */
-    /* (2*(10+2))+5((2+2)+(12)+(6+6)+(165.6))== 992 */
-    .h5p-image-sequencing {
-      /*max-width: 968px;*/
-    }
     .sequencing-item, .draggabled .image-container, .sequencing-dropzone {
       width: 165.6px;
     }
   }
   
   @media only screen and (min-width: 1200) {
-    /* For Extra large devices */
-    /* 6 images per row */
-    /* (2*(10+2))+6((2+2)+(12)+(6+6)+(168))== 1200 */
-    .h5p-image-sequencing {
-      /*max-width: 1176px;*/
-    }
     .sequencing-item, .draggabled .image-container, .sequencing-dropzone {
       width: 168px;
     }

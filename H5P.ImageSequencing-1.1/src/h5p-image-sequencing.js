@@ -18,14 +18,28 @@ H5P.ImageSequencing = (function (EventDispatcher, $, UI) {
     that.isGamePaused = false;
     that.isAttempted = false;
     that.score = 0;
+    H5P.Question.call(self, 'image_sequencing');
 
     that.params = $.extend(true, {}, {
+      behaviour: {
+        enableTTSButtons: true,
+        disableButtons: true,
+        disableTimer: true,
+      },
       l10n:{
         showSolution: "ShowSolution",
         resume: "Resume",
         audioNotSupported: "Audio Error"
       }
     }, parameters);
+
+    // override buttons
+    if(that.params.behaviour.disableButtons) {
+      that.params.behaviour.enableRetry = false;
+      that.params.behaviour.enableSolution = false;
+      that.params.behaviour.enableCheckButton = false;
+      that.params.behaviour.autoCheck = false;
+    }
 
     // Initialize event inheritance
     EventDispatcher.call(that);
@@ -196,7 +210,7 @@ H5P.ImageSequencing = (function (EventDispatcher, $, UI) {
      *
      * @returns {type} Description
      */
-    that.buildCardsDOM = function () {
+    that.buildCardsDOM = function () { 
       that.$list = $('<ul class="sortable" role="listbox" tabindex="0"/>');
       that.sequencingCards.forEach(function (card) {
         card.appendTo(that.$list);
@@ -289,6 +303,11 @@ H5P.ImageSequencing = (function (EventDispatcher, $, UI) {
       that.$footerContainer = $('<div class="footer-container" />');
       that.$feedbackContainer = $('<div class="sequencing-feedback"/>');
       that.$buttonContainer = $('<div class="sequencing-feedback-show" />');
+
+      // Show tts task button
+      if(that.params.behaviour.enableTTSButtons && that.params.introductionTTS !== undefined) {
+        H5P.Question.prototype.addTTSButton(that.params.introductionTTS, "prependTo", that.$taskDescription);
+      }
     };
 
     /**
@@ -517,7 +536,8 @@ H5P.ImageSequencing = (function (EventDispatcher, $, UI) {
     const extraParams = {
       audioNotSupported: that.params.l10n.audioNotSupported,
       ariaPlay: that.params.l10n.ariaPlay,
-      ariaCardDesc: that.params.l10n.ariaCardDesc
+      ariaCardDesc: that.params.l10n.ariaCardDesc,
+      enableTTSButtons: that.params.behaviour.enableTTSButtons
     };
 
     that.sequencingCards = that.params.sequenceImages
@@ -525,8 +545,9 @@ H5P.ImageSequencing = (function (EventDispatcher, $, UI) {
         return ImageSequencing.Card.isValid(params);
       })
       .map(function (params, i) {
-        return new ImageSequencing.Card(params, id, i,
+        let card = new ImageSequencing.Card(params, id, i,
           extraParams, uniqueIndexes[i]);
+        return card;
       });
 
     H5P.shuffleArray(that.sequencingCards);
@@ -545,15 +566,19 @@ H5P.ImageSequencing = (function (EventDispatcher, $, UI) {
 
       if (that.$list.children().length) {
         // add elements to status container
-        that.$timer.appendTo(that.$statusContainer);
-        that.$counter.appendTo(that.$statusContainer);
-
+        if(!that.params.behaviour.disableTimer) {
+          that.$timer.appendTo(that.$statusContainer);
+          that.$counter.appendTo(that.$statusContainer);
+        }
+        
         //add elements to feedbackContainer
         that.$feedback.appendTo(that.$feedbackContainer);
         that.$progressBar.appendTo(that.$feedbackContainer);
 
         //add elements to buttonContainer
-        that.$submitButton.appendTo(that.$buttonContainer);
+        if(that.params.behaviour.enableCheckButton) {
+          that.$submitButton.appendTo(that.$buttonContainer);
+        }
         if (that.params.behaviour.enableSolution) {
           that.$showSolutionButton.appendTo(that.$buttonContainer);
         }
