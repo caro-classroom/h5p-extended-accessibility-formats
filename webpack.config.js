@@ -4,14 +4,14 @@ var webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const RemovePlugin = require('remove-files-webpack-plugin');
 
-const scss = glob.sync('H5P.*/src/*.scss');
+const scss = glob.sync('H5P*/src/*.scss');
 const scssObject = scss.reduce((acc, file) => {
   const name = file.replace('src', 'dist/css').replace('scss', 'css');
   acc[name] = path.join(__dirname, file);;
   return acc;
 }, {});
 
-const js = glob.sync('H5P.*/src/*.js');
+const js = glob.sync('H5P*/src/*.js');
 const jsObject = js.reduce((acc, file) => {
   const name = file.replace('src', 'dist/js')
   acc[name] = path.join(__dirname, file);;
