@@ -1314,10 +1314,6 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
       return self;
     };
 
-    window.abc = function() {
-      this.console.log("abc");
-    }
-
     Question.prototype.addTTSButton = function(id, where, target) {
       if(typeof id === "undefined" || id === null) {
         return;
