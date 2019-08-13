@@ -1,0 +1,13 @@
+diff --git a/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor.js b/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor.js
+index f836226..86e5d54 100644
+--- a/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor.js
++++ b/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor.js
+@@ -501,7 +501,7 @@ ns.libraryToString = function (library) {
+  *  return false if the library parameter is invalid
+  */
+ ns.libraryFromString = function (library) {
+-  var regExp = /(.+)\s(\d)+\.(\d)$/g;
++  var regExp = /(.+)\s(\d+)\.(\d+)$/g;
+   var res = regExp.exec(library);
+   if (res !== null) {
+     return {
