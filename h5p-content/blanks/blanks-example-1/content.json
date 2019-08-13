@@ -1,0 +1,28 @@
+{
+  "media": {
+    "type": false
+  },
+  "behaviour": {
+    "enableRetry": false,
+    "enableSolutionsButton": false,
+    "autoCheck": false,
+    "caseSensitive": true,
+    "showSolutionsRequiresInput": true,
+    "separateLines": false,
+    "disableImageZooming": false,
+    "confirmCheckDialog": false,
+    "confirmRetryDialog": false,
+    "acceptSpellingErrors": false,
+    "enableCheckButton": true,
+    "enableTTSButtons": true,
+    "disableButtons": true
+  },
+  "text": "Hello",
+  "questions": [
+    "Foundation Sites is created by *ZURB$666*.",
+    "Bootstrap is created by *Twitter*.",
+    "<p>Oslo is the capital of *Norway\/\\:orwai$42:Starts with a N and ends with orway*.&nbsp;It is the most *western$43* of the scandinavian countries. *\\:* *\\\/*<\/p>\n"
+
+  ],
+  "tts": "1"
+}

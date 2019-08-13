@@ -1,0 +1,41 @@
+{
+  "keywords": [
+    {
+      "options": {
+        "points": 1,
+        "occurrences": 1,
+        "caseSensitive": true,
+        "forgiveMistakes": false
+      },
+      "keyword": "Bilbo"
+    },
+    {
+      "options": {
+        "points": 1,
+        "occurrences": 1,
+        "caseSensitive": true,
+        "forgiveMistakes": false
+      },
+      "keyword": "Gandalf"
+    },
+    {
+      "options": {
+        "points": 1,
+        "occurrences": 1,
+        "caseSensitive": true,
+        "forgiveMistakes": false
+      },
+      "keyword": "Dragon"
+    }
+  ],
+  "behaviour": {
+    "enableTTSButtons": true,
+    "disableButtons": true,
+    "inputFieldSize": 4,
+    "enableRetry": true,
+    "ignoreScoring": false,
+    "inputFieldWidth": "70%"
+  },
+  "taskDescription": "<p>Please describe the novel <em>\"The Hobbit\"<\/em>&nbsp;by J.R.R. Tolkien with at least 100 characters and up to 500 characters.<\/p>\n",
+  "introductionTTS": "1"
+}

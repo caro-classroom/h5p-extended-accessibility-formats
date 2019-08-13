@@ -1,0 +1,10 @@
+{
+  "media": {
+    "type": false
+  },
+  "questions": [
+    "Foundation Sites is created by *ZURB*.",
+    "Bootstrap is created by *Twitter*.",
+    "React is created by *Facebook*."
+  ]
+}

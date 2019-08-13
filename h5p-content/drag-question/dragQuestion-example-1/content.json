@@ -1,0 +1,95 @@
+{
+  "question": {
+    "settings": {
+      "size": {
+        "width": 620,
+        "height": 310
+      }
+    },
+    "task": {
+      "elements": [
+        {
+          "x": 82.25806451612902,
+          "y": 3.225806451612903,
+          "width": 6.07578125,
+          "height": 2.95078125,
+          "dropZones": [
+            "0",
+            "1"
+          ],
+          "type": {
+            "library": "H5P.AdvancedText 1.1",
+            "params": {
+              "text": "<p>B<\/p>\n"
+            }
+          },
+          "tts": "42"
+        },
+        {
+          "x": 72.58064516129032,
+          "y": 48.387096774193544,
+          "width": 5.45078125,
+          "height": 2.95078125,
+          "dropZones": [
+            "1",
+            "0"
+          ],
+          "type": {
+            "library": "H5P.AdvancedText 1.1",
+            "params": {
+              "text": "<p>A<\/p>\n"
+            }
+          }
+        }
+      ],
+      "dropZones": [
+        {
+          "x": 14.516129032258064,
+          "y": 54.83870967741935,
+          "width": 10,
+          "height": 5.625,
+          "correctElements": [
+            "0"
+          ],
+          "showLabel": true,
+          "backgroundOpacity": 100,
+          "tipsAndFeedback": {
+            "tip": ""
+          },
+          "single": false,
+          "autoAlign": false,
+          "label": "<div>Drop B here<\/div>\n",
+          "type": {
+            "library": "H5P.DragQuestionDropzone 0.1"
+          }
+        },
+        {
+          "x": 9.67741935483871,
+          "y": 19.35483870967742,
+          "width": 10.625,
+          "height": 4.375,
+          "correctElements": [
+            "1"
+          ],
+          "showLabel": true,
+          "backgroundOpacity": 100,
+          "tipsAndFeedback": {
+            "tip": ""
+          },
+          "single": false,
+          "autoAlign": false,
+          "label": "<div>Drop A here<\/div>\n",
+          "tts": "77",
+          "type": {
+            "library": "H5P.DragQuestionDropzone 0.1"
+          }
+        }
+      ]
+    }
+  },
+  "behaviour": {
+    "enableTTSButtons": true,
+    "disableButtons": true
+  },
+  "introductionTTS": "1"
+}
