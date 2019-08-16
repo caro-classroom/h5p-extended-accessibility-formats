@@ -3,20 +3,20 @@
     {
       "sample": [
         {
-          "path": ".\/sample-5d3861095f721.wav",
+          "path": ".\/sample.wav",
           "mime": "audio\/x-wav",
           "copyright": {
             "license": "U"
           }
         }
       ],
-      "text": "blub"
+      "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
     }
   ],
   "behaviour": {
     "enableTTSButtons": true,
     "disableButtons": true
   },
-  "taskDescription": "<p>blub und bla<\/p>\n",
+  "taskDescription": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
   "introductionTTS": "1"
 }

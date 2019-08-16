@@ -36,6 +36,10 @@
     "ignoreScoring": false,
     "inputFieldWidth": "70%"
   },
-  "taskDescription": "<p>Please describe the novel <em>\"The Hobbit\"<\/em>&nbsp;by J.R.R. Tolkien with at least 100 characters and up to 500 characters.<\/p>\n",
+  "solution": {
+    "introduction": "<div>Introduction text of the solution</div>\n",
+    "sample": "<div>The solution text.&nbsp;The solution text.&nbsp;The solution text.&nbsp;The solution text.&nbsp;The solution text.</div>\n"
+  },
+  "taskDescription": "<p>Please describe the novel <em>\"The Hobbit\"</em>&nbsp;by J.R.R. Tolkien with at least 100 characters and up to 500 characters.</p>\n",
   "introductionTTS": "1"
 }

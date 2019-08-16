@@ -1,0 +1,10 @@
+{
+  "taskDescription": "Set in adjectives in the following sentence!",
+  "textField": "This is a *nice$42*, *flexible$1337* content type, which allows you to highlight all the *wonderful* words in this *exciting* sentence.\nThis is another line of *fantastic* text.",
+  "behaviour": {
+    "enableTTSButtons": true,
+    "ttsButtonOnDropzone": true,
+    "ttsButtonOnDragable": true,
+    "disableButtons": true
+  }
+}

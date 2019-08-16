@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 1339,
+  "libraryDir": ".",
+  "mainLibraryDir": "H5P.DragText-1.8",
+  "contentDir": "h5p-content/drag-text"
+}
