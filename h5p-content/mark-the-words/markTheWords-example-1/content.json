@@ -1,0 +1,21 @@
+{
+  "taskDescription": "Task description",
+  "introductionTTS": "1337",
+  "textField": "This is a *nice*, *flexible* content type.",
+  "behaviour": {
+    "enableTTSButtons": true,
+    "disableButtons": true,
+    "enableRetry": true,
+    "enableSolutionsButton": true,
+    "enableCheckButton": false,
+    "showScorePoints": false
+  },
+  "checkAnswerButton": "Check",
+  "tryAgainButton": "Retry",
+  "showSolutionButton": "Show solution",
+  "correctAnswer": "Correct!",
+  "incorrectAnswer": "Incorrect!",
+  "missedAnswer": "Missed!",
+  "displaySolutionDescription":  "Task is updated to contain the solution.",
+  "scoreBarLabel": "You got :num out of :total points"
+}
