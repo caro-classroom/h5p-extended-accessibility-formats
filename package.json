@@ -32,6 +32,7 @@
     "server:true-false": "h5p server configs/true-false/h5p-server.json",
     "server:dictation": "h5p server configs/dictation/h5p-server.json",
     "server:essay": "h5p server configs/essay/h5p-server.json",
-    "server:drag-question": "h5p server configs/drag-question/h5p-server.json"
+    "server:drag-question": "h5p server configs/drag-question/h5p-server.json",
+    "server:drag-text": "h5p server configs/drag-text/h5p-server.json"
   }
 }
