@@ -34,6 +34,7 @@
     "server:essay": "h5p server configs/essay/h5p-server.json",
     "server:drag-question": "h5p server configs/drag-question/h5p-server.json",
     "server:drag-text": "h5p server configs/drag-text/h5p-server.json",
-    "server:mark-the-words": "h5p server configs/mark-the-words/h5p-server.json"
+    "server:mark-the-words": "h5p server configs/mark-the-words/h5p-server.json",
+    "server:accordion": "h5p server configs/accordion/h5p-server.json"
   }
 }
