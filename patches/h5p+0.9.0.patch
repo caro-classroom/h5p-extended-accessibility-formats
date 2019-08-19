@@ -1,3 +1,18 @@
+diff --git a/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor-semantic-structure.js b/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor-semantic-structure.js
+index a048dab..931c6de 100644
+--- a/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor-semantic-structure.js
++++ b/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor-semantic-structure.js
+@@ -203,7 +203,9 @@ H5PEditor.SemanticStructure = (function ($) {
+      */
+     self.appendTo = function ($container) {
+       // Use first widget by default
+-      changeWidget(widgets[0].name);
++      if (widgets[0]) {
++        changeWidget(widgets[0].name);
++      }
+ 
+       $wrapper.appendTo($container);
+     };
 diff --git a/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor.js b/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor.js
 index f836226..86e5d54 100644
 --- a/node_modules/h5p/lib/assets/h5p-core/editor/scripts/h5peditor.js

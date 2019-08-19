@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 1339,
+  "libraryDir": ".",
+  "mainLibraryDir": "H5P.ImagePair-1.4",
+  "contentDir": "h5p-content/image-pair"
+}
