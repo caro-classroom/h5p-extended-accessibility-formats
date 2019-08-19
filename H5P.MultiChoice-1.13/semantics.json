@@ -347,6 +347,14 @@
         "optional": true
       },
       {
+        "label": "align answers horizontally",
+        "importance": "low",
+        "name": "horizontalAlignment",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      },
+      {
         "name": "enableRetry",
         "type": "boolean",
         "label": "Enable \"Retry\" button",

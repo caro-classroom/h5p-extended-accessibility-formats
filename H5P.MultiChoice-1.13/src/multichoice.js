@@ -93,6 +93,7 @@ H5P.MultiChoice = function (options, contentId, contentData) {
     behaviour: {
       enableTTSButtons: true,
       disableButtons: true,
+      horizontalAlignment: false,
       enableRetry: true,
       enableSolutionsButton: true,
       enableCheckButton: true,
@@ -116,10 +117,12 @@ H5P.MultiChoice = function (options, contentId, contentData) {
     params.behaviour.enableCheckButton = false;
     params.behaviour.autoCheck = false;
   }
+  
+  var alignment = params.behaviour.horizontalAlignment ? " h5p-horizontal" : "";
 
   // checkbox or radiobutton
   var texttemplate =
-    '<ul class="h5p-answers" role="<%= role %>" aria-labelledby="<%= label %>">' +
+    '<ul class="h5p-answers' + alignment + '" role="<%= role %>" aria-labelledby="<%= label %>">' +
     '  <% for (var i=0; i < answers.length; i++) { %>' +
     '    <li class="h5p-answer" role="<%= answers[i].role %>" tabindex="<%= answers[i].tabindex %>" aria-checked="<%= answers[i].checked %>" data-id="<%= i %>">' +
     '      <%if(answers[i].tts && ' + params.behaviour.enableTTSButtons + ') {%>' +

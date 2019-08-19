@@ -148,6 +148,9 @@
           "label": "deactivate interactive buttons"
         },
         {
+          "label": "horizontal alignment of answers"
+        },
+        {
           "label": "Enable \"Retry\" button"
         },
         {

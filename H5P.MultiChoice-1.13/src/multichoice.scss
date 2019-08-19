@@ -19,6 +19,29 @@
     padding: 0;
     overflow: visible;
     margin: 1em 0;
+
+    &.h5p-horizontal {
+      display: flex;
+
+      .h5p-answer {
+        flex: 1 1 0;
+
+        &:not(:first-child) {
+          .h5p-action-button {
+            margin-left: 2em;
+          }
+  
+          .h5p-action-button + .h5p-alternative-container {
+            margin-left: 3em;
+          }
+
+          .h5p-action-button ~ .h5p-feedback-dialog {
+            width: calc(100% - 3em);
+            margin-left: 3em;
+          }
+        }
+      }
+    }
   }
   .h5p-answer {
     list-style: none;
