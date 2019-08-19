@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 1339,
+  "libraryDir": ".",
+  "mainLibraryDir": "H5P.Flashcards-1.5",
+  "contentDir": "h5p-content/flashcards"
+}
