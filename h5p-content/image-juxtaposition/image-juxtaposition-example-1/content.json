@@ -1,0 +1,42 @@
+{
+  "title": "TITLE",
+  "headingTTS": "heading",
+  "imageBefore": {
+    "imageBefore": {
+      "path": "images/imageBefore.jpg",
+      "mime": "image/jpeg",
+      "copyright": {
+        "license": "PD",
+        "title": "2011 flooding in Ayutthaya Province-EO-1 merged",
+        "author": "NASA Earth Observatory image created by Jesse Allen and Robert Simmon",
+        "year": "2011",
+        "source": "https://en.wikipedia.org/wiki/File:2011_flooding_in_Ayutthaya_Province-EO-1_merged.jpg"
+      },
+      "width": 1920,
+      "height": 1200
+    },
+    "labelBefore": "July 11, 2011",
+    "beforeTTS": "before"
+  },
+  "imageAfter": {
+    "imageAfter": {
+      "path": "images/imageAfter.jpg",
+      "mime": "image/jpeg",
+      "copyright": {
+        "license": "PD",
+        "author": "NASA Earth Observatory image created by Jesse Allen and Robert Simmon",
+        "source": "https://en.wikipedia.org/wiki/File:2011_flooding_in_Ayutthaya_Province-EO-1_merged.jpg",
+        "title": "2011 flooding in Ayutthaya Province-EO-1 merged",
+        "year": "2011"
+      },
+      "width": 1920,
+      "height": 1200
+    },
+    "labelAfter": "October 23, 2011",
+    "afterTTS": "after"
+  },
+  "behavior": {
+    "startingPosition": 50,
+    "sliderOrientation": "horizontal"
+  }
+}

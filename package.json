@@ -36,6 +36,7 @@
     "server:drag-text": "h5p server configs/drag-text/h5p-server.json",
     "server:mark-the-words": "h5p server configs/mark-the-words/h5p-server.json",
     "server:accordion": "h5p server configs/accordion/h5p-server.json",
-    "server:flash-cards": "h5p server configs/flashcards/h5p-server.json"
+    "server:flash-cards": "h5p server configs/flashcards/h5p-server.json",
+    "server:image-juxtaposition": "h5p server configs/image-juxtaposition/h5p-server.json"
   }
 }
