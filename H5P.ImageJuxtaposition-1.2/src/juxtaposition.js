@@ -37,8 +37,6 @@ H5P.ImageJuxtaposition = function ($, Question) {
     }, options);
     this.id = id;
 
-    const abc = true;
-
     // Initialize event inheritance
     H5P.EventDispatcher.call(this);
     Question.call(self);
@@ -65,7 +63,7 @@ H5P.ImageJuxtaposition = function ($, Question) {
   C.prototype.attach = function ($container) {
     this.container = $container;
     $container.addClass("h5p-image-juxtaposition");
-    if (this.options.title) {      
+    if (this.options.title) {
       $container.append('<div class="h5p-image-juxtaposition-title">' + this.options.title + '</div>');
       // Show tts task button
       if(this.options.behavior.enableTTSButtons && this.options.headingTTS !== undefined) {
@@ -85,7 +83,7 @@ H5P.ImageJuxtaposition = function ($, Question) {
     var slider = new JXSlider('.h5p-image-juxtaposition-juxtapose', [{
       src: H5P.getPath(this.options.imageBefore.imageBefore.path, this.id),
       label: this.options.imageBefore.labelBefore,
-      ttsID: this.options.imageAfter.beforeTTS
+      ttsID: this.options.imageBefore.beforeTTS
     }, {
       src: H5P.getPath(this.options.imageAfter.imageAfter.path, this.id),
       label: this.options.imageAfter.labelAfter,
@@ -383,7 +381,7 @@ H5P.ImageJuxtaposition = function ($, Question) {
       if(ttsID) {
         H5P.Question.prototype.addTTSButton(ttsID, "prependTo", label);
       }
-      
+
       element.appendChild(label);
     },
 
@@ -574,9 +572,9 @@ H5P.ImageJuxtaposition = function ($, Question) {
           });
         }
 
-        
+
       });
-      
+
       // Event Listeners for Touch Interface
       this.slider.addEventListener('touchstart', function (e) {
         let targetIsTTS = e.path.filter(element => element.className === "h5p-action-button").length;

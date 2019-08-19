@@ -560,7 +560,7 @@ H5P.ImagePair = (function(EventDispatcher, $, UI, Question) {
       var $cardList = $('<ul class="card-container" />');
       var $mateList = $('<ul class="mate-container"/>');
       self.$footer = $('<div class="footer-container"/>');
-      
+
       if(parameters.behaviour.enableCheckButton) {
         self.$checkButton = createButton(self.displayResult, 'fa-check',
           parameters.l10n.checkAnswer);

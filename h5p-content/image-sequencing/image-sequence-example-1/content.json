@@ -1,0 +1,126 @@
+{
+  "l10n": {
+    "showSolution": "Show Solution",
+    "resume": "Resume",
+    "audioNotSupported": "Audio Not Supported",
+    "totalMoves": "Total Moves",
+    "timeSpent": "Time spent",
+    "score": "You got @score of @total points",
+    "checkAnswer": "Check",
+    "tryAgain": "Retry",
+    "ariaPlay": "Play the corresponding audio",
+    "ariaMoveDescription": "Moved @cardDesc from @posSrc to @posDes",
+    "ariaCardDesc": "sequencing item"
+  },
+  "taskDescription": "Order the planets from smallest to largest",
+  "sequenceImages": [
+    {
+      "imageDescription": "Zebra",
+      "image": {
+        "path": "images/image-5ae9d3adf3494.jpg",
+        "mime": "image/jpeg",
+        "copyright": {
+          "license": "PD",
+          "title": "foo",
+          "version": "CC PDM",
+          "source": "bar",
+          "year": "2019",
+          "author": "buzi"
+        },
+        "width": 240,
+        "height": 240
+      }
+    },
+    {
+      "imageDescription": "Tiger",
+      "image": {
+        "path": "images/image-5ae9d5c5de5d4.jpg",
+        "mime": "image/jpeg",
+        "copyright": {
+          "license": "PD",
+          "title": "foo",
+          "version": "CC PDM",
+          "source": "bar",
+          "year": "2019",
+          "author": "buzi"
+        },
+        "width": 240,
+        "height": 240
+      }
+    },
+    {
+      "imageDescription": "Lion",
+      "image": {
+        "path": "images/image-5ae9d5cb51f94.jpg",
+        "mime": "image/jpeg",
+        "copyright": {
+          "license": "PD",
+          "title": "foo",
+          "version": "CC PDM",
+          "source": "bar",
+          "year": "2019",
+          "author": "buzi"
+        },
+        "width": 240,
+        "height": 240
+      }
+    },
+    {
+      "imageDescription": "Parrot",
+      "image": {
+        "path": "images/image-5ae9d453d0895.jpg",
+        "mime": "image/jpeg",
+        "copyright": {
+          "license": "PD",
+          "title": "foo",
+          "version": "CC PDM",
+          "source": "bar",
+          "year": "2019",
+          "author": "buzi"
+        },
+        "width": 240,
+        "height": 240
+      }
+    },
+    {
+      "imageDescription": "Peacock",
+      "image": {
+        "path": "images/image-5ae9d5166f9db.jpg",
+        "mime": "image/jpeg",
+        "copyright": {
+          "license": "PD",
+          "title": "foo",
+          "version": "CC PDM",
+          "source": "bar",
+          "year": "2019",
+          "author": "buzi"
+        },
+        "width": 240,
+        "height": 240
+      }
+    },
+    {
+      "imageDescription": "Flamingo",
+      "image": {
+        "path": "images/image-5ae9d7041c4ff.jpg",
+        "mime": "image/jpeg",
+        "copyright": {
+          "license": "PD",
+          "title": "foo",
+          "version": "CC PDM",
+          "source": "bar",
+          "year": "2019",
+          "author": "buzi"
+        },
+        "width": 240,
+        "height": 240
+      }
+    }
+  ],
+  "behaviour": {
+    "enableSolution": true,
+    "enableRetry": true,
+    "enableResume": true
+  },
+  "altTaskDescription": "Make the following list be ordered correctly. Use the cursor keys to navigate through the list items, use space to activate or deactivate an item and the cursor keys to move it"
+}
