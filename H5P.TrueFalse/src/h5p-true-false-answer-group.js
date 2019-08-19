@@ -22,9 +22,9 @@ H5P.TrueFalse.AnswerGroup = (function ($, EventDispatcher) {
     });
 
     var answer;
-    var trueAnswer = new H5P.TrueFalse.Answer(l10n.trueText, l10n.correctAnswerMessage, l10n.wrongAnswerMessage);
-    var falseAnswer = new H5P.TrueFalse.Answer(l10n.falseText, l10n.correctAnswerMessage, l10n.wrongAnswerMessage);
-    var dontKnow = new H5P.TrueFalse.Answer(l10n.dontKnowText, l10n.dontKnowMessage, l10n.dontKnowMessage);
+    var trueAnswer = new H5P.TrueFalse.Answer(l10n.trueText, l10n.correctAnswerMessage, l10n.wrongAnswerMessage, "h5p-true");
+    var falseAnswer = new H5P.TrueFalse.Answer(l10n.falseText, l10n.correctAnswerMessage, l10n.wrongAnswerMessage, "h5p-false");
+    var dontKnow = new H5P.TrueFalse.Answer(l10n.dontKnowText, l10n.dontKnowMessage, l10n.dontKnowMessage, "h5p-dont-know");
     var correctAnswer = (correctOption === 'true' ? trueAnswer : falseAnswer);
     var wrongAnswer = (correctOption === 'false' ? trueAnswer : falseAnswer);
 

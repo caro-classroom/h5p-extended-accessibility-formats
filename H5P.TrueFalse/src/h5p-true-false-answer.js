@@ -19,16 +19,16 @@ H5P.TrueFalse.Answer = (function ($, EventDispatcher) {
    * @param {String} correctMessage Message read by readspeaker when correct alternative is chosen
    * @param {String} wrongMessage Message read by readspeaker when wrong alternative is chosen
    */
-  function Answer (text, correctMessage, wrongMessage) {
+  function Answer (text, correctMessage, wrongMessage, buttonClass) {
     var self = this;
 
     EventDispatcher.call(self);
 
     var checked = false;
     var enabled = true;
-
+    
     var $answer = $('<div>', {
-      'class': 'h5p-true-false-answer',
+      'class': 'h5p-true-false-answer' + " " +buttonClass,
       role: 'radio',
       'aria-checked': false,
       html: text + '<span class="aria-label"></span>',
