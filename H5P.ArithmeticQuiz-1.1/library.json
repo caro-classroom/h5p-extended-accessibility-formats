@@ -1,0 +1,81 @@
+{
+  "title": "Arithmetic Quiz",
+  "description": "Arithmetic quiz containing addition, division, multiplication, subtraction and linear equations",
+  "majorVersion": 1,
+  "minorVersion": 1,
+  "patchVersion": 10,
+  "runnable": 1,
+  "author": "Joubel, fabforge",
+  "license": "MIT",
+  "machineName": "H5P.ArithmeticQuiz",
+  "fullscreen": 0,
+  "embedTypes": [
+    "iframe"
+  ],
+  "preloadedJs": [
+    {
+      "path": "dist/js/arithmetic-quiz.js"
+    },
+    {
+      "path": "dist/js/algebra-0.2.6.js"
+    },
+    {
+      "path": "dist/js/sound-effects.js"
+    },
+    {
+      "path": "dist/js/countdown-widget.js"
+    },
+    {
+      "path": "dist/js/timer-widget.js"
+    },
+    {
+      "path": "dist/js/intro-page.js"
+    },
+    {
+      "path": "dist/js/qe-generator.js"
+    },
+    {
+      "path": "dist/js/qa-generator.js"
+    },
+    {
+      "path": "dist/js/game-page.js"
+    },
+    {
+      "path": "dist/js/result-page.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "dist/css/arithmetic-quiz.css"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "H5P.SoundJS",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "Odometer",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5P.Question",
+      "majorVersion": 1,
+      "minorVersion": 4
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.ShowWhen",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
+}
