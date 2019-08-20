@@ -311,6 +311,9 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
           }
         });
 
+        if (self.slider.currentIndex === self.slider.numSlides - 1) {
+          self.progressbar.next();
+        }
         self.slider.next();
       });
     });
