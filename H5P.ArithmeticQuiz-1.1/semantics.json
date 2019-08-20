@@ -16,6 +16,16 @@
     "default": false
   },
   {
+    "name": "countdownLength",
+    "type": "number",
+    "label": "Initial countdown length",
+    "description": "The duration of the initial countdown in seconds",
+    "importance": "medium",
+    "default": 0,
+    "min": 0,
+    "max": 15
+  },
+  {
     "name": "quizType",
     "type": "select",
     "label": "Quiz type",

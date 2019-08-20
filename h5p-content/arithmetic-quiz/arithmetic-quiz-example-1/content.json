@@ -4,6 +4,8 @@
   "equationType": "intermediate",
   "useFractions": false,
   "maxQuestions": 20,
+  "showScore": false,
+  "countdownLength": 0,
   "UI": {
     "score": "Score:",
     "time": "Time: @time",

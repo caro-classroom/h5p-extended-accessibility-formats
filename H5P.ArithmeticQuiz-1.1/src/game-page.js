@@ -48,12 +48,16 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
 
     self.slider = UI.createSlider();
 
-    self.countdownWidget = new H5P.ArithmeticQuiz.CountdownWidget(4, self.translations);
-    self.slider.addSlide(self.countdownWidget.create());
+    self.countdownWidget = new H5P.ArithmeticQuiz.CountdownWidget(options.countdownLength, self.translations);
+    if (options.countdownLength > 0) {
+      self.slider.addSlide(self.countdownWidget.create());
+    }
     self.countdownWidget.on('ignition', function () {
       self.$gamepage.removeClass('counting-down');
       self.progressbar.setProgress(0);
-      self.slider.next();
+      if (options.countdownLength > 0) {
+        self.slider.next();
+      }
       self.timer.start();
       self.trigger('started-quiz');
     });
