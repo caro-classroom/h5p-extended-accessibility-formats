@@ -1274,7 +1274,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           clicked();
         }
       };
-      
+
       buttons[id] = {
         isTruncated: false,
         text: text,
@@ -1303,7 +1303,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         }
       }, options));
       buttonOrder.push(id);
-      
+
       if (visible === undefined || visible) {
         // Button should be visible
         $e.appendTo(sections.buttons.$element);
@@ -1338,7 +1338,7 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
           }
         }
       });
-      
+
       switch(where) {
         case "prependTo":
           $e.prependTo(target);

@@ -23,6 +23,7 @@ H5P.ArithmeticQuiz = (function ($) {
       quizType: 'arithmetic',
       arithmeticType: 'addition',
       showScore: false,
+      enableTTSButtons: true,
       equationType: undefined,
       useFractions: undefined,
       maxQuestions: undefined,

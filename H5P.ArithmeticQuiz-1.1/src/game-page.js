@@ -1,7 +1,7 @@
 /**
  * Defines the H5P.ArithmeticQuiz.GamePage class
  */
-H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
+H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType, Question) {
 
   /**
    * Creates a new GamePage instance
@@ -15,6 +15,7 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
    * @fires H5P.XAPIEvent
    */
   function GamePage(quizType, options, id) {
+    Question.call(this);
     H5P.EventDispatcher.call(this);
     var self = this;
     self.quizType = quizType;
@@ -27,6 +28,7 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
     self.sliding = false;
     self.showScore = options.showScore || false;
     self.preventFeedback = options.preventFeedback || false;
+    self.enableTTSButtons = options.enableTTSButtons;
 
     self.$gamepage = $('<div>', {
       'class': 'h5p-baq-game counting-down'
@@ -54,10 +56,10 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
     }
     self.countdownWidget.on('ignition', function () {
       self.$gamepage.removeClass('counting-down');
-      self.progressbar.setProgress(0);
       if (options.countdownLength > 0) {
         self.slider.next();
       }
+      self.progressbar.setProgress(0);
       self.timer.start();
       self.trigger('started-quiz');
     });
@@ -199,13 +201,16 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
 
     var questionId = 'arithmetic-quiz-' + self.id + '-question-' + i;
 
-    $('<div>', {
+    var $questionTerm = $('<div>', {
       'class': 'question',
       'text': readableText,
       'aria-label': readableQuestion,
       'id': questionId
-    }).appendTo($slide);
-    // TODO ADD TTS HERE
+    });
+    if (self.enableTTSButtons) {
+      H5P.Question.prototype.addTTSButton('term_' + readableSigns.replaceAll(' ', ''), 'prependTo', $questionTerm);
+    }
+    $questionTerm.appendTo($slide);
 
     if (question.expression !== undefined) {
       var readableVariable = self.translations.humanizedVariable
@@ -270,7 +275,12 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
     var readableAlternative = undefined;
     for (var k = 0; k < question.alternatives.length; k++) {
       readableAlternative = self.makeSignsReadable(question.alternatives[k]);
-      alternatives.push(new Alternative(question.alternatives[k], readableAlternative, question.alternatives[k]===question.correct, self.translations));
+      alternatives.push(new Alternative(
+        question.alternatives[k],
+        readableAlternative,
+        question.alternatives[k]===question.correct,
+        self.translations,
+        self.enableTTSButtons));
     }
 
     alternatives.forEach(function (alternative, index) {
@@ -392,8 +402,9 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
    * @param {number} number Number on button
    * @param {boolean} correct Correct or not
    * @param {Object} t Translations
+   * @param {boolean} enableTTSButtons
    */
-  function Alternative(number, readableResult, correct, t) {
+  function Alternative(number, readableResult, correct, t, enableTTSButtons) {
     H5P.EventDispatcher.call(this);
     var self = this;
 
@@ -411,12 +422,11 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
     };
 
     // Create radio button and set up event listeners
-    // TODO ADD TTS HERE
     this.$button = $('<li>', {
       'class': 'h5p-joubelui-button h5p-action-button',
       'role': 'radio',
       'tabindex': -1,
-      'text': number,
+      'html': '<span>' + number + '</span>',
       'on': {
         'keydown': function (event) {
           if (self.$button.is('.reveal-correct, .reveal-wrong')) {
@@ -459,6 +469,9 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
         }
       }
     });
+    if (enableTTSButtons) {
+      H5P.Question.prototype.addTTSButton('number_' + number,'prependTo', this.$button);
+    }
 
     /**
      * Move focus to this option.
@@ -515,4 +528,4 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
   Alternative.prototype.constructor = Alternative;
 
   return GamePage;
-})(H5P.jQuery, H5P.JoubelUI, H5P.ArithmeticQuiz.QuizType);
+})(H5P.jQuery, H5P.JoubelUI, H5P.ArithmeticQuiz.QuizType, H5P.Question);

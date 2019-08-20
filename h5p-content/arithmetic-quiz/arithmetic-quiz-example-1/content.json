@@ -7,6 +7,7 @@
   "showScore": false,
   "countdownLength": 0,
   "preventFeedback": true,
+  "enableTTSButtons": true,
   "UI": {
     "score": "Score:",
     "time": "Time: @time",

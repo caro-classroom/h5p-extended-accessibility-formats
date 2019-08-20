@@ -16,6 +16,13 @@
     "default": false
   },
   {
+    "name": "enableTTSButtons",
+    "type": "boolean",
+    "label": "Show TTS Buttons",
+    "description": "If enabled, TTS Buttons are displayed",
+    "default": true
+  },
+  {
     "name": "preventFeedback",
     "type": "boolean",
     "label": "Prevent Feedback",
