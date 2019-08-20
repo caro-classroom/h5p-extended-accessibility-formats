@@ -39,6 +39,7 @@
     "server:flash-cards": "h5p server configs/flashcards/h5p-server.json",
     "server:image-juxtaposition": "h5p server configs/image-juxtaposition/h5p-server.json",
     "server:image-pair": "h5p server configs/image-pair/h5p-server.json",
-    "server:image-sequencing": "h5p server configs/image-sequencing/h5p-server.json"
+    "server:image-sequencing": "h5p server configs/image-sequencing/h5p-server.json",
+    "server:find-multiple-hotspots": "h5p server configs/find-multiple-hotspots/h5p-server.json"
   }
 }

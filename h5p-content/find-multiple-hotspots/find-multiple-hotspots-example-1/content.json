@@ -1,0 +1,54 @@
+{
+  "imageMultipleHotspotQuestion": {
+    "backgroundImageSettings": {
+      "questionTitle": "Mark the hands",
+      "introductionTTS": "12",
+      "backgroundImage": {
+        "path": "img\/home-bg-01.svg",
+        "mime": "image\/svg",
+        "copyright": {
+          "license": "U"
+        },
+        "width": 1780,
+        "height": 850
+      }
+    },
+    "hotspotSettings": {
+      "hotspot": [
+        {
+          "userSettings": {
+            "correct": true,
+            "feedbackText": ""
+          },
+          "computedSettings": {
+            "x": 48.78048780487805,
+            "y": 40.816326530612244,
+            "width": 12.91248206599713,
+            "height": 14.842300556586272,
+            "figure": "circle"
+          }
+        },
+        {
+          "userSettings": {
+            "correct": true,
+            "feedbackText": ""
+          },
+          "computedSettings": {
+            "x": 20.083841463414636,
+            "y": 55.65862708719852,
+            "width": 14.347202295552368,
+            "height": 16.697588126159555,
+            "figure": "circle"
+          }
+        }
+      ],
+      "numberHotspots": 2,
+      "taskDescription": "hands"
+    }
+  },
+  "behaviour": {
+    "enableTTSButtons": true,
+    "disableButtons": true,
+    "enableFeedback": false
+  }
+}
