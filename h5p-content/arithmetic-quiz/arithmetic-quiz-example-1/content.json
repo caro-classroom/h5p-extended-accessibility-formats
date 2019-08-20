@@ -3,7 +3,7 @@
   "arithmeticType": "addition",
   "equationType": "intermediate",
   "useFractions": false,
-  "maxQuestions": 20,
+  "maxQuestions": 3,
   "showScore": false,
   "countdownLength": 0,
   "preventFeedback": true,

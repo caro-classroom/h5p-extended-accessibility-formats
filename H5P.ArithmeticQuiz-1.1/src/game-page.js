@@ -309,9 +309,7 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
           }
         });
 
-        setTimeout(function(){
-          self.slider.next();
-        }, 3500);
+        self.slider.next();
       });
     });
 
