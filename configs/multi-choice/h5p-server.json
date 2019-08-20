@@ -1,0 +1,7 @@
+{
+  "host": "localhost",
+  "port": 1339,
+  "libraryDir": ".",
+  "mainLibraryDir": "H5P.MultiChoice-1.13",
+  "contentDir": "h5p-content/multi-choice"
+}
