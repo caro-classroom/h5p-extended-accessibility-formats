@@ -55,6 +55,7 @@ H5P.ArithmeticQuiz.CountdownWidget = (function ($) {
           self.$countdownWidget.find('.h5p-baq-countdown-bg').addClass('fuel');
         },1);
       }
+      self.$countdownWidget.find('.h5p-baq-countdown-bg').css('transition-duration', seconds + 's');
 
       if (seconds <= 0) {
         self.$countdownWidget.attr('aria-hidden', true);
