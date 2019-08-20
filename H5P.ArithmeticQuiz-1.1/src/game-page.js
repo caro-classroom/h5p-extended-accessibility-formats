@@ -77,22 +77,24 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
     self.progressbar.appendTo(self.$gamepage);
 
     // Add result page:
-    self.resultPage = new H5P.ArithmeticQuiz.ResultPage(numQuestions, self.translations);
-    self.slider.addSlide(self.resultPage.create());
+    if (!self.preventFeedback) {
+      self.resultPage = new H5P.ArithmeticQuiz.ResultPage(numQuestions, self.translations);
+      self.slider.addSlide(self.resultPage.create());
 
-    self.resultPage.on('retry', function () {
-      self.reset();
-      self.slider.first();
-    });
-
-    self.slider.on('last-slide', function () {
-      self.resultPage.update(self.score, self.timer.pause());
-      self.$gamepage.addClass('result-page');
-      self.trigger('last-slide', {
-        score: self.score,
-        numQuestions: numQuestions
+      self.resultPage.on('retry', function () {
+        self.reset();
+        self.slider.first();
       });
-    });
+
+      self.slider.on('last-slide', function () {
+        self.resultPage.update(self.score, self.timer.pause());
+        self.$gamepage.addClass('result-page');
+        self.trigger('last-slide', {
+          score: self.score,
+          numQuestions: numQuestions
+        });
+      });
+    }
 
     self.slider.on('first-slide', function () {
       self.$gamepage.removeClass('result-page');
