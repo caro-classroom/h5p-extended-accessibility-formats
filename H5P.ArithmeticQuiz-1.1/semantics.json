@@ -16,6 +16,13 @@
     "default": false
   },
   {
+    "name": "preventFeedback",
+    "type": "boolean",
+    "label": "Prevent Feedback",
+    "description": "If enabled, no feedback will be given",
+    "default": true
+  },
+  {
     "name": "countdownLength",
     "type": "number",
     "label": "Initial countdown length",

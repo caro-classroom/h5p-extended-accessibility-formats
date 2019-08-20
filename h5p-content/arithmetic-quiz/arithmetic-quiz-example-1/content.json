@@ -6,6 +6,7 @@
   "maxQuestions": 20,
   "showScore": false,
   "countdownLength": 0,
+  "preventFeedback": true,
   "UI": {
     "score": "Score:",
     "time": "Time: @time",

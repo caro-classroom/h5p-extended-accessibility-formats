@@ -26,6 +26,7 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
     self.maxQuestions = options.maxQuestions;
     self.sliding = false;
     self.showScore = options.showScore || false;
+    self.preventFeedback = options.preventFeedback || false;
 
     self.$gamepage = $('<div>', {
       'class': 'h5p-baq-game counting-down'
@@ -202,6 +203,7 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
       'aria-label': readableQuestion,
       'id': questionId
     }).appendTo($slide);
+    // TODO ADD TTS HERE
 
     if (question.expression !== undefined) {
       var readableVariable = self.translations.humanizedVariable
@@ -302,7 +304,9 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
           if (alt.correct && alternative !== alt) {
             alternative.announce(self.translations.incorrectText.replace(':num', alt.readableResult));
           }
-          alt.reveal();
+          if (!self.preventFeedback) {
+            alt.reveal();
+          }
         });
 
         setTimeout(function(){
@@ -404,6 +408,7 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
     };
 
     // Create radio button and set up event listeners
+    // TODO ADD TTS HERE
     this.$button = $('<li>', {
       'class': 'h5p-joubelui-button',
       'role': 'radio',
