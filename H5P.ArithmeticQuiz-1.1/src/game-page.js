@@ -26,7 +26,6 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
     self.maxQuestions = options.maxQuestions;
     self.sliding = false;
     self.showScore = options.showScore || false;
-    console.log("Game Page", options);
 
     self.$gamepage = $('<div>', {
       'class': 'h5p-baq-game counting-down'
