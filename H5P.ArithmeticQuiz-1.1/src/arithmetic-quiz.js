@@ -1,5 +1,3 @@
-var H5P = H5P || {};
-
 /**
  * Defines the H5P.ArithmeticQuiz class
  */

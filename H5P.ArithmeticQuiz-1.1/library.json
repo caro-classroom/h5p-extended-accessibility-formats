@@ -14,39 +14,39 @@
   ],
   "preloadedJs": [
     {
-      "path": "js/algebra.min.js"
+      "path": "dist/js/arithmetic-quiz.js"
     },
     {
-      "path": "js/arithmetic-quiz.js"
+      "path": "dist/js/algebra-0.2.6.js"
     },
     {
-      "path": "js/sound-effects.js"
+      "path": "dist/js/sound-effects.js"
     },
     {
-      "path": "js/countdown-widget.js"
+      "path": "dist/js/countdown-widget.js"
     },
     {
-      "path": "js/timer-widget.js"
+      "path": "dist/js/timer-widget.js"
     },
     {
-      "path": "js/intro-page.js"
+      "path": "dist/js/intro-page.js"
     },
     {
-      "path": "js/qe-generator.js"
+      "path": "dist/js/qe-generator.js"
     },
     {
-      "path": "js/qa-generator.js"
+      "path": "dist/js/qa-generator.js"
     },
     {
-      "path": "js/game-page.js"
+      "path": "dist/js/game-page.js"
     },
     {
-      "path": "js/result-page.js"
+      "path": "dist/js/result-page.js"
     }
   ],
   "preloadedCss": [
     {
-      "path": "css/arithmetic-quiz.css"
+      "path": "dist/css/arithmetic-quiz.css"
     }
   ],
   "preloadedDependencies": [
