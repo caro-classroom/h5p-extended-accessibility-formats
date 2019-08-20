@@ -410,7 +410,7 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType) {
     // Create radio button and set up event listeners
     // TODO ADD TTS HERE
     this.$button = $('<li>', {
-      'class': 'h5p-joubelui-button',
+      'class': 'h5p-joubelui-button h5p-action-button',
       'role': 'radio',
       'tabindex': -1,
       'text': number,
