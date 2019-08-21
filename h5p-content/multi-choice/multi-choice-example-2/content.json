@@ -33,7 +33,7 @@
   "behaviour": {
     "enableTTSButtons": true,
     "disableButtons": true,
-    "horizontalAlignment": false,
+    "horizontalAlignment": true,
     "enableRetry": true,
     "randomCloud": false
   },

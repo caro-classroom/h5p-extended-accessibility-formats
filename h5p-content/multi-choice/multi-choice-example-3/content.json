@@ -1,0 +1,107 @@
+{
+  "media": {
+    "params": {
+      "contentName": "Image"
+    },
+    "library": "H5P.Image 1.1",
+    "subContentId": "0881fc85-ad2d-43b0-b6aa-d89b32489e8c",
+    "metadata": {
+      "contentType": "Image",
+      "file": {
+        "path": "images\/berry.jpg",
+        "mime": "image\/jpeg",
+        "copyright": {
+          "license": "U"
+        },
+        "width": 1588,
+        "height": 458
+      },
+      "license": "U",
+      "title": "Untitled Image",
+      "authors": [],
+      "changes": []
+    }
+  },
+  "answers": [
+    {
+      "correct": true,
+      "tipsAndFeedback": {
+        "tip": "<p>this is a tip<\/p>\n",
+        "chosenFeedback": "",
+        "notChosenFeedback": ""
+      },
+      "text": "<div>Black<\/div>\n",
+      "tts": "12"
+    },
+    {
+      "correct": false,
+      "tipsAndFeedback": {
+        "tip": "",
+        "chosenFeedback": "",
+        "notChosenFeedback": ""
+      },
+      "text": "<div>Very dark purple<\/div>\n",
+      "tts": "13"
+    },
+    {
+      "correct": false,
+      "tipsAndFeedback": {
+        "tip": "",
+        "chosenFeedback": "",
+        "notChosenFeedback": ""
+      },
+      "text": "<div>Blue<\/div>\n"
+    },
+    {
+      "correct": false,
+      "tipsAndFeedback": {
+        "tip": "",
+        "chosenFeedback": "",
+        "notChosenFeedback": ""
+      },
+      "text": "<div>red<\/div>\n"
+    },
+    {
+      "correct": false,
+      "tipsAndFeedback": {
+        "tip": "",
+        "chosenFeedback": "",
+        "notChosenFeedback": ""
+      },
+      "text": "<div>mauve<\/div>\n"
+    },
+    {
+      "correct": false,
+      "tipsAndFeedback": {
+        "tip": "",
+        "chosenFeedback": "",
+        "notChosenFeedback": ""
+      },
+      "text": "<div>pink<\/div>\n"
+    },
+    {
+      "correct": false,
+      "tipsAndFeedback": {
+        "tip": "",
+        "chosenFeedback": "",
+        "notChosenFeedback": ""
+      },
+      "text": "<div>magenta<\/div>\n"
+    }
+  ],
+  "overallFeedback": [
+    {
+      "from": 0,
+      "to": 100
+    }
+  ],
+  "behaviour": {
+    "randomAnswers": true,
+    "enableTTSButtons": true,
+    "disableButtons": true,
+    "horizontalAlignment": false,
+    "randomCloud": true
+  },
+  "question": "<p>What color does the blackcurrant berry actually have?<\/p>\n",
+  "introductionTTS": "1"
+}

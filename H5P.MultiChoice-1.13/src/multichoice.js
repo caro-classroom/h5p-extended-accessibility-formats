@@ -1176,7 +1176,7 @@ H5P.MultiChoice = function (options, contentId, contentData) {
   }
 
   $( document ).ready(function() {
-    if($myDom.find(".h5p-answers.h5p-random")) {
+    if($myDom.hasClass("h5p-random")) {
       randomCloud();
     }
   });
