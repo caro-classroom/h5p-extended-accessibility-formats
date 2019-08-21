@@ -20,6 +20,16 @@
     overflow: visible;
     margin: 1em 0;
 
+    &.h5p-random {
+      .h5p-answer {
+        display: inline-block;
+
+        &:not(:first-child):before {
+          content: "\A";
+        }
+      }
+    }
+
     &.h5p-horizontal {
       display: flex;
 

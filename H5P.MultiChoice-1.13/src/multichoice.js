@@ -94,6 +94,7 @@ H5P.MultiChoice = function (options, contentId, contentData) {
       enableTTSButtons: true,
       disableButtons: true,
       horizontalAlignment: false,
+      randomCloud: false,
       enableRetry: true,
       enableSolutionsButton: true,
       enableCheckButton: true,
@@ -119,10 +120,11 @@ H5P.MultiChoice = function (options, contentId, contentData) {
   }
   
   var alignment = params.behaviour.horizontalAlignment ? " h5p-horizontal" : "";
+  var randomCloud = params.behaviour.randomCloud && !params.behaviour.horizontalAlignment ? " h5p-random" : "";
 
   // checkbox or radiobutton
   var texttemplate =
-    '<ul class="h5p-answers' + alignment + '" role="<%= role %>" aria-labelledby="<%= label %>">' +
+    '<ul class="h5p-answers' + alignment + randomCloud + '" role="<%= role %>" aria-labelledby="<%= label %>">' +
     '  <% for (var i=0; i < answers.length; i++) { %>' +
     '    <li class="h5p-answer" role="<%= answers[i].role %>" tabindex="<%= answers[i].tabindex %>" aria-checked="<%= answers[i].checked %>" data-id="<%= i %>">' +
     '      <%if(answers[i].tts && ' + params.behaviour.enableTTSButtons + ') {%>' +
@@ -132,7 +134,7 @@ H5P.MultiChoice = function (options, contentId, contentData) {
     '        <span class="h5p-alternative-inner"><%= answers[i].text %></span><span class="h5p-hidden-read">.</span>' +
     '      </div>' +
     '      <div class="h5p-clearfix"></div>' +
-    '    </li>' +
+    '    </li>' +  (randomCloud.length ? '<br>' : '' ) +
     '  <% } %>' +
     '</ul>';
   
@@ -1127,7 +1129,59 @@ H5P.MultiChoice = function (options, contentId, contentData) {
   this.getTitle = function () {
     return H5P.createTitle((this.contentData && this.contentData.metadata && this.contentData.metadata.title) ? this.contentData.metadata.title : 'Multiple Choice');
   };
+
+  var isCollide = function (a, b) {
+    return !(
+        ((a.y + a.height) < (b.y)) ||
+        (a.y > (b.y + b.height)) ||
+        ((a.x + a.width) < b.x) ||
+        (a.x > (b.x + b.width))
+    );
+  }
+
+  var randomCloud = function() {
+    var $answers = $myDom.find('.h5p-answer').each(function (i) {
+      $(this).css('left', Math.round((Math.random() + Math.random()) / 2 * ($(this).parent().width() - $(this).width())) + 'px');
+      $(this).data('coordinates',{
+        x: $(this).offset().left,
+        y: $(this).offset().top,
+        height: $(this).outerHeight(true),
+        width: $(this).outerWidth(true)
+      });
+    });
+
+    // half space between answers
+    var margin = parseInt($answers.css("margin-top"));
+    // height of an answer
+    var height = $answers.height();
+
+    /**
+     * check for collision
+     */
+    for(i = 1; i < $answers.length; i++) {
+      verticalJitter = Math.round(Math.random() * (margin + height))
+      $prevObj = $($answers[i-1]).data('coordinates');
+      $attemptJitter = $.extend(true, $($answers[i]).data('coordinates'), 
+        {
+          y: $($answers[i]).data('coordinates').y - height - margin,
+          height: $($answers[i]).data('coordinates').height + height + margin
+        }
+      );
+      
+      if(!isCollide($prevObj, $attemptJitter)) {
+        $($answers[i]).data('coordinates').y -= verticalJitter;
+        $($answers[i]).offset({top: $($answers[i]).offset().top - verticalJitter});
+      }
+    }
+  }
+
+  $( document ).ready(function() {
+    if($myDom.find(".h5p-answers.h5p-random")) {
+      randomCloud();
+    }
+  });
 };
 
 H5P.MultiChoice.prototype = Object.create(H5P.Question.prototype);
 H5P.MultiChoice.prototype.constructor = H5P.MultiChoice;
+

@@ -355,6 +355,14 @@
         "optional": true
       },
       {
+        "label": "random cloud",
+        "importance": "low",
+        "name": "randomCloud",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      },
+      {
         "name": "enableRetry",
         "type": "boolean",
         "label": "Enable \"Retry\" button",
