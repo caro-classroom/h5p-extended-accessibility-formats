@@ -54,6 +54,10 @@
 
     var statusWrapper = document.createElement('div');
     statusWrapper.classList.add(WRAPPER_MESSAGE);
+    
+    if(params.enableTTSButtons && typeof this.params.maximumLength !== 'undefined') {
+      H5P.Question.prototype.addTTSButton("remainingCharacters", "prependTo", statusWrapper);
+    }
 
     this.statusChars = document.createElement('div');
     this.statusChars.classList.add(CHAR_MESSAGE);

@@ -68,6 +68,9 @@
   }
   .h5p-essay-input-field-message-wrapper {
     overflow: auto;
+    .h5p-action-button {
+      float: left;
+    }
   }
   .h5p-essay-input-field-message-char {
     font-size: 0.8em;

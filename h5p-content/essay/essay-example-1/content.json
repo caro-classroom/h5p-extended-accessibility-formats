@@ -34,7 +34,8 @@
     "inputFieldSize": 4,
     "enableRetry": true,
     "ignoreScoring": false,
-    "inputFieldWidth": "70%"
+    "inputFieldWidth": "70%",
+    "maximumLength": 100
   },
   "solution": {
     "introduction": "<div>Introduction text of the solution</div>\n",

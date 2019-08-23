@@ -93,7 +93,8 @@ H5P.Essay = function ($, Question) {
       'maximumLength': this.config.behaviour.maximumLength,
       'remainingChars': this.config.remainingChars,
       'inputFieldSize': this.config.behaviour.inputFieldSize,
-      'inputFieldWidth': this.config.behaviour.inputFieldWidth
+      'inputFieldWidth': this.config.behaviour.inputFieldWidth,
+      'enableTTSButtons': this.config.behaviour.enableTTSButtons
     }, this.previousState);
 
     // Register task introduction text
