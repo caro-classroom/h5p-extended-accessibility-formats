@@ -265,6 +265,14 @@
         "optional": true
       },
       {
+        "label": "disable TTS on dropped draggables",
+        "importance": "low",
+        "name": "ttsButtonOnDroppedDragable",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      },
+      {
         "label": "deactivate interactive buttons",
         "importance": "low",
         "name": "disableButtons",

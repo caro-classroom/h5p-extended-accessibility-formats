@@ -84,6 +84,7 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
         enableTTSButtons: true,
         ttsButtonOnDropzone: true,
         ttsButtonOnDragable: true,
+        ttsButtonOnDroppedDragable: false,
         disableButtons: true,
         enableRetry: true,
         enableSolutionsButton: true,
@@ -111,6 +112,12 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
       this.params.behaviour.enableRetry = false;
       this.params.behaviour.enableSolutionsButton = false;
       this.params.behaviour.enableCheckButton = false;
+    }
+
+    if(!this.params.behaviour.enableTTSButtons) {
+      this.params.behaviour.ttsButtonOnDropzone = false;
+      this.params.behaviour.ttsButtonOnDragable = false;
+      this.params.behaviour.ttsButtonOnDroppedDragable = true;
     }
 
     this.contentData = contentData;
@@ -876,7 +883,7 @@ H5P.DragText = (function ($, Question, ConfirmationDialog) {
     if(self.params.behaviour.ttsButtonOnDragable === true) {
       H5P.Question.prototype.addTTSButton(ttsID, "prependTo", $draggable);
     }
-    var draggable = new Draggable(answer, $draggable, self.draggables.length, ttsID);
+    var draggable = new Draggable(answer, $draggable, self.draggables.length, ttsID, self.params.behaviour);
     draggable.on('addedToZone', function () {
       self.triggerXAPI('interacted');
     });

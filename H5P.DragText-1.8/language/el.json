@@ -127,6 +127,9 @@
           "label": "activate tts buttons on dragable"
         },
         {
+          "label": "disable TTS on dropped draggables"
+        },
+        {
           "label": "deactivate interactive buttons"
         },
         {

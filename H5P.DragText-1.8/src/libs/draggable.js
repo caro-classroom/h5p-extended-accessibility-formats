@@ -1,6 +1,7 @@
 H5P.TextDraggable = (function ($) {
   //CSS Draggable feedback:
   var DRAGGABLE_DROPPED = 'h5p-drag-dropped';
+  
   /**
    * Private class for keeping track of draggable text.
    *
@@ -9,7 +10,7 @@ H5P.TextDraggable = (function ($) {
    * @param {jQuery} draggable Draggable object.
    * @param {number} index
    */
-  function Draggable(text, draggable, index, ttsID) {
+  function Draggable(text, draggable, index, ttsID, behaviour) {
     H5P.EventDispatcher.call(this);
     var self = this;
     self.text = text;
@@ -18,6 +19,7 @@ H5P.TextDraggable = (function ($) {
     self.index = index;
     self.initialIndex = index;
     self.ttsID = ttsID;
+    self.behaviour = behaviour;
 
     self.shortFormat = self.text;
     //Shortens the draggable string if inside a dropbox.
@@ -156,7 +158,9 @@ H5P.TextDraggable = (function ($) {
     this.toggleDroppedFeedback(false);
     this.removeShortFormat();
     this.insideDropzone = null;
-
+    if(this.behaviour.ttsButtonOnDragable) {
+      H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
+    }
     return dropZone;
   };
 
@@ -173,6 +177,9 @@ H5P.TextDraggable = (function ($) {
     this.insideDropzone = droppable;
     this.setShortFormat();
     this.trigger('addedToZone');
+    if(!this.behaviour.ttsButtonOnDroppedDragable && this.behaviour.ttsButtonOnDragable) {
+      H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
+    }
   };
 
   /**
@@ -188,11 +195,7 @@ H5P.TextDraggable = (function ($) {
    * Sets short format of draggable when inside a dropbox.
    */
   Draggable.prototype.setShortFormat = function () {
-    let ttsOn = this.$draggable.find(".h5p-action-button").length
     this.$draggable.html(this.shortFormat);
-    if(ttsOn) {
-      H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
-    }
   };
 
   /**
@@ -208,11 +211,7 @@ H5P.TextDraggable = (function ($) {
    * Removes the short format of draggable when it is outside a dropbox.
    */
   Draggable.prototype.removeShortFormat = function () {
-    let ttsOn = this.$draggable.find(".h5p-action-button").length
     this.$draggable.html(this.text);
-    if(ttsOn) {
-      H5P.Question.prototype.addTTSButton(this.ttsID, "prependTo", this.$draggable);
-    }
   };
 
   /**

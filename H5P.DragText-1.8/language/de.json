@@ -127,6 +127,9 @@
           "label": "TTS Buttons auf Dragable aktivieren"
         },
         {
+          "label": "TTS Buttons an draggables deaktivieren wenn in dropzone"
+        },
+        {
           "label": "Interaktions-Buttons deaktivieren"
         },
         {
