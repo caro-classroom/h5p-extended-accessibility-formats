@@ -37,7 +37,8 @@
       },
       "answer": "Lime",
       "tip": "",
-      "text": "Green, sour fruit...."
+      "text": "Green, sour fruit....",
+      "tts": "1"
     },
     {
       "answer": "Cherry",
@@ -55,7 +56,8 @@
         "height": 594
       },
       "tip": "",
-      "text": "Can be both sweet and sour...."
+      "text": "Can be both sweet and sour....",
+      "tts": "2"
     },
     {
       "answer": "Strawberry",
@@ -73,7 +75,8 @@
         "height": 594
       },
       "tip": "",
-      "text": "Sweet red berry...."
+      "text": "Sweet red berry....",
+      "tts": "3"
     },
     {
       "answer": "Orange",
@@ -109,7 +112,9 @@
       },
       "answer": "Apple",
       "tip": "",
-      "text": "Healthy green or red..."
+      "text": "Healthy green or red...",
+      "tts": "5"
     }
-  ]
+  ],
+  "introductionTTS": "1337"
 }
