@@ -548,7 +548,7 @@ H5P.ImageJuxtaposition = function ($, Question) {
 
       // Event Listeners for Mouse Interface
       this.slider.addEventListener("mousedown", function (e) {
-        let targetIsTTS = e.path.filter(element => element.className === "h5p-action-button").length;
+        let targetIsTTS = e.composedPath().filter(element => element.className === "h5p-action-button").length;
         if(!targetIsTTS) {
           e = e || window.event;
           // Don't use preventDefault or Firefox won't detect mouseup outside the iframe.
