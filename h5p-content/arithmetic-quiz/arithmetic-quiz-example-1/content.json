@@ -5,6 +5,7 @@
   "useFractions": false,
   "maxQuestions": 3,
   "showScore": false,
+  "showTimer": false,
   "countdownLength": 0,
   "preventFeedback": true,
   "enableTTSButtons": true,

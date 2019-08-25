@@ -27,6 +27,7 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType, Question) {
     self.maxQuestions = options.maxQuestions;
     self.sliding = false;
     self.showScore = options.showScore || false;
+    self.showTimer = options.showTimer || false;
     self.preventFeedback = options.preventFeedback || false;
     self.enableTTSButtons = options.enableTTSButtons;
 
@@ -45,8 +46,10 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType, Question) {
       self.scoreWidget.appendTo(self.$gamepage);
     }
 
-    self.timer = new H5P.ArithmeticQuiz.TimerWidget(self.translations);
-    self.timer.appendTo(self.$gamepage);
+    if (self.showTimer) {
+      self.timer = new H5P.ArithmeticQuiz.TimerWidget(self.translations);
+      self.timer.appendTo(self.$gamepage);
+    }
 
     self.slider = UI.createSlider();
 
@@ -60,7 +63,9 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType, Question) {
         self.slider.next();
       }
       self.progressbar.setProgress(0);
-      self.timer.start();
+      if (self.showTimer) {
+        self.timer.start();
+      }
       self.trigger('started-quiz');
     });
 
@@ -89,7 +94,7 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType, Question) {
       });
 
       self.slider.on('last-slide', function () {
-        self.resultPage.update(self.score, self.timer.pause());
+        self.resultPage.update(self.score, self.timer ? self.timer.pause() : 0);
         self.$gamepage.addClass('result-page');
         self.trigger('last-slide', {
           score: self.score,
@@ -155,7 +160,9 @@ H5P.ArithmeticQuiz.GamePage = (function ($, UI, QuizType, Question) {
     if (self.showScore) {
       this.scoreWidget.update(0);
     }
-    this.timer.reset();
+    if (self.showTimer) {
+      this.timer.reset();
+    }
     this.$gamepage.find('.reveal-wrong').removeClass('reveal-wrong');
     this.$gamepage.find('.reveal-correct').removeClass('reveal-correct');
     this.$gamepage.addClass('counting-down');

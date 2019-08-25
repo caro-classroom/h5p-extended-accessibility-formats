@@ -11,8 +11,15 @@
   {
     "name": "showScore",
     "type": "boolean",
-    "label": "ShowScore",
-    "description": "If enabled, the score os shown",
+    "label": "Show Score",
+    "description": "If enabled, the score is shown",
+    "default": false
+  },
+  {
+    "name": "showTimer",
+    "type": "boolean",
+    "label": "Show Timer",
+    "description": "If enabled, the timer is shown",
     "default": false
   },
   {
