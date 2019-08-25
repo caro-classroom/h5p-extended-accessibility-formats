@@ -23,6 +23,13 @@
     "default": false
   },
   {
+    "name": "showIntro",
+    "type": "boolean",
+    "label": "Show Intro",
+    "description": "If enabled, the intro is shown",
+    "default": false
+  },
+  {
     "name": "enableTTSButtons",
     "type": "boolean",
     "label": "Show TTS Buttons",
