@@ -148,7 +148,7 @@
     "label": "Max number of questions",
     "importance": "medium",
     "default": 20,
-    "min": 2,
+    "min": 1,
     "max": 100
   },
   {
