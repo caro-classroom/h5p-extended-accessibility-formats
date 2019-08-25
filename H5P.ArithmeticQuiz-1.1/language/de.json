@@ -5,6 +5,30 @@
       "description": "maximal 100 Zeichen"
     },
     {
+      "label": "Score anzeigen",
+      "description": "Wenn aktiviert, wird der Punktestand angezeigt"
+    },
+    {
+      "label": "Timer anzeigen",
+      "description": "Wenn aktiviert, wird der Timer angezeigt"
+    },
+    {
+      "label": "Show Intro",
+      "description": "Wenn aktiviert, wird vor der Aufgabe die Into-Seite angezeigt"
+    },
+    {
+      "label": "Zeige TTS Buttons an",
+      "description": "Wenn aktiviert, TTS (Text-to-Speech) Buttons angezeigt"
+    },
+    {
+      "label": "Feedback verbergen",
+      "description": "Wenn aktiviert, wird kein Feedback über die Richtigkeit einer Antwort ausgegeben"
+    },
+    {
+      "label": "Dauer des initialen Countdowns",
+      "description": "Die Dauer des initialen Countdowns in Sekunden. Bei 0 wird kein Countdown angezeigt"
+    },
+    {
       "label": "Art des Quiz",
       "options": [
         {
