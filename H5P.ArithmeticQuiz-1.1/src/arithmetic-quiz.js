@@ -23,6 +23,8 @@ H5P.ArithmeticQuiz = (function ($) {
       quizType: 'arithmetic',
       arithmeticType: 'addition',
       showScore: false,
+      showTimer: false,
+      showIntro: false,
       enableTTSButtons: true,
       equationType: undefined,
       useFractions: undefined,
@@ -65,11 +67,15 @@ H5P.ArithmeticQuiz = (function ($) {
       self.triggerXAPI('interacted');
     });
 
-    self.introPage = new H5P.ArithmeticQuiz.IntroPage(self.options.intro, self.options.UI);
-    self.introPage.on('start-game', function() {
-      self.introPage.remove();
+    if (self.showIntro) {
+      self.introPage = new H5P.ArithmeticQuiz.IntroPage(self.options.intro, self.options.UI);
+      self.introPage.on('start-game', function() {
+        self.introPage.remove();
+        self.gamePage.startCountdown();
+      });
+    } else {
       self.gamePage.startCountdown();
-    });
+    }
 
     self.on('resize', function () {
       // Set size based on gamePage
@@ -95,7 +101,9 @@ H5P.ArithmeticQuiz = (function ($) {
         this.$container = $container;
         this.addFont();
         this.$container.addClass('h5p-baq');
-        this.introPage.appendTo($container);
+        if (self.showIntro) {
+          this.introPage.appendTo($container);
+        }
 
         // Set gamePage xAPI parameters and append it.
         self.gamePage.contentId = id;
