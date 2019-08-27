@@ -99,6 +99,13 @@
         "label": "Add button for retrying when the game is over",
         "importance": "low",
         "default": true
+      },
+      {
+        "name": "enableSolutionsButton",
+        "type": "boolean",
+        "label": "show solution when not correctly paired",
+        "importance": "low",
+        "default": true
       }
     ]
   },

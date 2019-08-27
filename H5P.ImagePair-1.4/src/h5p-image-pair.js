@@ -17,19 +17,22 @@ H5P.ImagePair = (function(EventDispatcher, $, UI, Question) {
     var cards = [],
       mates = [];
     var clicked;
-
-    parameters = $.extend(true, {
+    
+    self.parameters = $.extend(true, {
       behaviour: {
         enableTTSButtons: true,
         disableButtons: true,
+        enableCheckButton: true,
+        allowRetry: true,
+        enableSolutionsButton: true
       }
     }, parameters);
 
     // override buttons
-    if(parameters.behaviour.disableButtons) {
-      parameters.behaviour.allowRetry = false;
-      parameters.behaviour.enableSolutionsButton = false;
-      parameters.behaviour.enableCheckButton = false;
+    if(self.parameters.behaviour.disableButtons) {
+      self.parameters.behaviour.allowRetry = false;
+      self.parameters.behaviour.enableSolutionsButton = false;
+      self.parameters.behaviour.enableCheckButton = false;
     }
 
     /**
@@ -483,7 +486,7 @@ H5P.ImagePair = (function(EventDispatcher, $, UI, Question) {
       self.$progressBar.appendTo(self.$feedbacks);
       self.$feedbacks.appendTo(self.$footer);
 
-      if (parameters.behaviour) {
+      if (self.parameters.behaviour.allowRetry) {
         //set the value if retry is enabled
         self.$retryButton = createButton(self.retry, 'fa-repeat',
           parameters.l10n.tryAgain);
@@ -491,7 +494,7 @@ H5P.ImagePair = (function(EventDispatcher, $, UI, Question) {
       }
 
       // if all cards are not correctly paired
-      if (result != cards.length && parameters.behaviour.enableSolutionsButton) {
+      if (result != cards.length && self.parameters.behaviour.enableSolutionsButton) {
         self.$showSolutionButton = createButton(self.showSolution,
           'fa-eye', parameters.l10n.showSolution);
         self.$showSolutionButton.appendTo(self.$footer);
@@ -560,8 +563,8 @@ H5P.ImagePair = (function(EventDispatcher, $, UI, Question) {
       var $cardList = $('<ul class="card-container" />');
       var $mateList = $('<ul class="mate-container"/>');
       self.$footer = $('<div class="footer-container"/>');
-
-      if(parameters.behaviour.enableCheckButton) {
+      
+      if(self.parameters.behaviour.enableCheckButton) {
         self.$checkButton = createButton(self.displayResult, 'fa-check',
           parameters.l10n.checkAnswer);
         self.$checkButton.appendTo(self.$footer);
