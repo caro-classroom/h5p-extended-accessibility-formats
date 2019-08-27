@@ -554,8 +554,8 @@ H5P.ImagePair = (function(EventDispatcher, $, UI, Question) {
         '</div>').appendTo($container).focus();
 
       // Show tts task button
-      if(parameters.behaviour.enableTTSButtons && typeof parameters.introductionTTS !== "undefined") {
-        H5P.Question.prototype.addTTSButton(parameters.introductionTTS, "prependTo", $container.find(".h5p-image-pair-desc"));
+      if(self.parameters.behaviour.enableTTSButtons && typeof self.parameters.introductionTTS !== "undefined") {
+        H5P.Question.prototype.addTTSButton(self.parameters.introductionTTS, "prependTo", $container.find(".h5p-image-pair-desc"));
       }
 
       self.$gameContainer = $(
