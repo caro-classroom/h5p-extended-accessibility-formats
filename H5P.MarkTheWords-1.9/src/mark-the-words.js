@@ -98,7 +98,6 @@ H5P.MarkTheWords = (function ($, Question, Word, KeyboardNav, XapiGenerator) {
     var html = '';
     for (var i = 0; i < nodes.length; i++) {
       var node = nodes[i];
-
       if (node instanceof Text) {
         var text = $(node).text();
         var selectableStrings = text.replace(/(&nbsp;|\r\n|\n|\r)/g, ' ')
@@ -114,6 +113,14 @@ H5P.MarkTheWords = (function ($, Question, Word, KeyboardNav, XapiGenerator) {
               html += ' ';
             }
 
+            //check for tts
+            var tts = entry.match(/\[tts:\w+]+/);
+            if (tts !== null) {
+              //extract id
+              tts = entry.slice(entry.indexOf(":") + 1, -1);
+              entry = "";
+            }
+
             // Remove prefix punctuations from word
             var prefix = entry.match(/^[\[\({⟨¿¡“"«„]+/);
             var start = 0;
@@ -121,7 +128,7 @@ H5P.MarkTheWords = (function ($, Question, Word, KeyboardNav, XapiGenerator) {
               start = prefix[0].length;
               html += prefix;
             }
-
+            
             // Remove suffix punctuations from word
             var suffix = entry.match(/[",….:;?!\]\)}⟩»”]+$/);
             var end = entry.length - start;
@@ -133,6 +140,10 @@ H5P.MarkTheWords = (function ($, Question, Word, KeyboardNav, XapiGenerator) {
             entry = entry.substr(start, end);
             if (entry.length) {
               html += '<span role="option">' + self.escapeHTML(entry) + '</span>';
+            }
+
+            if (tts != null && self.params.behaviour.enableTTSButtons) {
+              html += '<span class="tts-button-placeholder">' + tts + '</span>'
             }
 
             if (suffix !== null) {
@@ -226,6 +237,13 @@ H5P.MarkTheWords = (function ($, Question, Word, KeyboardNav, XapiGenerator) {
       self.selectableWords.push(selectableWord);
     });
 
+    // replace tts placeholder with ttsButton
+    if (this.params.behaviour.enableTTSButtons) {
+      $wordContainer.find(".tts-button-placeholder").each(function() {
+        $(this).replaceWith(Question.prototype.addTTSButton(this.innerHTML, "self"));
+      });
+    }
+    
     self.blankIsCorrect = (self.answers === 0);
     if (self.blankIsCorrect) {
       self.answers = 1;

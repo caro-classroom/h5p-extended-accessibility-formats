@@ -1355,6 +1355,8 @@ H5P.Question = (function ($, EventDispatcher, JoubelUI) {
         case "introduction":
           $e.prependTo(sections.introduction.$element);
           break;
+        case "self":
+          return $e;
       }
       return self;
     }
