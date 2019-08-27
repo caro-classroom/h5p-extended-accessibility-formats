@@ -1,7 +1,7 @@
 {
   "taskDescription": "Task description",
   "introductionTTS": "1337",
-  "textField": "This is a *nice*, *flexible* content type.",
+  "textField": "This [tts:MEINEID] is a *nice*, [tts:MEINEID2] *flexible* content type.",
   "behaviour": {
     "enableTTSButtons": true,
     "disableButtons": true,
@@ -16,6 +16,6 @@
   "correctAnswer": "Correct!",
   "incorrectAnswer": "Incorrect!",
   "missedAnswer": "Missed!",
-  "displaySolutionDescription":  "Task is updated to contain the solution.",
+  "displaySolutionDescription": "Task is updated to contain the solution.",
   "scoreBarLabel": "You got :num out of :total points"
 }
